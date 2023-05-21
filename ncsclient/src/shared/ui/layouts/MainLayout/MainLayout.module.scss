@@ -1,0 +1,31 @@
+.MainLayout {
+  display: grid;
+  justify-self: center;
+  grid-template-areas: 'header' 'content' 'footer';
+  grid-auto-rows: 100px 1fr 30px;
+  min-width: 1300px;
+  max-width: 1300px;
+  height: 100%;
+}
+
+.header {
+  background-color: blue;
+  grid-area: header;
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+
+.content {
+  grid-area: content;
+  min-height: 100vh;/*calc(100vh - 130px);*/
+  width: 100%;
+}
+
+.footer {
+  background-color: red;
+  grid-area: footer;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+}

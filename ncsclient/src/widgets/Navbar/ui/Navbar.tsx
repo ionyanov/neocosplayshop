@@ -1,23 +1,29 @@
-import {FC} from "react";
-import cls from './Navbar.module.scss';
-import {HStack, VStack} from "../../../shared/ui/Stack";
-import {AppLogo} from "../../../shared/ui/AppLogo/AppLogo";
-import {AppNavbar} from "../../../features/AppNavbar/AppNavbar";
+import * as React from 'react';
+import { FC } from 'react';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Container from '@mui/material/Container';
+import { MainPicture } from '@/shared/ui';
+import { AvatarButton } from '@/features/AvatarButton/';
+import { MenuList } from '@/entities/Menu/ui/MenuList';
+
 
 interface NavbarProps {
-    className?: string
 }
 
 export const Navbar: FC<NavbarProps> = (props) => {
+
     return (
-        <VStack max gap={'8'} className={cls.Navbar}>
-            <HStack max gap={'8'} justify={'between'} >
-                <AppLogo/>
-                <input placeholder={'Поиск'}/>
-            </HStack>
-            <HStack max gap={'8'} justify={'between'} >
-                <AppNavbar/>
-            </HStack>
-        </VStack>
+        <>
+            <AppBar  component="nav" color={'transparent'}>
+                <Container maxWidth='xl'>
+                    <Toolbar disableGutters>
+                        <MenuList />
+                        <AvatarButton />
+                    </Toolbar>
+                </Container>
+            </AppBar>
+            <MainPicture />
+        </>
     );
 };

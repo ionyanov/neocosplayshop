@@ -1,0 +1,116 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Name",
+      "anime": 1,
+      "personage": 1,
+      "category": 1,
+      "price": 100,
+      "tags": [
+        "cosplay"
+      ],
+      "description": [
+        "description item 1",
+        "description item 2"
+      ],
+      "ready": true,
+      "sales": true
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "123",
+      "roles": [
+        "ADMIN"
+      ],
+      "features": {
+        "isArticleRatingEnabled": true,
+        "isArticleRecommendationEnabled": true
+      },
+      "avatar": "https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png",
+      "jsonSettings": {
+        "theme": "app_light_theme",
+        "articlesPageHasBeenOpen": true
+      }
+    }
+  ],
+  "profile": [
+    {
+      "id": "1",
+      "firstname": "firstname",
+      "lastname": "lastname1",
+      "age": 18,
+      "currency": "USD",
+      "country": "Armenia",
+      "city": "Moscow",
+      "username": "admin",
+      "avatar": "https://thumbs.dreamstime.com/z/%D0%B0%D0%B2%D0%B0%D1%82%D0%B0%D1%80-%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D1%8B-%D1%87%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D0%BA%D0%B0-%D1%81-%D0%B1%D0%BE%D1%80%D0%BE%D0%B4%D0%BE%D0%B9-%D0%BC%D1%83%D0%B6%D1%81%D0%BA%D0%BE%D0%B9-%D0%BF%D0%BE%D1%80%D1%82%D1%80%D0%B5%D1%82-%D0%B8%D0%BB%D0%BB%D1%8E%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F-%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%B0-186026145.jpg"
+    },
+    {
+      "id": "2",
+      "firstname": "ulbi tv",
+      "lastname": "asf",
+      "age": 465,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Moscow",
+      "username": "ulbi tv",
+      "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
+    }
+  ],
+  "settings": {
+    "Instagramm": "@PeppyCos",
+    "Boosty": "@PeppyCos",
+    "Email": "peppy@mail.ru"
+  },
+  "animes": [
+    {
+      "id": 1,
+      "name": "Anime1"
+    },
+    {
+      "id": 2,
+      "name": "Anime2"
+    },
+    {
+      "id": 3,
+      "name": "Anime3"
+    }
+  ],
+  "persons": [
+    {
+      "id": 1,
+      "name": "Personage",
+      "animeId": 1
+    }
+  ],
+  "mainmenu": [
+    {
+      "id": 1,
+      "name": "Commissions",
+      "link": "/admin",
+      "order": 1
+    },
+    {
+      "id": 2,
+      "name": "Wig",
+      "link": "/products",
+      "order": 2
+    },
+    {
+      "id": 3,
+      "name": "Costumes & Props",
+      "link": "/about",
+      "order": 3
+    },
+    {
+      "id": 4,
+      "name": "Prints",
+      "link": "/prints",
+      "order": 4
+    }
+  ]
+}

@@ -1,21 +1,29 @@
-import './App.css'
-import {MainLayout} from "../shared/ui";
-import {Navbar} from "../widgets/Navbar";
-import {ContactsLine} from "../features/ContactsLine";
-import fon from './fon.png'
+import './App.css';
+import { Box, CssBaseline, ThemeProvider } from '@mui/material';
+import { NCSTheme } from './providers/Theme/NCSTheme';
+import { MainLayout } from '@/shared/ui';
+import { Navbar } from '@/widgets/Navbar';
+import { ContactsLine } from '@/widgets/ContactsLine';
+import { AppRouter } from '@/app/providers/AppRouter';
 
 function App() {
     return (
-        <MainLayout
-            header={<Navbar/>}
-            content={<div style={{
-                backgroundImage: `url(${fon})`,
-                width: "100%",
-                height: "100%"
-            }}></div>}
-            footer={<ContactsLine/>}
-        />
-    )
+        <ThemeProvider theme={NCSTheme}>
+            <Box sx={{ display: 'flex' }}>
+                <Navbar />
+                <Box component="main">
+                    <CssBaseline />
+                    <AppRouter />
+                </Box>
+                <ContactsLine />
+            </Box>
+            {/*<MainLayout
+                header={<Navbar />}
+                content={<AppRouter />}
+                footer={<ContactsLine />}
+            />*/}
+        </ThemeProvider>
+    );
 }
 
-export default App
+export default App;

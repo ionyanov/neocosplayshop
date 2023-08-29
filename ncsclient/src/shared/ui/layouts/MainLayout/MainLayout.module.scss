@@ -2,30 +2,31 @@
   display: grid;
   justify-self: center;
   grid-template-areas: 'header' 'content' 'footer';
-  grid-auto-rows: 100px 1fr 30px;
-  min-width: 1300px;
-  max-width: 1300px;
+  grid-auto-rows: 300px 1fr 100px;
   height: 100%;
+  width: 100%;
 }
 
 .header {
-  background-color: blue;
   grid-area: header;
   position: sticky;
   top: 0;
   width: 100%;
+  z-index: 0;
 }
 
 .content {
   grid-area: content;
-  min-height: 100vh;/*calc(100vh - 130px);*/
+  min-height: 200vh;/*calc(100vh - 400px);*/
   width: 100%;
+  z-index: 10;
+  background: rgb(248 224 229 / 20%);
 }
 
 .footer {
-  background-color: red;
   grid-area: footer;
   position: sticky;
   bottom: 0;
   width: 100%;
+  z-index: 100;
 }

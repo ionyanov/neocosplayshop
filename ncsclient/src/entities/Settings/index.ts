@@ -1,0 +1,1 @@
+export { MenuSchema } from './model/types/settingsItem';

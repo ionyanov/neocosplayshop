@@ -9,7 +9,7 @@ interface MenuListProps {
 }
 
 export const MenuList: FC<MenuListProps> = (props) => {
-    const { data, isLoading } = getMenuQuery();
+    const { data, isLoading } = getMenuQuery(null);
     const isMobile = detectMobileDevice();
 
     if (isMobile) {

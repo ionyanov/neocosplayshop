@@ -1,9 +1,7 @@
-import {type FC, memo} from 'react';
-import {classNames} from '@/shared/lib/classNames/classNames';
-import cls from './PageError.module.scss';
+import { type FC, memo } from 'react';
+import { Box, Typography } from '@mui/material';
 
 interface PageErrorProps {
-    className?: string;
 }
 
 export const PageError: FC<PageErrorProps> = memo((props: PageErrorProps) => {
@@ -12,10 +10,12 @@ export const PageError: FC<PageErrorProps> = memo((props: PageErrorProps) => {
     };
 
     return (
-        <div className={classNames(cls.PageError, {}, [props.className])}>
-            <p>{'Что-то пошло не так'}</p>
-            <button onClick={reloadPage}>{'Обновить'}</button>
-        </div>
+        <Box>
+            <Typography align={'center'} variant={'h4'}>
+                Sorry, we have a problem.
+            </Typography>
+            <button onClick={reloadPage}>{'Reload'}</button>
+        </Box>
     );
 });
 

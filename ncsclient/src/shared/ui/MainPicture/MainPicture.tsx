@@ -10,7 +10,7 @@ export const MainPicture: FC<MainPictureProps> = (props) => {
         <Box
             sx={{
                 width: '100%',
-                height: '700px',
+                height: '32vw',
                 padding: 0,
                 margin: 0,
                 backgroundImage: 'url(\'/image/maintitle.png\')',

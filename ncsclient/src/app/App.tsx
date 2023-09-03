@@ -1,27 +1,26 @@
-import './App.css';
-import { Box, CssBaseline, ThemeProvider } from '@mui/material';
+import * as React from 'react';
+import CssBaseline from '@mui/material/CssBaseline';
+import { Box, ThemeProvider, Toolbar } from '@mui/material';
 import { NCSTheme } from './providers/Theme/NCSTheme';
-import { MainLayout } from '@/shared/ui';
 import { Navbar } from '@/widgets/Navbar';
-import { ContactsLine } from '@/widgets/ContactsLine';
 import { AppRouter } from '@/app/providers/AppRouter';
+import { ContactsLine } from '@/entities/Settings/ui/ContactsLine';
+import { MainPicture } from '@/shared/ui';
 
 function App() {
     return (
         <ThemeProvider theme={NCSTheme}>
-            <Box sx={{ display: 'flex' }}>
+            <CssBaseline />
+            <Box sx={{ display: 'flex', width: '100%' }}>
                 <Navbar />
-                <Box component="main">
-                    <CssBaseline />
+                <Box component='main' sx={{ width: '100%' }}>
+                    <Toolbar />
+                    <MainPicture />
                     <AppRouter />
+                    <Toolbar />
                 </Box>
                 <ContactsLine />
             </Box>
-            {/*<MainLayout
-                header={<Navbar />}
-                content={<AppRouter />}
-                footer={<ContactsLine />}
-            />*/}
         </ThemeProvider>
     );
 }

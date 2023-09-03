@@ -2,10 +2,10 @@
   "products": [
     {
       "id": 1,
-      "name": "Name",
-      "anime": 1,
-      "personage": 1,
-      "category": 1,
+      "name": "Long name of anime with stupid heroes",
+      "animeId": 1,
+      "personageId": 1,
+      "categoryId": 1,
       "price": 100,
       "tags": [
         "cosplay"
@@ -13,6 +13,89 @@
       "description": [
         "description item 1",
         "description item 2"
+      ],
+      "mainimage": "/image/backup/шиба бровки подняты.png",
+      "images": [
+        "/image/backup/шиба бровки подняты.png",
+        "/image/backup/шиба зажмурилась.png",
+        "/image/backup/шиба обычная.png",
+        "/image/backup/шиба подмигивает.png",
+        "/image/backup/шиба сосредоточена.png"
+      ],
+      "ready": true,
+      "sales": true
+    },
+    {
+      "id": 2,
+      "name": "Name2",
+      "animeId": 1,
+      "personageId": 1,
+      "categoryId": 1,
+      "price": 200,
+      "tags": [
+        "cosplay"
+      ],
+      "description": [
+        "description item 1",
+        "description item 2"
+      ],
+      "mainimage": "/image/backup/шиба подмигивает.png",
+      "images": [
+        "/image/backup/шиба бровки подняты.png",
+        "/image/backup/шиба зажмурилась.png",
+        "/image/backup/шиба обычная.png",
+        "/image/backup/шиба подмигивает.png",
+        "/image/backup/шиба сосредоточена.png"
+      ],
+      "ready": true,
+      "sales": true
+    },
+    {
+      "id": 3,
+      "name": "Name3",
+      "animeId": 1,
+      "personageId": 1,
+      "categoryId": 1,
+      "price": 300,
+      "tags": [
+        "cosplay"
+      ],
+      "description": [
+        "description item 1",
+        "description item 2"
+      ],
+      "mainimage": "/image/backup/шиба обычная.png",
+      "images": [
+        "/image/backup/шиба бровки подняты.png",
+        "/image/backup/шиба зажмурилась.png",
+        "/image/backup/шиба обычная.png",
+        "/image/backup/шиба подмигивает.png",
+        "/image/backup/шиба сосредоточена.png"
+      ],
+      "ready": true,
+      "sales": true
+    },
+    {
+      "id": 4,
+      "name": "Name4",
+      "animeId": 1,
+      "personageId": 1,
+      "categoryId": 1,
+      "price": 400,
+      "tags": [
+        "cosplay"
+      ],
+      "description": [
+        "description item 1",
+        "description item 2"
+      ],
+      "mainimage": "/image/backup/шиба зажмурилась.png",
+      "images": [
+        "/image/backup/шиба бровки подняты.png",
+        "/image/backup/шиба зажмурилась.png",
+        "/image/backup/шиба обычная.png",
+        "/image/backup/шиба подмигивает.png",
+        "/image/backup/шиба сосредоточена.png"
       ],
       "ready": true,
       "sales": true
@@ -91,26 +174,32 @@
     {
       "id": 1,
       "name": "Commissions",
-      "link": "/admin",
+      "link": "/commissions",
       "order": 1
     },
     {
       "id": 2,
       "name": "Wig",
-      "link": "/products",
+      "link": "/products/wig",
       "order": 2
     },
     {
       "id": 3,
       "name": "Costumes & Props",
-      "link": "/about",
+      "link": "/products/costumes",
       "order": 3
     },
     {
       "id": 4,
-      "name": "Prints",
-      "link": "/prints",
+      "name": "About",
+      "link": "/about",
       "order": 4
+    },
+    {
+      "id": 5,
+      "name": "Prints",
+      "link": "/products/prints",
+      "order": 5
     }
   ]
 }

@@ -1,30 +1,49 @@
 import { AboutPage } from '@/pages/AboutPage';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
-import { WigPage } from '@/pages/WigPage';
+import { ProductDetailPage } from '@/pages/ProductDetailPage';
+import { ProductsPage } from '@/pages/ProductsPage';
 import { AdminPanelPage } from '@/pages/AdminPanelPage';
+import { MainPage } from '@/pages/MainPage';
 import {
     AppRoutes,
     getRouteAbout,
     getRouteAdmin,
+    getRouteCommissions,
     getRouteForbidden,
-    getRouteNotfound, getRouteProductDetail,
+    getRouteMain,
+    getRouteNotfound,
+    getRouteProductDetail,
     getRouteProducts,
+    getRouteProductsCategory,
 } from '@/shared/const/router';
 import { type AppRouteProps, UserRole } from '@/shared/types/router';
+import { CommissionsPage } from '@/pages/CommissionsPage';
 
 export const routeConfig: Record<AppRoutes, AppRouteProps> = {
+    [AppRoutes.MAIN]: {
+        path: getRouteMain(),
+        element: <MainPage />,
+    },
     [AppRoutes.ABOUT]: {
         path: getRouteAbout(),
         element: <AboutPage />,
     },
+    [AppRoutes.COMMISSIONS]: {
+        path: getRouteCommissions(),
+        element: <CommissionsPage />,
+    },
     [AppRoutes.PRODUCTS]: {
         path: getRouteProducts(),
-        element: <WigPage />,
+        element: <ProductsPage />,
+    },
+    [AppRoutes.PRODUCTS_CATEGORY]: {
+        path: getRouteProductsCategory(':category'),
+        element: <ProductsPage />,
     },
     [AppRoutes.PRODUCT_DETAIL]: {
         path: getRouteProductDetail(':id'),
-        element: <WigPage />,
+        element: <ProductDetailPage />,
     },
     [AppRoutes.ADMIN_PANEL]: {
         path: getRouteAdmin(),

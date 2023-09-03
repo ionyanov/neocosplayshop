@@ -7,7 +7,6 @@ import {
 } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
 import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll/useInfiniteScroll';
 import { useInitialEffect } from '@/shared/hooks/useInitialEffect/useInitialEffect';
@@ -18,7 +17,6 @@ import cls from './Page.module.scss';
 import {StateSchema} from "@/app/providers/StoreProvider";
 
 interface PageProps {
-    className?: string;
     children: ReactNode;
     onScrollEnd?: () => void;
 }
@@ -55,8 +53,7 @@ export const Page: FC<PageProps> = (props) => {
         <main
             onScroll={onScroll}
             ref={wrapperRef}
-            className={classNames(cls.Page, {}, [props.className])}
-            data-testid={props['data-testid'] ?? 'Page'}>
+            className={cls.Page}>
             {props.children}
             {props.onScrollEnd && (
                 <div className={cls.trigger} ref={triggerRef} />

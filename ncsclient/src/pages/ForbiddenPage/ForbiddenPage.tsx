@@ -1,13 +1,9 @@
 import { type FC, memo } from 'react';
 import { Page } from '@/widgets/Page';
 
-interface ForbiddenPageProps {
-    className?: string;
-}
-
-const ForbiddenPage: FC<ForbiddenPageProps> = (props) => {
+const ForbiddenPage: FC = () => {
     return (
-        <Page>Доступ запрещен</Page>
+        <Page>Access denied</Page>
     );
 };
 

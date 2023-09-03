@@ -31,7 +31,7 @@ export const AvatarButton: FC<AvatarButtonProps> = (props) => {
                     <Avatar alt='Remy Sharp'
                             src='/static/images/avatar/2.jpg' />
                 </IconButton>
-            < /Tooltip>
+            </Tooltip>
             <Menu sx={{ mt: '45px' }}
                   id='menu-appbar'
                   anchorEl={anchorElUser}
@@ -44,8 +44,8 @@ export const AvatarButton: FC<AvatarButtonProps> = (props) => {
                 {
                     settings.map((setting) => (
                         <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                            <Typography textAlign='center'> {setting} < /Typography>
-                        < /MenuItem>
+                            <Typography textAlign='center'> {setting} </Typography>
+                        </MenuItem>
                     ))
                 }
             </Menu>

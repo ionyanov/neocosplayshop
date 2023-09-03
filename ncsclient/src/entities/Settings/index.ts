@@ -1,1 +1,1 @@
-export { MenuSchema } from './model/types/settingsItem';
+export { type SettingsSchema } from './model/types/settingsItem';

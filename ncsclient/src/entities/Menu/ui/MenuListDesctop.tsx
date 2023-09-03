@@ -7,7 +7,7 @@ import { MenuItemRoute } from '@/entities/Menu/ui/MenuItemRoute';
 
 interface MenuListDesktopProps {
     isLoading: boolean;
-    menu: Menuitem[];
+    menu: Menuitem[] | undefined;
 }
 
 export const MenuListDesktop: FC<MenuListDesktopProps> = (props) => {
@@ -28,7 +28,7 @@ export const MenuListDesktop: FC<MenuListDesktopProps> = (props) => {
         <>
             <AppLogo />
             <Box sx={{ flexGrow: 1, display: 'flex' }}>
-                {props.menu.map((item) => (
+                {props.menu?.map((item) => (
                     <MenuItemRoute key={item.id} item={item} onClick={handleCloseNavMenu} />
                 ))}
             </Box>

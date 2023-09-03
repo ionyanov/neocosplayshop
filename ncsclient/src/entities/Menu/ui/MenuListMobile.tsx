@@ -11,7 +11,7 @@ import { MenuItemRoute } from '@/entities/Menu/ui/MenuItemRoute';
 
 interface MenuListMobileProps {
     isLoading: boolean;
-    menu: Menuitem[];
+    menu: Menuitem[] | undefined;
 }
 
 export const MenuListMobile: FC<MenuListMobileProps> = (props) => {
@@ -65,7 +65,7 @@ export const MenuListMobile: FC<MenuListMobileProps> = (props) => {
                     open={Boolean(anchorElNav)}
                     onClose={handleCloseNavMenu}
                 >
-                    {props.menu.map((item) => (
+                    {props.menu?.map((item) => (
                         <MenuItemRoute key={item.id} item={item} onClick={handleCloseNavMenu} />
                     ))}
                 </Menu>

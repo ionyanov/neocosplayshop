@@ -1,6 +1,6 @@
 import { rtkAPI } from '@/shared/api/rtkAPI';
 import type { JsonSettings } from '../types/jsonSettings';
-import type { User } from '../types/user';
+import type { IUser } from '../types/IUser';
 
 interface SetJsonSettingsProps {
     userId: string;
@@ -9,7 +9,7 @@ interface SetJsonSettingsProps {
 
 const userApi = rtkAPI.injectEndpoints({
     endpoints: (build) => ({
-        setJsonSettings: build.mutation<User, SetJsonSettingsProps>({
+        setJsonSettings: build.mutation<IUser, SetJsonSettingsProps>({
             query: (arg) => ({
                 url: `/users/${arg.userId}`,
                 method: 'PATCH',
@@ -18,7 +18,7 @@ const userApi = rtkAPI.injectEndpoints({
                 },
             }),
         }),
-        getUserData: build.query<User, string>({
+        getUserData: build.query<IUser, number>({
             query: (userId) => ({
                 url: `/users/${userId}`,
                 method: 'GET',

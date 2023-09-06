@@ -36,7 +36,6 @@ export const NCSTheme = createTheme({
             primary: COLORS.GREEN_DARK,
             secondary: COLORS.PING_DARK,
             disabled: COLORS.PING_LIGHT,
-            hint: COLORS.GREEN_DARK,
         },
     },
     typography: {
@@ -103,7 +102,7 @@ export const NCSTheme = createTheme({
             styleOverrides: {
                 root: {
                     boxShadow: 'none',
-                    background: 'transparent',
+                    background: `${COLORS.PING_LIGHT}dd`,
                 },
             },
         },

@@ -7,13 +7,17 @@ import {
 } from '@reduxjs/toolkit';
 import { type AxiosInstance } from 'axios';
 import { type rtkAPI } from '@/shared/api/rtkAPI';
-import { type UserSchema } from '@/entities/User';
+import { type IUserSchema } from '@/entities/User';
 import { type PageSchema } from '@/widgets/Page';
+import { type LoginSchema } from '@/features/Login/model/login.type';
+import { type SettingsSchema } from '@/entities/Settings';
 
 export interface StateSchema {
-    user: UserSchema;
+    user: IUserSchema;
     page: PageSchema;
+    settings: SettingsSchema;
     // Async
+    loginForm?: LoginSchema;
     [rtkAPI.reducerPath]: ReturnType<typeof rtkAPI.reducer>;
 }
 

@@ -1,5 +1,5 @@
 export * from './model/slice/userSlice';
-export { type UserSchema, type User} from './model/types/user';
+export { type IUserSchema, type IUser} from './model/types/IUser';
 
 export {
     getUserAuthData,

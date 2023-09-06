@@ -19,4 +19,3 @@ root.render(
         </StoreProvider>
     </BrowserRouter>,
 );
-export { UserRole } from '@/shared/types/router';

@@ -7,14 +7,14 @@ import {
 } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch/useAppDispatch';
-import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll/useInfiniteScroll';
-import { useInitialEffect } from '@/shared/hooks/useInitialEffect/useInitialEffect';
-import { useThrottle } from '@/shared/hooks/useThrottle/useThrottle';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll';
+import { useInitialEffect } from '@/shared/hooks/useInitialEffect';
+import { useThrottle } from '@/shared/hooks/useThrottle';
 import { getPageScrollByPath } from '../model/selectors/pageSelectors';
 import { pageAction } from '../model/slices/pageSlice';
 import cls from './Page.module.scss';
-import {StateSchema} from "@/app/providers/StoreProvider";
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 interface PageProps {
     children: ReactNode;
@@ -50,10 +50,7 @@ export const Page: FC<PageProps> = (props) => {
     }, 500);
 
     return (
-        <main
-            onScroll={onScroll}
-            ref={wrapperRef}
-            className={cls.Page}>
+        <main onScroll={onScroll} ref={wrapperRef} className={cls.Page}>
             {props.children}
             {props.onScrollEnd && (
                 <div className={cls.trigger} ref={triggerRef} />

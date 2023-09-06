@@ -10,7 +10,7 @@ export const PageError: FC<PageErrorProps> = memo((props: PageErrorProps) => {
     };
 
     return (
-        <Box>
+        <Box flexGrow={1} height={'100vh'} alignContent={'center'}>
             <Typography align={'center'} variant={'h4'}>
                 Sorry, we have a problem.
             </Typography>

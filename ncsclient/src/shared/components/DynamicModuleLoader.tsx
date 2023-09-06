@@ -1,8 +1,11 @@
 import { type Reducer } from '@reduxjs/toolkit';
 import { type FC, type HTMLAttributes, useEffect } from 'react';
 import { useStore } from 'react-redux';
-import { useAppDispatch } from '../../hooks/useAppDispatch/useAppDispatch';
-import { type ReduxStoreWithManager, type StateSchema } from '@/app/providers/StoreProvider';
+import { useAppDispatch } from '../hooks/useAppDispatch';
+import {
+    type ReduxStoreWithManager,
+    type StateSchema,
+} from '@/app/providers/StoreProvider';
 import { StateSchemaKey } from '@/app/providers/StoreProvider/config/StateSchema';
 
 export type ReducerList = {
@@ -27,14 +30,14 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
             // Добавляем новый редюсер только если его нет
             if (!mounted) {
                 store.reducerManager?.add(name as StateSchemaKey, reducer);
-                // dispatch({type: `@INIT ${name} reducer`})
+                //dispatch({ type: `@INIT ${name} reducer` });
             }
         });
 
         return () => {
             if (removeAfterUnmount) {
                 Object.entries(reducers).forEach(([name, reducer]) => {
-                    // dispatch({type: `@DESTROY ${name} reducer`})
+                    //dispatch({ type: `@DESTROY ${name} reducer` });
                     store.reducerManager!.remove(name as StateSchemaKey);
                 });
             }

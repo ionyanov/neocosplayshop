@@ -5,9 +5,10 @@ import { buildSlice } from '@/shared/lib/store';
 import { initAuthData } from '../services/initAuthData';
 import { saveJsonSettings } from '../services/saveJsonSettings';
 import type { JsonSettings } from '../types/jsonSettings';
-import { type User, type UserSchema } from '../types/user';
+import { type IUser, type IUserSchema } from '../types/IUser';
+import { StorageServices } from '@/shared/helpers/auth.helper';
 
-const initialState: UserSchema = {
+const initialState: IUserSchema = {
     isInit: false,
 };
 
@@ -15,12 +16,18 @@ export const userSlice = buildSlice({
     name: 'user',
     initialState,
     reducers: {
-        setAuthData: (state, action: PayloadAction<User>) => {
+        setAuthData: (state, action: PayloadAction<IUser>) => {
             state.authData = action.payload;
-            setFeatures(action.payload.features);
+            //setFeatures(action.payload.features); 
+            StorageServices.setUserToStorage(action.payload)
+            state.isInit = true;
+        },
+        setAuthData2: (state, action: PayloadAction<IUser>) => {
+            state.authData = action.payload;
+            //setFeatures(action.payload.features);
             localStorage.setItem(
                 LOCALSTORAGE_USER_KEY,
-                JSON.stringify(action.payload.id),
+                JSON.stringify(action.payload),
             );
         },
         /* initAuthData: (state) => {
@@ -48,7 +55,7 @@ export const userSlice = buildSlice({
         builder
             .addCase(
                 initAuthData.fulfilled,
-                (state, action: PayloadAction<User>) => {
+                (state, action: PayloadAction<IUser>) => {
                     state.authData = action.payload;
                     setFeatures(state.authData?.features);
                     state.isInit = true;

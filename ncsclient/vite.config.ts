@@ -5,19 +5,19 @@ import { visualizer } from 'rollup-plugin-visualizer';
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [react(),
-        visualizer({
-            template: 'treemap', // or sunburst
-            open: true,
-            gzipSize: true,
-            brotliSize: true,
-            filename: 'analyse.html', // will be saved in project's root
-        }) as PluginOption],
+    visualizer({
+        template: 'treemap', // or sunburst
+        open: true,
+        gzipSize: true,
+        brotliSize: true,
+        filename: 'analyse.html', // will be saved in project's root
+    }) as PluginOption],
     resolve: {
         alias: [{ find: '@', replacement: '/src' }],
     },
     define: {
         _IS_DEV_: JSON.stringify(true),
-        _API_URL_: JSON.stringify('http://localhost:8000'),
+        _API_URL_: JSON.stringify('http://localhost:5000/api'),
         _PROJECT_: JSON.stringify('frontend'),
     },
 });

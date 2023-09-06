@@ -9,7 +9,14 @@ const productsApi = rtkAPI.injectEndpoints({
                 method: 'GET',
             }),
         }),
+        getProductDetail: build.query<Product, string>({
+            query: (id: string) => ({
+                url: `/products/${id}`,
+                method: 'GET',
+            }),
+        }),
     }),
 });
 
 export const getProductsQuery = productsApi.useGetProductsQuery;
+export const getProductDetailQuery = productsApi.useGetProductDetailQuery;

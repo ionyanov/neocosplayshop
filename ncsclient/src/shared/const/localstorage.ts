@@ -1,3 +1,3 @@
 export const LOCALSTORAGE_USER_KEY = 'user';
-export const LOCALSTORAGE_SIDEBAR_KEY = 'sidebar';
-export const LOCALSTORAGE_ARTICLE_VIEW_KEY = 'article_view';
+export const LOCALSTORAGE_REFRESH_KEY = 'refreshToken';
+export const LOCALSTORAGE_ACCESS_KEY = 'accessToken';

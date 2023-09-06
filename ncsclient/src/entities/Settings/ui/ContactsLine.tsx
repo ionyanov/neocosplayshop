@@ -1,9 +1,16 @@
-import * as React from 'react';
-import { FC } from 'react';
-import { getSettingsQuery } from '../model/api/settingsApi';
+import { FC, useEffect } from 'react';
 import { AppBar, Fab, styled, Toolbar } from '@mui/material';
 import { Settings } from '@/shared/types/settings';
 import * as Icons from '@mui/icons-material';
+import { getSettings, getSettingsIsInit } from '../model/settings.selectors';
+import { useSelector } from 'react-redux';
+import { initSettings } from '../model/settings.services';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import {
+    DynamicModuleLoader,
+    ReducerList,
+} from '@/shared/components/DynamicModuleLoader';
+import { settingsReducer } from '../model/settings.slice';
 
 const StyledFab = styled(Fab)({
     left: 30,
@@ -13,26 +20,51 @@ const StyledFab = styled(Fab)({
 });
 
 export const ContactsLine: FC = (props) => {
-    const { data, isLoading } = getSettingsQuery(null);
-    if (!isLoading && data) {
+    const dispatch = useAppDispatch();
+    const data = useSelector(getSettings);
+    const isInit = useSelector(getSettingsIsInit);
+
+    useEffect(() => {
+        dispatch(initSettings());
+    }, []);
+
+    if (isInit && data) {
         return (
-            <AppBar position='fixed' sx={{ top: 'auto', bottom: 0 }}>
+            <AppBar position="fixed" sx={{ top: 'auto', bottom: 0 }}>
                 <Toolbar>
-                    <StyledFab variant='circular' href={data[Settings.INSTA]}>
-                        <Icons.Instagram fontSize='large' sx={{ color: 'white', backgroundColor: '#fa9696' }} />
+                    <StyledFab variant="circular" href={data[Settings.INSTA]}>
+                        <Icons.Instagram
+                            fontSize="large"
+                            sx={{
+                                color: 'white',
+                                backgroundColor: '#fa9696',
+                            }}
+                        />
                     </StyledFab>
-                    <StyledFab variant='circular' href={data[Settings.BOOSTY]}>
-                        <Icons.Bed fontSize='large' sx={{ color: 'white', backgroundColor: '#fa9696' }} />
+                    <StyledFab variant="circular" href={data[Settings.BOOSTY]}>
+                        <Icons.Bed
+                            fontSize="large"
+                            sx={{
+                                color: 'white',
+                                backgroundColor: '#fa9696',
+                            }}
+                        />
                     </StyledFab>
-                    <StyledFab variant='circular' href={data[Settings.EMAIL]} size={'large'}>
-                        <Icons.AlternateEmail fontSize='large' sx={{ color: 'white', backgroundColor: '#fa9696' }} />
+                    <StyledFab
+                        variant="circular"
+                        href={data[Settings.EMAIL]}
+                        size={'large'}>
+                        <Icons.AlternateEmail
+                            fontSize="large"
+                            sx={{
+                                color: 'white',
+                                backgroundColor: '#fa9696',
+                            }}
+                        />
                     </StyledFab>
                 </Toolbar>
             </AppBar>
         );
     }
-    return (
-        <></>
-    );
-
+    return <></>;
 };

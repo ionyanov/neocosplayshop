@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0afd87ed-d6ab-4135-98ba-c8746ca31a2d" name="Changes" comment="Fix getting settings and add login form">
+      <change afterPath="$PROJECT_DIR$/ncsclient/public/image/applogo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsclient/src/entities/Product/ui/ProductGrid.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsclient/src/features/Login/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsclient/src/features/Login/model/login.selectors.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsclient/src/features/Login/model/login.services.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsclient/src/features/Login/model/login.slice.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsclient/src/features/Login/model/login.type.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsclient/src/features/Login/ui/loginForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsclient/src/shared/components/DynamicModuleLoader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsclient/src/shared/const/token.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsclient/src/shared/helpers/auth.helper.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsclient/src/shared/hooks/useAppDispatch.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsclient/src/shared/hooks/useDebounce.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsclient/src/shared/hooks/useHover.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsclient/src/shared/hooks/useInfiniteScroll.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsclient/src/shared/hooks/useInitialEffect.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsclient/src/shared/hooks/useModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsclient/src/shared/hooks/useThrottle.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/.prettierrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/nest-cli.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/prisma/schema.prisma" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/src/app.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/src/app.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/src/app.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/src/auth/auth.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/src/auth/auth.decorator.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/src/auth/auth.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/src/auth/auth.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/src/auth/auth.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/src/log.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/src/main.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/src/prisma.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/src/settings/setting.dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/src/settings/settings.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/src/settings/settings.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/src/settings/settings.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/tsconfig.build.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ncsserver/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/demoserver/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/demoserver/db.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/app/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/app/providers/StoreProvider/config/StateSchema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/app/providers/StoreProvider/config/StateSchema.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/app/providers/StoreProvider/config/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/app/providers/StoreProvider/config/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/app/providers/StoreProvider/ui/StoreProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/app/providers/StoreProvider/ui/StoreProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/app/providers/Theme/NCSTheme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/app/providers/Theme/NCSTheme.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/entities/Product/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/entities/Product/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/entities/Product/model/api/productApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/entities/Product/model/api/productApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/entities/Settings/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/entities/Settings/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/entities/Settings/model/api/settingsApi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/entities/Settings/model/types/settingsItem.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/entities/Settings/ui/ContactsLine.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/entities/Settings/ui/ContactsLine.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/entities/User/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/entities/User/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/entities/User/model/api/userApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/entities/User/model/api/userApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/entities/User/model/selectors/userSelectors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/entities/User/model/selectors/userSelectors.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/entities/User/model/services/initAuthData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/entities/User/model/services/initAuthData.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/entities/User/model/slice/userSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/entities/User/model/slice/userSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/entities/User/model/types/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/entities/User/model/types/IUser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/pages/AboutPage/AboutPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/pages/AboutPage/AboutPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/pages/CommissionsPage/CommissionsPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/pages/CommissionsPage/CommissionsPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/pages/MainPage/MainPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/pages/MainPage/MainPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/pages/ProductDetailPage/ProductDetailPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/pages/ProductDetailPage/ProductDetailPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/pages/ProductsPage/ProductsPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/pages/ProductsPage/ProductsPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/shared/api/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/shared/api/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/shared/api/rtkAPI.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/shared/api/rtkAPI.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/shared/assets/applogo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/shared/components/DynamicModuleLoader/DynamicModuleLoader.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/shared/const/localstorage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/shared/const/localstorage.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/shared/hooks/useAppDispatch/useAppDispatch.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/shared/hooks/useDebounce/useDebounce.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/shared/hooks/useHover/useHover.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/shared/hooks/useInfiniteScroll/useInfiniteScroll.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/shared/hooks/useInitialEffect/useInitialEffect.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/shared/hooks/useModal/useModal.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/shared/hooks/useThrottle/useThrottle.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/shared/lib/store/buildSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/shared/lib/store/buildSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/shared/types/global.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/shared/types/global.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/shared/ui/AppLogo/AppLogo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/shared/ui/AppLogo/AppLogo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/widgets/Page/ui/Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/widgets/Page/ui/Page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/src/widgets/PageError/ui/PageError.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/src/widgets/PageError/ui/PageError.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ncsclient/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ncsclient/vite.config.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Uy9CsEqLVoUtJlJalTE7i0Cd7V" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\USER1\\WebstormProjects\\neocosplayshop\\ncsclient\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0afd87ed-d6ab-4135-98ba-c8746ca31a2d" name="Changes" comment="" />
+      <created>1693900832022</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1693900832022</updated>
+      <workItem from="1693900833400" duration="6970000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add backend" />
+    <MESSAGE value="Fix getting settings and add login form" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix getting settings and add login form" />
+  </component>
+</project>

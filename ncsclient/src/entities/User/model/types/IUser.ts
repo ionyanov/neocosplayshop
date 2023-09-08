@@ -6,7 +6,7 @@ export interface IUser {
     id: number;
     email: string;
     //username: string;
-    //roles?: string;
+    role?: UserRole;
     //avatar?: string;
     //features?: FeatureFlag;
     //jsonSettings?: JsonSettings;

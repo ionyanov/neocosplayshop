@@ -13,6 +13,7 @@ import { rtkAPI } from '@/shared/api/rtkAPI';
 import { createdReducerManager } from './reducerManager';
 import { type ReduxStoreWithManager, type StateSchema } from './StateSchema';
 import { settingsReducer } from '@/entities/Settings/model/settings.slice';
+import { menuReducer } from '@/entities/Menu/model/menu.slice';
 
 export function createReduxStore(
     initialState?: StateSchema,
@@ -23,6 +24,7 @@ export function createReduxStore(
         user: userReducer,
         page: pageReducer,
         settings: settingsReducer,
+        menu: menuReducer,
         [rtkAPI.reducerPath]: rtkAPI.reducer
     };
 

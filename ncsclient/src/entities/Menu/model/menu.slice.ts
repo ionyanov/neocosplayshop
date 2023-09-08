@@ -1,32 +1,33 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { SettingsSchema } from './settings.type';
-import { initSettings } from './settings.services';
+import { MenuSchema } from './menu.type';
+import { initMenu } from './menu.services';
 
-const initialState: SettingsSchema = {
+const initialState: MenuSchema = {
 	isInit: false,
-	settings: { Boosty: '', Email: '', Instagramm: '' }
+	menu: [],
+	error: ''
 };
 
-export const settingsSlice = createSlice({
-	name: 'settings',
+export const menuSlice = createSlice({
+	name: 'mainmenu',
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
 		builder
-			.addCase(initSettings.pending, (state, action) => {
+			.addCase(initMenu.pending, (state, action) => {
 				state.error = '';
 				state.isInit = false;
 			})
-			.addCase(initSettings.fulfilled, (state, action) => {
-				state.settings = action.payload;
+			.addCase(initMenu.fulfilled, (state, action) => {
+				state.menu = action.payload;
 				state.isInit = true;
 			})
-			.addCase(initSettings.rejected, (state, action) => {
+			.addCase(initMenu.rejected, (state, action) => {
 				state.isInit = true;
 				state.error = action.error.message;
 			});
 	},
 });
 
-export const { actions: settingsActions } = settingsSlice;
-export const { reducer: settingsReducer } = settingsSlice;
+export const { actions: menuActions } = menuSlice;
+export const { reducer: menuReducer } = menuSlice;

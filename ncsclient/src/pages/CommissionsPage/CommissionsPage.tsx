@@ -1,13 +1,15 @@
 import React, { type FC } from 'react';
 import { Page } from '@/widgets/Page';
 import { Typography } from '@mui/material';
-import { getSettingsQuery } from '@/entities/Settings/model/settingsApi';
 import { Settings } from '@/shared/types/settings';
 import * as Icons from '@mui/icons-material';
+import {useSelector} from "react-redux";
+import {getSettings, getSettingsIsInit} from "@/entities/Settings/model/settings.selectors";
 
 const CommissionsPage: FC = () => {
-    const { data, isLoading } = getSettingsQuery(null);
-    if (isLoading) return <></>;
+    const data = useSelector(getSettings);
+    const isInit = useSelector(getSettingsIsInit);
+    if (!isInit) return <></>;
     return (
         <Page>
             <Typography align={'center'} variant={'h1'}>

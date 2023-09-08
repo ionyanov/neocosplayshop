@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { SettingsSchema } from './settings.type';
-import { initSettings } from './settings.services';
+import { deleteSettings, initSettings, upsertSettings } from './settings.services';
 
 const initialState: SettingsSchema = {
 	isInit: false,
@@ -22,6 +22,28 @@ export const settingsSlice = createSlice({
 				state.isInit = true;
 			})
 			.addCase(initSettings.rejected, (state, action) => {
+				state.isInit = true;
+				state.error = action.error.message;
+			})
+			.addCase(upsertSettings.pending, (state, action) => {
+				state.error = '';
+				state.isInit = false;
+			})
+			.addCase(upsertSettings.fulfilled, (state, action) => {
+				state.isInit = true;
+			})
+			.addCase(upsertSettings.rejected, (state, action) => {
+				state.isInit = true;
+				state.error = action.error.message;
+			})
+			.addCase(deleteSettings.pending, (state, action) => {
+				state.error = '';
+				state.isInit = false;
+			})
+			.addCase(deleteSettings.fulfilled, (state, action) => {
+				state.isInit = true;
+			})
+			.addCase(deleteSettings.rejected, (state, action) => {
 				state.isInit = true;
 				state.error = action.error.message;
 			});

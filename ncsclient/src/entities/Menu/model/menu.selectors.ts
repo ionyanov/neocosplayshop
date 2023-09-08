@@ -1,10 +1,10 @@
 import { StateSchema } from "@/app/providers/StoreProvider";
-import { Settings } from "@/shared/types/settings";
+import {MenuType} from "./menu.type";
 
-export function getSettingsIsInit(state: StateSchema): boolean {
-	return state?.settings?.isInit ?? false;
+export function getMenuIsInit(state: StateSchema): boolean {
+	return state?.menu?.isInit ?? false;
 }
 
-export function getSettings(state: StateSchema): Record<Settings, string> | undefined {
-	return state?.settings?.settings;
+export function getMenu(state: StateSchema): MenuType[] | undefined {
+	return state?.menu?.menu;
 }

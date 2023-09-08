@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { FC } from 'react';
-import { Menuitem } from '../model/types/menuitem';
+import { MenuType } from '../model/menu.type';
 import Box from '@mui/material/Box';
 import { AppLogo } from '@/shared/ui';
 import { MenuItemRoute } from '@/entities/Menu/ui/MenuItemRoute';
 
 interface MenuListDesktopProps {
     isLoading: boolean;
-    menu: Menuitem[] | undefined;
+    menu: MenuType[] | undefined;
 }
 
 export const MenuListDesktop: FC<MenuListDesktopProps> = (props) => {

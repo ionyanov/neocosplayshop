@@ -39,7 +39,7 @@ export const userSlice = buildSlice({
             state.isInit = true;
         }, */
         logout: (state) => {
-            localStorage.removeItem(LOCALSTORAGE_USER_KEY);
+            StorageServices.clearStorage();
             state.authData = undefined;
         },
     },
@@ -57,7 +57,7 @@ export const userSlice = buildSlice({
                 initAuthData.fulfilled,
                 (state, action: PayloadAction<IUser>) => {
                     state.authData = action.payload;
-                    setFeatures(state.authData?.features);
+                    //setFeatures(state.authData?.features);
                     state.isInit = true;
                 },
             )

@@ -3,7 +3,7 @@ import { LOCALSTORAGE_USER_KEY, LOCALSTORAGE_REFRESH_KEY, LOCALSTORAGE_ACCESS_KE
 
 export const StorageServices = {
     getUserFromStorage(): IUser {
-        return (localStorage.getItem(LOCALSTORAGE_USER_KEY) || {}) as IUser;
+        return (JSON.parse(localStorage.getItem(LOCALSTORAGE_USER_KEY) || '') || {}) as IUser;
     },
 
     setUserToStorage(data: IUser): void {

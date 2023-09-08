@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { type IUser} from '../types/IUser';
+import { type IUser } from '../types/IUser';
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { UserRole } from '@/shared/types/router';
 
@@ -15,10 +15,10 @@ export const getUserIsInit: (state: StateSchema) => boolean = (
     return state?.user.isInit ?? false;
 };
 
-export const getUserRoles: (state: StateSchema) => UserRole[] = createSelector(
+export const getUserRoles: (state: StateSchema) => UserRole = createSelector(
     getUserAuthData,
     (authData) => {
-        return authData?.roles ?? [];
+        return authData?.role ?? UserRole.USER;
     },
 );
 

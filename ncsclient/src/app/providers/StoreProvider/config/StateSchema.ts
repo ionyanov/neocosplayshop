@@ -11,11 +11,13 @@ import { type IUserSchema } from '@/entities/User';
 import { type PageSchema } from '@/widgets/Page';
 import { type LoginSchema } from '@/features/Login/model/login.type';
 import { type SettingsSchema } from '@/entities/Settings';
+import { type MenuSchema} from "@/entities/Menu";
 
 export interface StateSchema {
     user: IUserSchema;
     page: PageSchema;
     settings: SettingsSchema;
+    menu: MenuSchema;
     // Async
     loginForm?: LoginSchema;
     [rtkAPI.reducerPath]: ReturnType<typeof rtkAPI.reducer>;

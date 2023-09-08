@@ -6,11 +6,6 @@ import { getSettings, getSettingsIsInit } from '../model/settings.selectors';
 import { useSelector } from 'react-redux';
 import { initSettings } from '../model/settings.services';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
-import {
-    DynamicModuleLoader,
-    ReducerList,
-} from '@/shared/components/DynamicModuleLoader';
-import { settingsReducer } from '../model/settings.slice';
 
 const StyledFab = styled(Fab)({
     left: 30,

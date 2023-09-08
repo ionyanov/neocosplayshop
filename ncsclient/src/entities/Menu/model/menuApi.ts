@@ -1,9 +1,9 @@
 import { rtkAPI } from '@/shared/api/rtkAPI';
-import type { Menuitem } from '../types/menuitem';
+import type { MenuType } from './menu.type';
 
 const menuApi = rtkAPI.injectEndpoints({
     endpoints: (build) => ({
-        getMenu: build.query<Menuitem[], null>({
+        getMenu: build.query<MenuType[], null>({
             query: () => ({
                 url: `/mainmenu`,
                 method: 'GET',

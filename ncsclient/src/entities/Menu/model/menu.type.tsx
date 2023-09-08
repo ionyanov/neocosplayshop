@@ -1,11 +1,11 @@
-export interface Menuitem {
-    id: number,
-    name: string,
-    link: string,
-    order: number
+export interface MenuType {
+    id: number;
+    name: string;
+    link: string;
 }
 
 export interface MenuSchema {
-    menu?: Menuitem[],
-    isInit: boolean
+    menu?: MenuType[];
+    isInit: boolean;
+    error?: string;
 }

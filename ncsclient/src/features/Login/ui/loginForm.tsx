@@ -1,10 +1,24 @@
-import {ChangeEventHandler, type FC, memo, useCallback, useState,} from 'react';
-import {useSelector} from 'react-redux';
-import {DynamicModuleLoader, type ReducerList,} from '@/shared/components/DynamicModuleLoader';
-import {useAppDispatch} from '@/shared/hooks/useAppDispatch';
-import {loginByUsername} from '../model/login.services';
-import {loginActions, loginReducer} from '../model/login.slice';
-import {getError, getIsLoading, getPassword, getUserName,} from '../model/login.selectors';
+import {
+    ChangeEventHandler,
+    type FC,
+    memo,
+    useCallback,
+    useState,
+} from 'react';
+import { useSelector } from 'react-redux';
+import {
+    DynamicModuleLoader,
+    type ReducerList,
+} from '@/shared/components/DynamicModuleLoader';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
+import { loginByUsername } from '../model/login.services';
+import { loginActions, loginReducer } from '../model/login.slice';
+import {
+    getError,
+    getIsLoading,
+    getPassword,
+    getUserName,
+} from '../model/login.selectors';
 import {
     Alert,
     Button,
@@ -14,9 +28,10 @@ import {
     InputAdornment,
     InputLabel,
     OutlinedInput,
+    Paper,
     Typography,
 } from '@mui/material';
-import {Visibility, VisibilityOff} from '@mui/icons-material';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 export interface LoginFormProps {
     onSuccess?: () => void;
@@ -43,14 +58,18 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
         event.preventDefault();
     };
 
-    const onChangeUserName: ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement> = useCallback(
+    const onChangeUserName: ChangeEventHandler<
+        HTMLTextAreaElement | HTMLInputElement
+    > = useCallback(
         (event) => {
             dispatch(loginActions.setUserName(event.currentTarget.value));
         },
         [dispatch],
     );
 
-    const onChangePassword: ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement> = useCallback(
+    const onChangePassword: ChangeEventHandler<
+        HTMLTextAreaElement | HTMLInputElement
+    > = useCallback(
         (event) => {
             dispatch(loginActions.setPassword(event.currentTarget.value));
         },
@@ -59,7 +78,7 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
 
     const onLogin = useCallback(async () => {
         const [result] = await Promise.all([
-            dispatch(loginByUsername({email: username, password})),
+            dispatch(loginByUsername({ email: username, password })),
         ]);
         if (result.meta.requestStatus === 'fulfilled') {
             props.onSuccess?.();
@@ -73,56 +92,49 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
                 direction={'column'}
                 justifyContent={'center'}
                 alignItems={'center'}
-                border={'2px solid black'}>
-                <Typography variant="h6">Authorization</Typography>
-                <Grid
-                    container
-                    spacing={2}
-                    justifyContent={'space-around'}
-                    maxWidth={650}
-                    margin={2}>
-                    <FormControl variant="outlined">
-                        <InputLabel htmlFor="email">Email</InputLabel>
-                        <OutlinedInput
-                            id="email"
-                            type="text"
-                            label="Email"
-                            value={username}
-                            onChange={onChangeUserName}
-                        />
-                    </FormControl>
-                    <FormControl variant="outlined">
-                        <InputLabel htmlFor="outlined-adornment-password">
-                            Password
-                        </InputLabel>
-                        <OutlinedInput
-                            id="outlined-adornment-password"
-                            type={showPassword ? 'text' : 'password'}
-                            endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={handleClickShowPassword}
-                                        onMouseDown={handleMouseDownPassword}
-                                        edge="end">
-                                        {showPassword ? (
-                                            <VisibilityOff/>
-                                        ) : (
-                                            <Visibility/>
-                                        )}
-                                    </IconButton>
-                                </InputAdornment>
-                            }
-                            label="Password"
-                            value={password}
-                            onChange={onChangePassword}
-                        />
-                    </FormControl>
-                </Grid>
+                maxWidth={400}>
+                <FormControl variant="outlined" margin="dense" fullWidth={true}>
+                    <InputLabel htmlFor="email">Email</InputLabel>
+                    <OutlinedInput
+                        id="email"
+                        type="text"
+                        label="Email"
+                        value={username}
+                        onChange={onChangeUserName}
+                        fullWidth={true}
+                    />
+                </FormControl>
+                <FormControl variant="outlined" margin="dense" fullWidth={true}>
+                    <InputLabel htmlFor="password">Password</InputLabel>
+                    <OutlinedInput
+                        id="password"
+                        type={showPassword ? 'text' : 'password'}
+                        endAdornment={
+                            <InputAdornment position="end">
+                                <IconButton
+                                    aria-label="toggle password visibility"
+                                    onClick={handleClickShowPassword}
+                                    onMouseDown={handleMouseDownPassword}
+                                    edge="end">
+                                    {showPassword ? (
+                                        <VisibilityOff />
+                                    ) : (
+                                        <Visibility />
+                                    )}
+                                </IconButton>
+                            </InputAdornment>
+                        }
+                        label="Password"
+                        value={password}
+                        onChange={onChangePassword}
+                        fullWidth={true}
+                    />
+                </FormControl>
                 <Button
                     onClick={onLogin}
                     variant="outlined"
-                    disabled={isLoading}>
+                    disabled={isLoading}
+                    margin="2">
                     Login
                 </Button>
                 {error && (

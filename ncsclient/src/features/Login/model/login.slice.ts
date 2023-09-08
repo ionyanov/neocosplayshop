@@ -27,7 +27,7 @@ export const loginSlice = createSlice({
 				state.isLoading = true;
 			})
 			.addCase(loginByUsername.fulfilled, (state, action) => {
-				StorageServices.setUserToStorage(action.payload)
+				StorageServices.setUserToStorage(action.payload.user);
 				state.isLoading = false;
 			})
 			.addCase(loginByUsername.rejected, (state, action) => {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FC } from 'react';
-import { Menuitem } from '../model/types/menuitem';
+import { MenuType } from '../model/menu.type';
 import { Skeleton } from '@mui/material';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
@@ -11,7 +11,7 @@ import { MenuItemRoute } from '@/entities/Menu/ui/MenuItemRoute';
 
 interface MenuListMobileProps {
     isLoading: boolean;
-    menu: Menuitem[] | undefined;
+    menu: MenuType[];
 }
 
 export const MenuListMobile: FC<MenuListMobileProps> = (props) => {
@@ -65,7 +65,7 @@ export const MenuListMobile: FC<MenuListMobileProps> = (props) => {
                     open={Boolean(anchorElNav)}
                     onClose={handleCloseNavMenu}
                 >
-                    {props.menu?.map((item) => (
+                    {props.menu.map((item) => (
                         <MenuItemRoute key={item.id} item={item} onClick={handleCloseNavMenu} />
                     ))}
                 </Menu>

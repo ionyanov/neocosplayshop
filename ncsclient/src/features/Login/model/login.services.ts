@@ -14,7 +14,6 @@ export const loginByUsername = createAsyncThunk<
 			'/auth/login',
 			authData,
 		);
-		console.log(response)
 		if (!response.data) {
 			return thunkAPI.rejectWithValue('no data');
 		}

@@ -1,14 +1,15 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { LOCALSTORAGE_USER_KEY } from '@/shared/const/localstorage';
+import { StorageServices } from '../helpers/auth.helper';
 
 export const rtkAPI = createApi({
     reducerPath: 'rtkAPI',
     baseQuery: fetchBaseQuery({
         baseUrl: _API_URL_,
         prepareHeaders: (headers) => {
-            const token = localStorage.getItem(LOCALSTORAGE_USER_KEY);
+            const token = StorageServices.getAccessTokensFromStorage();
             if (token) {
-                headers.set('Authorization', token);
+                headers.set('Authorization', `Bearer ${token}`);
             }
             return headers;
         }

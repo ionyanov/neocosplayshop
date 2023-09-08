@@ -2,11 +2,11 @@ import * as React from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { MenuItem as MUIMenuItem } from '@mui/material';
 import Button from '@mui/material/Button';
-import { Menuitem } from '../model/types/menuitem';
+import { MenuType } from '../model/menu.type';
 
 interface MenuItemRouteProps {
-    item: Menuitem;
-    onClick: (item: Menuitem) => void;
+    item: MenuType;
+    onClick: (item: MenuType) => void;
 }
 
 export const MenuItemRoute: React.FC<MenuItemRouteProps> = (props) => {

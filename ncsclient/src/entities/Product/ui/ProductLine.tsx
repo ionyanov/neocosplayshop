@@ -19,13 +19,7 @@ interface ReducerData {
 }
 
 export const ProductLine: FC<ProductLineProps> = (props) => {
-    const {
-        title,
-        items,
-        width = 300,
-        height = 300,
-        gap = 20,
-    } = props;
+    const { title, items, width = 300, height = 300, gap = 20 } = props;
     const { data, isLoading } = getProductsQuery(null) as ReducerData;
 
     if (isLoading) {
@@ -34,7 +28,9 @@ export const ProductLine: FC<ProductLineProps> = (props) => {
 
     return (
         <>
-            <Typography align={'center'} variant={'h2'}>{title}</Typography>
+            <Typography align={'center'} variant={'h2'}>
+                {title}
+            </Typography>
             <ImageList
                 sx={{
                     gridAutoFlow: 'column',
@@ -42,16 +38,19 @@ export const ProductLine: FC<ProductLineProps> = (props) => {
                     gridAutoColumns: `minmax(${width}px, 1fr)`,
                 }}
                 rowHeight={height + 120}
-                gap={gap}
-            >
-                {data.map((item) => (
+                gap={gap}>
+                <></>
+                {data?.map((item) => (
                     <ImageListItem key={item.id}>
-                        <ProductMiniCard content={item}
-                                         border={30}
-                                         width={width}
-                                         height={height - 60}
-                                         variant={BorderColor.PINK} />
-                    </ImageListItem>))}
+                        <ProductMiniCard
+                            content={item}
+                            border={30}
+                            width={width}
+                            height={height - 60}
+                            variant={BorderColor.PINK}
+                        />
+                    </ImageListItem>
+                ))}
             </ImageList>
         </>
     );

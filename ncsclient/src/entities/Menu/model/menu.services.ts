@@ -1,15 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { type ThunkConfig } from "@/app/providers/StoreProvider";
-import { Settings } from '@/shared/types/settings';
+import { type MenuType } from './menu.type';
 
-export const initSettings = createAsyncThunk<
-	Record<Settings, string>,
+export const initMenu = createAsyncThunk<
+	MenuType[],
 	void,
 	ThunkConfig<string>
->('settings/initSettings', async (_, thunkAPI) => {
+>('category/initMenu', async (_, thunkAPI) => {
 	try {
-		const response = await thunkAPI.extra.api.get<Record<Settings, string>>(
-			'/settings'
+		const response = await thunkAPI.extra.api.get<MenuType[]>(
+			'/category'
 		);
 		if (!response.data) {
 			return thunkAPI.rejectWithValue('no data');

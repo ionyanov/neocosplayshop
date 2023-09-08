@@ -30,7 +30,6 @@ export const NCSTheme = createTheme({
         },
         background: {
             default: COLORS.PING_LIGHT,
-            paper: COLORS.PING_LIGHT,
         },
         text: {
             primary: COLORS.GREEN_DARK,

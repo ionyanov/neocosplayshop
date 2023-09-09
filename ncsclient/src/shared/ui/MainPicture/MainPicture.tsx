@@ -2,24 +2,29 @@ import * as React from 'react';
 import { FC } from 'react';
 import Box from '@mui/material/Box';
 
-interface MainPictureProps {
-}
+interface MainPictureProps {}
 
 export const MainPicture: FC<MainPictureProps> = (props) => {
     return (
         <Box
             sx={{
                 width: '100%',
-                height: '32vw',
                 padding: 0,
                 margin: 0,
-                backgroundImage: 'url(\'/image/maintitle.png\')',
+                display: 'flex',
+                alignContent: 'center',
+                justifyContent: 'center',
+                backgroundImage: "url('/image/fone_logo.png')",
                 backgroundPosition: 'top',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: '100%',
+                backgroundRepeat: 'repeat-x',
+                backgroundOrigin: 'content-box',
+                backgroundSize: 'contain',
             }}
-            zIndex={-10}
-        >
+            zIndex={-10}>
+            <img
+                src={'/image/maintitle.png'}
+                style={{ width: '50%', minHeight: '50px', minWidth: '200px' }}
+            />
         </Box>
     );
 };

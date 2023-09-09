@@ -1,7 +1,6 @@
 import { FC, useEffect } from 'react';
 import { AppBar, Fab, styled, Toolbar } from '@mui/material';
 import { Settings } from '@/shared/types/settings';
-import * as Icons from '@mui/icons-material';
 import { getSettings, getSettingsIsInit } from '../model/settings.selectors';
 import { useSelector } from 'react-redux';
 import { initSettings } from '../model/settings.services';
@@ -27,34 +26,31 @@ export const ContactsLine: FC = (props) => {
         return (
             <AppBar position="fixed" sx={{ top: 'auto', bottom: 0 }}>
                 <Toolbar>
-                    <StyledFab variant="circular" href={data[Settings.INSTA]}>
-                        <Icons.Instagram
-                            fontSize="large"
-                            sx={{
-                                color: 'white',
-                                backgroundColor: '#fa9696',
-                            }}
-                        />
-                    </StyledFab>
-                    <StyledFab variant="circular" href={data[Settings.BOOSTY]}>
-                        <Icons.Bed
-                            fontSize="large"
-                            sx={{
-                                color: 'white',
-                                backgroundColor: '#fa9696',
-                            }}
+                    <StyledFab
+                        variant="circular"
+                        href={data[Settings.INSTA]}
+                        target="_blank">
+                        <img
+                            src={'/image/itstagramm.png'}
+                            style={{ width: '100%' }}
                         />
                     </StyledFab>
                     <StyledFab
                         variant="circular"
-                        href={data[Settings.EMAIL]}
+                        href={data[Settings.BOOSTY]}
+                        target="_blank">
+                        <img
+                            src={'/image/boosty.png'}
+                            style={{ width: '100%' }}
+                        />
+                    </StyledFab>
+                    <StyledFab
+                        variant="circular"
+                        href={`mailto:${data[Settings.EMAIL]}`}
                         size={'large'}>
-                        <Icons.AlternateEmail
-                            fontSize="large"
-                            sx={{
-                                color: 'white',
-                                backgroundColor: '#fa9696',
-                            }}
+                        <img
+                            src={'/image/email.png'}
+                            style={{ width: '100%' }}
                         />
                     </StyledFab>
                 </Toolbar>

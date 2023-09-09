@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import { LoginDialog } from '@/features/Login/ui/loginDialog';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { Login } from '@mui/icons-material';
-import { Button } from '@mui/material';
+import { Button, Container } from '@mui/material';
 
 export const Navbar: FC = () => {
     const [openDialog, setOpenDialog] = useState(false);
@@ -24,8 +24,8 @@ export const Navbar: FC = () => {
     }, []);
 
     return (
-        <>
-            <AppBar component="nav">
+        <AppBar component="nav">
+            <Container maxWidth={'100%'}>
                 <Toolbar disableGutters>
                     <MenuList />
                     {user && <AvatarButton />}
@@ -41,7 +41,7 @@ export const Navbar: FC = () => {
                         </>
                     )}
                 </Toolbar>
-            </AppBar>
-        </>
+            </Container>
+        </AppBar>
     );
 };

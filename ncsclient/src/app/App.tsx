@@ -8,6 +8,7 @@ import { getUserIsInit, initAuthData } from '@/entities/User';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { MainPicture } from '@/shared/ui';
 
 function App() {
     const dispatch = useAppDispatch();
@@ -24,6 +25,7 @@ function App() {
                 <Navbar />
                 <Box component="main" sx={{ width: '100%' }}>
                     <Toolbar />
+                    <MainPicture />
                     <AppRouter />
                     <Toolbar />
                 </Box>

@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import cls from './AppLogo.module.scss';
 import { Link } from 'react-router-dom';
 import { getRouteMain } from '@/shared/const/router';
 
@@ -10,9 +9,10 @@ interface AppLogoProps {
 export const AppLogo: FC<AppLogoProps> = (props) => {
     return (
         <Link to={getRouteMain()}>
-            <div className={cls.AppLogo}>
-                <img src={'/image/applogo.png'} />
-            </div>
+            <img
+                src={'/image/applogo.png'}
+                style={{ maxWidth: '200px', display: 'block' }}
+            />
         </Link>
     );
 };

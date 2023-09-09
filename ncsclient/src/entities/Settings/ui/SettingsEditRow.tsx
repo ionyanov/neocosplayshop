@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import * as Icons from '@mui/icons-material';
 
-interface SettingEditCardProps {
+interface SettingsEditRowProps {
     name: string;
     value: string;
     readonly: boolean;
@@ -16,7 +16,7 @@ interface SettingEditCardProps {
     onDelete?: (name: string) => void;
 }
 
-export const SettingEditCard: FC<SettingEditCardProps> = (props) => {
+export const SettingsEditRow: FC<SettingsEditRowProps> = (props) => {
     const [editedValue, setEditedValue] = useState(props.value);
 
     const valueChange = (

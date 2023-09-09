@@ -31,20 +31,39 @@ export class CategoryService {
         return result;
     }
 
-    async upsert(id: number, categoryDto: CategoryDto) {
+    async getAll() {
+        let result = {}
+        try {
+            result = await this.prisma.category.findMany({
+                orderBy: {
+                    order: 'asc'
+                }
+            });
+        }
+        catch (e) {
+            await this.logger.LogMessage(e, 'Error getting menu');
+        }
+        return result;
+    }
+
+    async upsert(categoryDto: CategoryDto) {
         let settings = {}
         try {
             settings = await this.prisma.category.upsert({
                 create: {
                     name: categoryDto.name,
                     link: categoryDto.link,
-                    order: categoryDto.order
+                    order: categoryDto.order,
+                    visible: categoryDto.visible
                 },
                 update: {
-                    ...categoryDto
+                    name: categoryDto.name,
+                    link: categoryDto.link,
+                    order: categoryDto.order,
+                    visible: categoryDto.visible
                 },
                 where: {
-                    id: id
+                    id: categoryDto.id
                 }
             });
         }

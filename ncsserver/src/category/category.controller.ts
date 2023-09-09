@@ -13,19 +13,18 @@ export class CategoryController {
     return this.categoryService.getMenu();
   }
 
-  @Auth()
   @HttpCode(200)
-  @Post()
-  create(@Body() categoryDto: CategoryDto) {
-    return this.categoryService.upsert(0, categoryDto);
+  @Get('/all')
+  getAll() {
+    return this.categoryService.getAll();
   }
 
   @Auth()
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() categoryDto: CategoryDto) {
-    return this.categoryService.upsert(+id, categoryDto);
+  @Post()
+  upsert(@Body() categoryDto: CategoryDto) {
+    return this.categoryService.upsert(categoryDto);
   }
 
   @Auth()

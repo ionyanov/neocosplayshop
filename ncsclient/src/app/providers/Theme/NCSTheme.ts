@@ -57,6 +57,13 @@ export const NCSTheme = createTheme({
         },
     },
     components: {
+        MuiTableCell: {
+            styleOverrides: {
+                head: {
+                    fontWeight: 'bold'
+                },
+            }
+        },
         MuiCssBaseline: {
             styleOverrides: {
                 body: {

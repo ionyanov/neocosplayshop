@@ -1,9 +1,13 @@
 import { type FC } from 'react';
 import { Page } from '@/widgets/Page';
-import LoginForm from '@/features/Login/ui/loginForm';
+import { CategoryEditTable } from '@/entities/Category';
 
 const AdminCategoryesPage: FC = () => {
-    return <Page>AdminCategoryesPage</Page>;
+    return (
+        <Page>
+            <CategoryEditTable />
+        </Page>
+    );
 };
 
 export default AdminCategoryesPage;

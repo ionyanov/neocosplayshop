@@ -16,8 +16,11 @@ export default defineConfig({
         alias: [{ find: '@', replacement: '/src' }],
     },
     define: {
+        /*
         _IS_DEV_: JSON.stringify(true),
         _API_URL_: JSON.stringify('http://localhost:5000/api'),
-        _PROJECT_: JSON.stringify('frontend'),
+*/
+        _IS_DEV_: JSON.stringify(false),
+        _API_URL_: JSON.stringify('/api'),
     },
 });

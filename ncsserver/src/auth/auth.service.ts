@@ -1,14 +1,13 @@
-import { BadRequestException, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { User } from '@prisma/client';
-import { hash, verify } from 'argon2';
 import { LogService } from 'src/log.service';
-import { PrismaService } from '../prisma.service';
 import { AuthDto, RefreshTokenDto } from './auth.dto';
+import { UserService } from 'src/user/user.service';
 
 @Injectable()
 export class AuthService {
-    constructor(private readonly prisma: PrismaService, private readonly jwt: JwtService, private readonly logger: LogService) {
+    constructor(private readonly userSrv: UserService, private readonly jwt: JwtService, private readonly logger: LogService) {
     }
 
     async getProfile(userId: string) {
@@ -16,16 +15,11 @@ export class AuthService {
         try {
             if (!userId)
                 throw new BadRequestException('Can`t find user!');
-            user = await this.prisma.user.findUnique({
-                where: {
-                    id: +userId
-                },
-            });
+            user = await this.userSrv.getUserById(+userId);
         }
         catch (e) {
             await this.logger.LogMessage(e, 'Can`t find user!');
         }
-
         return user;
     }
 
@@ -33,23 +27,10 @@ export class AuthService {
         let user: User;
         let tokens: any;
         try {
-            const oldUser = await this.prisma.user.findUnique({
-                where: {
-                    email: body.email,
-                },
-            });
+            const oldUser = await this.userSrv.getUserByEmail(body.email);
             if (oldUser) throw new BadRequestException('User already exists');
 
-            user = await this.prisma.user.create({
-                data: {
-                    email: body.email,
-                    username: body.email,
-                    password: await hash(body.password), // await hash(body.password)
-                    avarat: '',
-                    role: 'ADMIN',
-                },
-            });
-
+            user = await this.userSrv.create(body.email, body.password)
             tokens = await this.issueTokes(user.id);
         }
         catch (e) {
@@ -60,22 +41,17 @@ export class AuthService {
     }
 
     async login(body: AuthDto) {
-        const user = await this.validateUser(body);
+        const user = await this.userSrv.validateUser(body.email, body.password);
         const tokens = await this.issueTokes(user.id);
 
         return { user: this.returnUserFields(user), ...tokens };
     }
 
     async getNewToken(body: RefreshTokenDto) {
-        const result = await this.jwt.verifyAsync(body.refreshToken);
+        const result = await this.jwt.verifyAsync(body.refreshToken, { secret: process.env.TOKEN_REFRESH_KEY });
         if (!result) throw new UnauthorizedException('Sessions expire');
 
-        const user = await this.prisma.user.findUnique({
-            where: {
-                id: result.id,
-            },
-        });
-
+        const user = await this.userSrv.getUserById(result.id);
         const tokens = await this.issueTokes(user.id);
 
         return { user: this.returnUserFields(user), ...tokens };
@@ -85,10 +61,11 @@ export class AuthService {
         const data = { id: userId };
 
         const accessToken = this.jwt.sign(data, {
-            expiresIn: '1h'
+            expiresIn: process.env.TOKEN_DURATION
         });
         const refreshToken = this.jwt.sign(data, {
-            expiresIn: '24h',
+            expiresIn: process.env.TOKEN_REFRESH_DURATION,
+            secret: process.env.TOKEN_REFRESH_KEY
         });
 
         return { accessToken, refreshToken };
@@ -100,19 +77,5 @@ export class AuthService {
             email: user.email,
             role: user.role
         };
-    }
-
-    private async validateUser(dto: AuthDto) {
-        const user = await this.prisma.user.findUnique({
-            where: {
-                email: dto.email,
-            },
-        });
-        if (!user) throw new UnauthorizedException('Wrong credencial!');
-
-        const isValid = await verify(user.password, dto.password);
-        if (!isValid) throw new UnauthorizedException('Wrong credencial!');
-
-        return user;
     }
 }

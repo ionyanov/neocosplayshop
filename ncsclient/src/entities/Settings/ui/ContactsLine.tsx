@@ -26,19 +26,13 @@ export const ContactsLine: FC = (props) => {
         return (
             <AppBar position="fixed" sx={{ top: 'auto', bottom: 0 }}>
                 <Toolbar>
-                    <StyledFab
-                        variant="circular"
-                        href={data[Settings.INSTA]}
-                        target="_blank">
+                    <StyledFab variant="circular" href={data[Settings.INSTA]}>
                         <img
                             src={'/image/itstagramm.png'}
                             style={{ width: '100%' }}
                         />
                     </StyledFab>
-                    <StyledFab
-                        variant="circular"
-                        href={data[Settings.BOOSTY]}
-                        target="_blank">
+                    <StyledFab variant="circular" href={data[Settings.BOOSTY]}>
                         <img
                             src={'/image/boosty.png'}
                             style={{ width: '100%' }}

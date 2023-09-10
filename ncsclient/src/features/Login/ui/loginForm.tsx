@@ -133,8 +133,7 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
                 <Button
                     onClick={onLogin}
                     variant="outlined"
-                    disabled={isLoading}
-                    margin="2">
+                    disabled={isLoading}>
                     Login
                 </Button>
                 {error && (

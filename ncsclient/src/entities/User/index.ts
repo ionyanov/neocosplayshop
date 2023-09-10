@@ -1,5 +1,5 @@
 export * from './model/slice/userSlice';
-export { type IUserSchema, type IUser} from './model/types/IUser';
+export { type IUserSchema, type IUser } from './model/types/IUser';
 
 export {
     getUserAuthData,
@@ -8,10 +8,10 @@ export {
     getUserAdmin,
 } from './model/selectors/userSelectors';
 
-export {
+/*export {
     useJsonSettings,
     useJsonSettingsByKey,
 } from './model/selectors/jsonSettingsSelector';
-export { saveJsonSettings } from './model/services/saveJsonSettings';
+export { saveJsonSettings } from './model/services/saveJsonSettings';*/
 
 export { initAuthData } from './model/services/initAuthData';

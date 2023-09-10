@@ -1,5 +1,5 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Patch, Post, UsePipes, ValidationPipe } from '@nestjs/common';
-import { Auth } from 'src/auth/auth.decorator';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Auth } from 'src/_security/decorators';
 import { CategoryService } from './category.service';
 import { CategoryDto } from './category.dto';
 

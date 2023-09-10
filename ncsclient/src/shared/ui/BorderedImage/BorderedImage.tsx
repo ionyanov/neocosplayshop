@@ -4,7 +4,7 @@ import { Box, CardMedia, styled } from '@mui/material';
 export enum BorderColor {
     PINK = '/image/border_pink.png',
     GREEN = '/image/border_green.png',
-    WHITE = '/image/border_white.png'
+    WHITE = '/image/border_white.png',
 }
 
 interface BorderedImageProps {
@@ -17,14 +17,18 @@ interface BorderedImageProps {
 }
 
 const options = {
-    shouldForwardProp: (prop) => prop !== 'border' && prop !== 'img',
+    shouldForwardProp: (prop: string) => {
+        return prop !== 'border' && prop !== 'img';
+    },
 };
-const BorderedBox = styled(Box, options)(
-    ({ theme, border, img }) => ({
-        border: `${border}px solid`,
-        borderImageSlice: 100,
-        borderImageSource: `url(${img})`,
-    }));
+const BorderedBox = styled(
+    Box,
+    options,
+)(({ theme, border, defaultValue }) => ({
+    border: `${border}px solid`,
+    borderImageSlice: 100,
+    borderImageSource: `url(${defaultValue})`,
+}));
 
 export const BorderedImage: FC<BorderedImageProps> = (props) => {
     const {
@@ -37,12 +41,9 @@ export const BorderedImage: FC<BorderedImageProps> = (props) => {
     } = props;
 
     return (
-        <BorderedBox component={'div'}
-                     img={variant}
-                     border={border}
-        >
+        <BorderedBox component={'div'} defaultValue={variant} border={border}>
             <CardMedia
-                component='img'
+                component="img"
                 image={content}
                 width={width}
                 height={height}

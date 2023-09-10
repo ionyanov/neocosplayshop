@@ -3,7 +3,7 @@ import { setFeatures } from '@/shared/lib/features';
 import { LOCALSTORAGE_USER_KEY } from '@/shared/const/localstorage';
 import { buildSlice } from '@/shared/lib/store';
 import { initAuthData } from '../services/initAuthData';
-import { saveJsonSettings } from '../services/saveJsonSettings';
+//import { saveJsonSettings } from '../services/saveJsonSettings';
 import type { JsonSettings } from '../types/jsonSettings';
 import { type IUser, type IUserSchema } from '../types/IUser';
 import { StorageServices } from '@/shared/helpers/auth.helper';
@@ -44,14 +44,14 @@ export const userSlice = buildSlice({
         },
     },
     extraReducers: (builder) => {
-        builder.addCase(
+        /*builder.addCase(
             saveJsonSettings.fulfilled,
             (state, action: PayloadAction<JsonSettings>) => {
                 if (state.authData) {
-                    state.authData.jsonSettings = action.payload;
+                    //state.authData.jsonSettings = action.payload;
                 }
             },
-        );
+        );*/
         builder
             .addCase(
                 initAuthData.fulfilled,

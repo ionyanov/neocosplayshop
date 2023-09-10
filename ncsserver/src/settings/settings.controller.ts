@@ -1,5 +1,5 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Patch, Post, UsePipes, ValidationPipe } from '@nestjs/common';
-import { Auth } from 'src/auth/auth.decorator';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Admin } from 'src/_security/decorators';
 import { SettingsDto } from './settings.dto';
 import { SettingsService } from './settings.service';
 
@@ -13,7 +13,7 @@ export class SettingsController {
     return this.settingsService.getAll();
   }
 
-  @Auth()
+  @Admin()
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
   @Post()
@@ -21,7 +21,7 @@ export class SettingsController {
     return this.settingsService.upsert(settingDto);
   }
 
-  @Auth()
+  @Admin()
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
   @Delete(':name')

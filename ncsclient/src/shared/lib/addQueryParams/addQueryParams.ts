@@ -1,3 +1,5 @@
+import { OptionalRecord } from "@/shared/types/global";
+
 export function getQueryParams(
     params: OptionalRecord<string, string | number>,
 ): string {

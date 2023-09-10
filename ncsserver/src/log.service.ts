@@ -10,7 +10,6 @@ export class LogService {
     async LogMessage(e: any, msg?: string) {
         if (e) {
             if (e instanceof Prisma.PrismaClientKnownRequestError) {
-                console.log(e.message);
                 if (e.code === 'P2002') {
                     throw new InternalServerErrorException(msg ?? e.message);
                 }

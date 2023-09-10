@@ -3,8 +3,11 @@ import { Page } from '@/widgets/Page';
 import { Typography } from '@mui/material';
 import { Settings } from '@/shared/types/settings';
 import * as Icons from '@mui/icons-material';
-import {useSelector} from "react-redux";
-import {getSettings, getSettingsIsInit} from "@/entities/Settings/model/settings.selectors";
+import { useSelector } from 'react-redux';
+import {
+    getSettings,
+    getSettingsIsInit,
+} from '@/entities/Settings/model/settings.selectors';
 
 const CommissionsPage: FC = () => {
     const data = useSelector(getSettings);
@@ -26,7 +29,7 @@ const CommissionsPage: FC = () => {
                     fontSize="medium"
                     sx={{ color: 'white', backgroundColor: '#fa9696' }}
                 />
-                {data[Settings.EMAIL]}
+                {data?.[Settings.EMAIL]}
             </Typography>
             <Typography
                 align={'center'}
@@ -37,7 +40,7 @@ const CommissionsPage: FC = () => {
                     fontSize="medium"
                     sx={{ color: 'white', backgroundColor: '#fa9696' }}
                 />
-                {data[Settings.INSTA]}
+                {data?.[Settings.INSTA]}
             </Typography>
         </Page>
     );

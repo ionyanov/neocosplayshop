@@ -25,7 +25,7 @@ export const Navbar: FC = () => {
 
     return (
         <AppBar component="nav">
-            <Container maxWidth={'100%'}>
+            <Container sx={{ maxWidth: '100%' }}>
                 <Toolbar disableGutters>
                     <MenuList />
                     {user && <AvatarButton />}

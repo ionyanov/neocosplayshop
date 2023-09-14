@@ -1,1 +1,0 @@
-export { type MenuSchema } from './model/menu.type';

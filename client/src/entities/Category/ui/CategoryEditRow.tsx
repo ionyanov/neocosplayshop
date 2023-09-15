@@ -4,18 +4,20 @@ import {
     TextField,
     TableCell,
     TableRow,
-    Typography,
     Checkbox,
 } from '@mui/material';
 import * as Icons from '@mui/icons-material';
-import { CategoryType } from '../model/category.type';
+import { CategoryProperty, CategoryType } from '../model/category.type';
 import slugify from 'slugify';
+import { PropertySelector } from './PropertySelector';
 
 interface CategoryEditRowProps {
     item: CategoryType;
     readonly: boolean;
     onSave?: (item: CategoryType) => void;
     onDelete?: (id: number) => void;
+    properties?: CategoryProperty[];
+    onLoading?: (isLoad: boolean) => void;
 }
 
 export const CategoryEditRow: FC<CategoryEditRowProps> = (props) => {
@@ -38,14 +40,6 @@ export const CategoryEditRow: FC<CategoryEditRowProps> = (props) => {
                 strict: true,
             }),
         );
-    };
-    const orderChange = (
-        event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    ) => {
-        setEditedOrder(Number.parseInt(event.target.value));
-    };
-    const visibleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setEditedVisible(event.target.checked);
     };
 
     useEffect(() => {
@@ -87,9 +81,19 @@ export const CategoryEditRow: FC<CategoryEditRowProps> = (props) => {
                     error={editedOrder != props.item.order}
                     label={editedOrder == props.item.order ? '' : 'Edited'}
                     value={editedOrder}
-                    onChange={orderChange}
+                    onChange={(event) =>
+                        setEditedOrder(Number.parseInt(event.target.value))
+                    }
                     variant={'outlined'}
                     fullWidth
+                    disabled={props.readonly}
+                />
+            </TableCell>
+            <TableCell align="center">
+                <Checkbox
+                    checked={editedVisible}
+                    onChange={(event) => setEditedVisible(event.target.checked)}
+                    inputProps={{ 'aria-label': 'controlled' }}
                     disabled={props.readonly}
                 />
             </TableCell>
@@ -104,20 +108,13 @@ export const CategoryEditRow: FC<CategoryEditRowProps> = (props) => {
                     disabled={props.readonly}
                 />
             </TableCell>
+            <TableCell>{editedLink}</TableCell>
             <TableCell>
-                <TextField
-                    value={editedLink}
-                    variant={'outlined'}
-                    fullWidth
-                    aria-readonly={true}
-                />
-            </TableCell>
-            <TableCell align="center">
-                <Checkbox
-                    checked={editedVisible}
-                    onChange={visibleChange}
-                    inputProps={{ 'aria-label': 'controlled' }}
-                    disabled={props.readonly}
+                <PropertySelector
+                    categoryId={props.item.id}
+                    selectedProp={props.item.properties ?? []}
+                    allProperties={props.properties ?? []}
+                    onLoading={props.onLoading}
                 />
             </TableCell>
             <TableCell align="center">

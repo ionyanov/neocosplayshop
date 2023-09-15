@@ -3,7 +3,7 @@ import type { CategoryType } from './category.type';
 const tag = 'Categoryes';
 const categoryApi = rtkAPI.enhanceEndpoints({ addTagTypes: [tag] }).injectEndpoints({
 	endpoints: (build) => ({
-		getCategoryes: build.query<CategoryType[], null>({
+		getCategories: build.query<CategoryType[], void>({
 			query: () => ({
 				url: '/category',
 				method: 'GET',
@@ -24,9 +24,27 @@ const categoryApi = rtkAPI.enhanceEndpoints({ addTagTypes: [tag] }).injectEndpoi
 				method: 'DELETE'
 			}),
 			invalidatesTags: [tag]
+		}),
+		addProperty: build.mutation<undefined, { catId: number, propId: number }>({
+			query: ({ catId, propId }) => ({
+				url: `/category/${catId}/${propId}`,
+				method: 'POST'
+			}),
+			invalidatesTags: [tag]
+		}),
+		deleteProperty: build.mutation<undefined, { catId: number, propId: number }>({
+			query: ({ catId, propId }) => ({
+				url: `/category/${catId}/${propId}`,
+				method: 'DELETE'
+			}),
+			invalidatesTags: [tag]
 		})
 	}),
 });
 
 
-export const { useGetCategoryesQuery, useDeleteCategoryMutation, useUpsertCategoryMutation } = categoryApi;
+export const { useGetCategoriesQuery,
+	useDeleteCategoryMutation,
+	useUpsertCategoryMutation,
+	useAddPropertyMutation,
+	useDeletePropertyMutation } = categoryApi;

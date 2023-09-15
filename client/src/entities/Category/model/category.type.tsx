@@ -4,4 +4,12 @@ export interface CategoryType {
     link: string;
     visible: boolean;
     order: number;
+    properties?: CategoryProperty[];
+}
+
+export interface CategoryProperty {
+    property: {
+        id: number;
+        name: string;
+    };
 }

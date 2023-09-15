@@ -60,6 +60,11 @@ const customFetchBase: BaseQueryFn<
             result = await baseQuery(args, api, extraOptions);
         }
     }
+    if (result.error) {
+        const messages = (result.error.data as { message: String[] }).message
+        if (Array.isArray(messages))
+            return { ...result, error: { ...result.error, data: messages.join('; ') } };
+    }
     return result;
 };
 

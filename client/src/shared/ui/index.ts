@@ -1,3 +1,4 @@
-export { MainPicture } from './MainPicture/MainPicture';
-export { AppLogo } from './AppLogo/AppLogo';
-export { BorderedImage, BorderColor } from './BorderedImage/BorderedImage';
+export { MainPicture } from './MainPicture';
+export { AppLogo } from './AppLogo';
+export { BorderedImage, BorderColor } from './BorderedImage';
+export { TablePage } from './TablePage'

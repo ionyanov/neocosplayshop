@@ -3,7 +3,8 @@ import {
     AppRoutes,
     getRouteAbout,
     getRouteAdmin,
-    getRouteAdminCategoryes,
+    getRouteAdminCategories,
+    getRouteAdminProperties,
     getRouteAdminSettings,
     getRouteAdminUsers,
     getRouteCommissions,
@@ -14,17 +15,20 @@ import {
     getRouteProducts,
     getRouteProductsCategory,
 } from '@/shared/const/router';
-import { AboutPage } from '@/pages/AboutPage';
-import { ForbiddenPage } from '@/pages/ForbiddenPage';
-import { NotFoundPage } from '@/pages/NotFoundPage';
-import { ProductDetailPage } from '@/pages/ProductDetailPage';
-import { ProductsPage } from '@/pages/ProductsPage';
-import { AdminPanelPage } from '@/pages/AdminPanelPage';
-import { MainPage } from '@/pages/MainPage';
-import { CommissionsPage } from '@/pages/CommissionsPage';
-import { AdminCategoryesPage } from '@/pages/AdminCategoryesPage';
-import { AdminSettingsPage } from '@/pages/AdminSettingsPage';
-import { AdminUsersPage } from '@/pages/AdminUsersPage';
+import {
+    MainPage,
+    AboutPage,
+    CommissionsPage,
+    ProductsPage,
+    ProductDetailPage,
+    AdminPanelPage,
+    AdminUsersPage,
+    AdminSettingsPage,
+    AdminCategoryesPage,
+    AdminPpropertiesPage,
+    ForbiddenPage,
+    NotFoundPage,
+} from '@/pages';
 
 export const routeConfig: Record<AppRoutes, AppRouteProps> = {
     [AppRoutes.MAIN]: {
@@ -51,6 +55,7 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
         path: getRouteProductDetail(':id'),
         element: <ProductDetailPage />,
     },
+
     [AppRoutes.ADMIN_PANEL]: {
         path: getRouteAdmin(),
         element: <AdminPanelPage />,
@@ -69,9 +74,15 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
         authOnly: true,
         roles: [UserRole.ADMIN],
     },
-    [AppRoutes.ADMIN_CATEGORYES]: {
-        path: getRouteAdminCategoryes(),
+    [AppRoutes.ADMIN_CATEGORIES]: {
+        path: getRouteAdminCategories(),
         element: <AdminCategoryesPage />,
+        authOnly: true,
+        roles: [UserRole.ADMIN],
+    },
+    [AppRoutes.ADMIN_PROPERTIES]: {
+        path: getRouteAdminProperties(),
+        element: <AdminPpropertiesPage />,
         authOnly: true,
         roles: [UserRole.ADMIN],
     },
@@ -80,7 +91,6 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
         path: getRouteForbidden(),
         element: <ForbiddenPage />,
     },
-
     [AppRoutes.NOTFOUND]: {
         path: getRouteNotfound(),
         element: <NotFoundPage />,

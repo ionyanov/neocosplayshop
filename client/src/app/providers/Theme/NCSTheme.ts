@@ -25,8 +25,8 @@ export const NCSTheme = createTheme({
         action: {
             active: `${COLORS.PING_MIDDLE}50`,
             hover: `${COLORS.PING_MIDDLE}40`,
-            focus: 'none',
-            selected: 'none',
+            focus: `${COLORS.GREEN_DARK}20`,
+            selected: `${COLORS.GREEN_DARK}20`,
         },
         background: {
             default: COLORS.PING_LIGHT,
@@ -60,7 +60,10 @@ export const NCSTheme = createTheme({
         MuiTableCell: {
             styleOverrides: {
                 head: {
-                    fontWeight: 'bold'
+                    fontWeight: 'bold',
+                    fontSize: 16,
+                    backgroundColor: 'white',
+                    textAlign: 'center',
                 },
             }
         },
@@ -123,12 +126,17 @@ export const NCSTheme = createTheme({
                 },
             },
         },
+        MuiAutocomplete: {
+            defaultProps: {
+                color: COLORS.GREEN_DARK,
+            }
+        },
         MuiButton: {
             styleOverrides: {
                 root: {
                     color: COLORS.GREEN_DARK,
                     textTransform: 'unset',
-                    fontSize: '1.5rem',
+                    fontSize: '1.2rem',
                     '&:hover': {
                         fontWeight: 'bold',
                     },

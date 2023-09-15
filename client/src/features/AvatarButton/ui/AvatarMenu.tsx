@@ -1,5 +1,10 @@
-import { MenuType } from '@/entities/Menu/model/menu.type';
-import { UserRole } from '@/shared/types/router';
+import {
+    getRouteAdmin,
+    getRouteAdminCategories,
+    getRouteAdminProperties,
+    getRouteAdminSettings,
+    getRouteAdminUsers,
+} from '@/shared/const/router';
 import { Button, MenuItem } from '@mui/material';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 
@@ -7,10 +12,11 @@ export const AvatarAdminMenu = (props: { onClick?: () => void }) => {
     const location = useLocation();
 
     const adminMenu: Record<string, string> = {
-        '/admin': 'Admin panel',
-        '/admin/users': 'Admin users',
-        '/admin/settings': 'Admin settings',
-        '/admin/categoryes': 'Admin categoryes',
+        'Admin panel': getRouteAdmin(),
+        'Admin users': getRouteAdminUsers(),
+        'Admin settings': getRouteAdminSettings(),
+        'Admin categories': getRouteAdminCategories(),
+        'Admin properties': getRouteAdminProperties(),
     };
 
     return (
@@ -24,8 +30,8 @@ export const AvatarAdminMenu = (props: { onClick?: () => void }) => {
                             fontWeight: location.pathname == key ? 'bold' : '',
                         }}
                         component={RouterLink}
-                        to={key}>
-                        {value}
+                        to={value}>
+                        {key}
                     </Button>
                 </MenuItem>
             ))}

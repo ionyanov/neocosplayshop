@@ -10,4 +10,4 @@ export {
 
 export { initAuthData } from './model/user.services';
 
-export { AdminUserList } from './ui/AdminUsersList'
+export { AdminUsersTable as AdminUserList } from './ui/AdminUsersTable'

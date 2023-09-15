@@ -37,6 +37,23 @@ export class CategoryService {
             result = await this.prisma.category.findMany({
                 orderBy: {
                     order: 'asc'
+                },
+                include: {
+                    properties: {
+                        select: {
+                            property: {
+                                select: {
+                                    id: true,
+                                    name: true
+                                }
+                            }
+                        },
+                        orderBy: {
+                            property: {
+                                name: 'asc'
+                            }
+                        }
+                    }
                 }
             });
         }
@@ -74,9 +91,9 @@ export class CategoryService {
     }
 
     async remove(id: number) {
-        let settings = {}
+        let result = {}
         try {
-            settings = await this.prisma.category.deleteMany({
+            result = await this.prisma.category.deleteMany({
                 where: {
                     id: id
                 }
@@ -85,6 +102,40 @@ export class CategoryService {
         catch (e) {
             await this.logger.LogMessage(e, 'Error deleting settings');
         }
-        return settings;
+        return result;
+    }
+
+    async removeProperties(catId: number, propId: number) {
+        let result = {}
+        try {
+            result = await this.prisma.categoryProperties.deleteMany({
+                where: {
+                    categoryId: catId,
+                    propertyId: propId
+                }
+            });
+        }
+        catch (e) {
+            await this.logger.LogMessage(e, 'Error deleting link');
+        }
+        return result;
+    }
+
+    async addProperties(catId: number, propId: number) {
+        let result = {}
+        try {
+            result = await this.prisma.categoryProperties.create(
+                {
+                    data: {
+                        categoryId: catId,
+                        propertyId: propId
+                    }
+                }
+            );
+        }
+        catch (e) {
+            await this.logger.LogMessage(e, 'Error added link');
+        }
+        return result;
     }
 }

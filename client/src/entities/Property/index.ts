@@ -1,0 +1,1 @@
+export { PropertyEditTable } from './ui/PropertyEditTable'

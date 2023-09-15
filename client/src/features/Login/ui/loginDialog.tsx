@@ -1,4 +1,4 @@
-import { Backdrop, Dialog, DialogContent, DialogTitle } from '@mui/material';
+import { Dialog, DialogContent, DialogTitle } from '@mui/material';
 import LoginForm from './loginForm';
 
 export const LoginDialog = (props: { open: boolean; onClose: () => void }) => {

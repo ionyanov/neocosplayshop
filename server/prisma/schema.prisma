@@ -39,9 +39,9 @@ model Category {
 }
 
 model CategoryProperties {
-  category   Category @relation(fields: [categoryId], references: [id])
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   categoryId Int      @map("category_id")
-  property   Property @relation(fields: [propertyId], references: [id])
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
   propertyId Int      @map("property_id")
 
   @@id([categoryId, propertyId])
@@ -63,7 +63,7 @@ model PropertyValues {
   value      String
   isActive   Boolean             @default(true) @map("is_active")
   propertyId Int                 @map("property_id")
-  property   Property            @relation(fields: [propertyId], references: [id])
+  property   Property            @relation(fields: [propertyId], references: [id], onDelete: Cascade)
   propucts   ProductProperties[]
 }
 

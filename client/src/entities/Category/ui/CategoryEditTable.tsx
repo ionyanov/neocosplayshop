@@ -8,21 +8,40 @@ import {
     TableHead,
     TableRow,
 } from '@mui/material';
-import { CategoryType } from '../model/category.type';
+import { CategoryProperty, CategoryType } from '../model/category.type';
 import { CategoryEditRow } from './CategoryEditRow';
 import {
     useDeleteCategoryMutation,
-    useGetCategoryesQuery,
+    useGetCategoriesQuery,
     useUpsertCategoryMutation,
 } from '../model/category.api';
+import { TablePage } from '@/shared/ui';
+import { errorsToString } from '@/shared/helpers/error.helper';
+import { useGetPropertiesQuery } from '@/entities/Property/model/property.api';
 
-export const CategoryEditTable: FC = () => {
-    const { data, ...props } = useGetCategoryesQuery(null);
+interface CategoryEditTableProp {
+    properties: String[];
+}
+
+export const CategoryEditTable: FC<CategoryEditTableProp> = (args) => {
+    const { data, ...props } = useGetCategoriesQuery();
     const [upsertCategory, upsertCategoryProps] = useUpsertCategoryMutation();
     const [deleteCategory, deleteCategoryProps] = useDeleteCategoryMutation();
+    const [allProperties, setAllProperties] = useState<CategoryProperty[]>([]);
+    const properties = useGetPropertiesQuery();
 
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
+
+    useEffect(() => {
+        if (properties.data) {
+            const newArray: CategoryProperty[] = [];
+            properties.data.map((item) => {
+                newArray.push({ property: { id: item.id, name: item.name } });
+            });
+            setAllProperties(newArray);
+        }
+    }, [properties.data]);
 
     useEffect(() => {
         setIsLoading(
@@ -31,9 +50,11 @@ export const CategoryEditTable: FC = () => {
                 deleteCategoryProps.isLoading,
         );
         setError(
-            props.error ||
-                upsertCategoryProps.error?.data?.message?.join('; ') ||
-                deleteCategoryProps.error?.data?.message?.join('; '),
+            errorsToString([
+                props.error,
+                upsertCategoryProps.error,
+                deleteCategoryProps.error,
+            ]),
         );
     }, [props, upsertCategoryProps, deleteCategoryProps]);
 
@@ -45,53 +66,55 @@ export const CategoryEditTable: FC = () => {
         deleteCategory(id);
     }, []);
 
+    if (properties.isLoading) return <></>;
     return (
-        <TableContainer component={Paper} aria-readonly={isLoading}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell
-                            align="center"
-                            colSpan={6}
-                            width={'100%'}
-                            sx={{ color: 'red' }}>
-                            {error}
-                        </TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell width={'10%'}>Order</TableCell>
-                        <TableCell width={'50%'}>Name</TableCell>
-                        <TableCell width={'30%'}>Link</TableCell>
-                        <TableCell width={'10%'}>Visible?</TableCell>
-                        <TableCell align="center">Save</TableCell>
-                        <TableCell align="center">Delete</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {data &&
-                        data.map((item) => (
-                            <CategoryEditRow
-                                item={item}
-                                key={item.id}
-                                onSave={onSave}
-                                onDelete={onDelete}
-                                readonly={isLoading}
-                            />
-                        ))}
-                    <CategoryEditRow
-                        item={{
-                            id: 0,
-                            link: '',
-                            name: '',
-                            order: (data?.length ?? 0) + 1,
-                            visible: true,
-                        }}
-                        onSave={onSave}
-                        onDelete={onDelete}
-                        readonly={isLoading}
-                    />
-                </TableBody>
-            </Table>
-        </TableContainer>
+        <TablePage
+            error={error}
+            refresh={props.refetch}
+            title="Categories administration">
+            <TableContainer component={Paper} aria-readonly={isLoading}>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Order</TableCell>
+                            <TableCell>Visible?</TableCell>
+                            <TableCell width={'30%'}>Name</TableCell>
+                            <TableCell width={'20%'}>Link</TableCell>
+                            <TableCell width={'50%'}>Properties</TableCell>
+                            <TableCell>Save</TableCell>
+                            <TableCell>Delete</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {data &&
+                            data.map((item) => (
+                                <CategoryEditRow
+                                    item={item}
+                                    key={item.id}
+                                    onSave={onSave}
+                                    onDelete={onDelete}
+                                    readonly={isLoading}
+                                    properties={allProperties}
+                                    onLoading={setIsLoading}
+                                />
+                            ))}
+                        <CategoryEditRow
+                            item={{
+                                id: 0,
+                                link: '',
+                                name: '',
+                                order: (data?.length ?? 0) + 1,
+                                visible: true,
+                            }}
+                            onSave={onSave}
+                            onDelete={onDelete}
+                            readonly={isLoading}
+                            properties={allProperties}
+                            onLoading={setIsLoading}
+                        />
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </TablePage>
     );
 };

@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, Post, UsePipes, ValidationPipe } from '@nestjs/common';
-import { Auth } from 'src/_security/decorators';
+import { Admin } from 'src/_security/decorators';
 import { CategoryService } from './category.service';
 import { CategoryDto } from './category.dto';
 
@@ -13,24 +13,39 @@ export class CategoryController {
     return this.categoryService.getMenu();
   }
 
+  @Admin()
   @HttpCode(200)
   @Get('category')
-  getAll() {
+  getCategories() {
     return this.categoryService.getAll();
   }
 
-  @Auth()
+  @Admin()
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
   @Post('category')
-  upsert(@Body() categoryDto: CategoryDto) {
+  upsertCategory(@Body() categoryDto: CategoryDto) {
     return this.categoryService.upsert(categoryDto);
   }
 
-  @Auth()
+  @Admin()
   @HttpCode(200)
   @Delete('category/:id')
-  remove(@Param('id') id: string) {
+  removeCategory(@Param('id') id: string) {
     return this.categoryService.remove(+id);
+  }
+
+  @Admin()
+  @HttpCode(200)
+  @Post('category/:catId/:propId')
+  addProperties(@Param('catId') catId: string, @Param('propId') propId: string) {
+    return this.categoryService.addProperties(+catId, +propId);
+  }
+
+  @Admin()
+  @HttpCode(200)
+  @Delete('category/:catId/:propId')
+  removeProperties(@Param('catId') catId: string, @Param('propId') propId: string) {
+    return this.categoryService.removeProperties(+catId, +propId);
   }
 }

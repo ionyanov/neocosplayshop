@@ -1,1 +1,1 @@
-export { detectMobileDevice } from './detectDevice/detectMobileDevice';
+export { detectMobileDevice } from './detectMobileDevice';

@@ -25,17 +25,21 @@ export const PropertyEditRow: FC<PropertyEditRowProps> = (props) => {
     const [canSave, setCanSave] = useState(false);
     const [name, setName] = useState(props.property.name);
     const [isList, setIsList] = useState(props.property.isList);
+    const [order, setOrder] = useState(props.property.order);
 
     useEffect(() => {
         setName(props.property.name);
         setIsList(props.property.isList);
+        setOrder(props.property.order);
     }, [props.property]);
 
     useEffect(() => {
         setCanSave(
-            props.property.name != name || props.property.isList != isList,
+            props.property.name != name ||
+                props.property.isList != isList ||
+                props.property.order != order,
         );
-    }, [props.property, isList, name]);
+    }, [props.property, isList, name, order]);
 
     const onSaveClick = useCallback(() => {
         if (props.onSave)
@@ -43,8 +47,9 @@ export const PropertyEditRow: FC<PropertyEditRowProps> = (props) => {
                 id: props.property.id,
                 name: name,
                 isList: isList,
+                order: order,
             });
-    }, [props.property, name, isList]);
+    }, [props.property, name, isList, order]);
 
     const onSaveValue = useCallback(
         (value: IPropertyValue) => {
@@ -68,6 +73,19 @@ export const PropertyEditRow: FC<PropertyEditRowProps> = (props) => {
 
     return (
         <TableRow>
+            <TableCell>
+                <TextField
+                    error={order != props.property.order}
+                    label={order == props.property.order ? '' : 'Edited'}
+                    value={order}
+                    onChange={(event) =>
+                        setOrder(Number.parseInt(event.target.value))
+                    }
+                    variant={'outlined'}
+                    fullWidth
+                    disabled={props.readonly}
+                />
+            </TableCell>
             <TableCell>
                 <TextField
                     error={name != props.property.name}

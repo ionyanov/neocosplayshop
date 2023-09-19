@@ -10,6 +10,9 @@ export class PropertyDto {
 
 	@IsBoolean()
 	isList: boolean;
+
+	@IsNumber()
+	order: number;
 }
 
 export class ValuesDto {

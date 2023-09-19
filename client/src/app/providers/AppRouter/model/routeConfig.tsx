@@ -4,6 +4,7 @@ import {
     getRouteAbout,
     getRouteAdmin,
     getRouteAdminCategories,
+    getRouteAdminProduct,
     getRouteAdminProperties,
     getRouteAdminSettings,
     getRouteAdminUsers,
@@ -21,13 +22,14 @@ import {
     CommissionsPage,
     ProductsPage,
     ProductDetailPage,
-    AdminPanelPage,
+    AdminProductsPage,
     AdminUsersPage,
     AdminSettingsPage,
     AdminCategoryesPage,
     AdminPpropertiesPage,
     ForbiddenPage,
     NotFoundPage,
+    AdminProductPage,
 } from '@/pages';
 
 export const routeConfig: Record<AppRoutes, AppRouteProps> = {
@@ -58,7 +60,13 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
 
     [AppRoutes.ADMIN_PANEL]: {
         path: getRouteAdmin(),
-        element: <AdminPanelPage />,
+        element: <AdminProductsPage />,
+        authOnly: true,
+        roles: [UserRole.ADMIN],
+    },
+    [AppRoutes.ADMIN_PRODUCT]: {
+        path: getRouteAdminProduct(':id'),
+        element: <AdminProductPage />,
         authOnly: true,
         roles: [UserRole.ADMIN],
     },

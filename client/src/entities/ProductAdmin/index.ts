@@ -1,0 +1,1 @@
+export { ProductsEditTable } from './ui/ProductsEditTable';

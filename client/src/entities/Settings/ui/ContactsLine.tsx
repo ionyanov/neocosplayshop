@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { AppBar, Fab, styled, Toolbar } from '@mui/material';
-import { Settings } from '@/shared/types/settings';
+import { Settings } from '@/shared/types/enums';
 import { useInitSettingsQuery } from '../model/settings.api';
 
 const StyledFab = styled(Fab)({

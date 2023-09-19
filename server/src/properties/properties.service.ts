@@ -12,7 +12,7 @@ export class PropertiesService {
 	async getAll(onlyActive: boolean) {
 		const data = await this.prisma.property.findMany({
 			orderBy: {
-				name: 'asc'
+				order: 'asc',
 			},
 			include: {
 				values: {
@@ -39,7 +39,8 @@ export class PropertiesService {
 			settings = await this.prisma.property.upsert({
 				create: {
 					name: data.name ?? 'NAME',
-					isList: data.isList ?? false
+					isList: data.isList ?? false,
+					order: data.order
 				},
 				update: {
 					...data

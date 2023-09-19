@@ -52,6 +52,7 @@ model Property {
   updated    DateTime             @default(now()) @updatedAt
   name       String
   isList     Boolean              @default(false) @map("is_list")
+  order      Int                  @default(0)
   categories CategoryProperties[]
   values     PropertyValues[]
   propucts   ProductProperties[]

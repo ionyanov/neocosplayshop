@@ -42,5 +42,5 @@ export class PropertiesController {
   @Delete('/:propId/:id')
   deleteValue(@Param('propId') propId: number, @Param('id') id: number) {
     return this.propertiesService.deleteValue(+propId, +id);
-  } 1
+  }
 }

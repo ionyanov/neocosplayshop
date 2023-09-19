@@ -1,4 +1,4 @@
-import { Settings } from '@/shared/types/settings';
+import { Settings } from '@/shared/types/enums';
 import { rtkAPI } from '@/shared/api/rtkAPI';
 
 const tag = 'Settings';

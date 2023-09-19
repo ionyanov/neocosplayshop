@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import { BorderColor, BorderedImage } from '@/shared/ui';
 import { Link } from 'react-router-dom';
 import { getRouteProductDetail } from '@/shared/const/router';
-import { Product } from '../model/types/Product';
+import { Product } from '../model/product.type';
 
 interface ProductMiniCardProps {
     content: Product;
@@ -15,32 +15,35 @@ interface ProductMiniCardProps {
 }
 
 export const ProductMiniCard: FC<ProductMiniCardProps> = (props) => {
-    const {
-        width = 300,
-        height = 300,
-    } = props;
+    const { width = 300, height = 300 } = props;
 
     return (
-        <Card sx={{
-            width: width,
-            background: 'transparent',
-            boxShadow: 'none',
-        }}
-
-        >
-            <CardActionArea component={Link} to={getRouteProductDetail(props.content.id.toString())}>
-                <BorderedImage border={props.border}
-                               content={props.content.mainimage}
-                               variant={props.variant}
-                               height={height}
-                               width={width}
-                               title={props.content.name} />
+        <Card
+            sx={{
+                width: width,
+                background: 'transparent',
+                boxShadow: 'none',
+            }}>
+            <CardActionArea
+                component={Link}
+                to={getRouteProductDetail(props.content.id.toString())}>
+                <BorderedImage
+                    border={props.border}
+                    content={props.content.mainimage}
+                    variant={props.variant}
+                    height={height}
+                    width={width}
+                    title={props.content.name}
+                />
                 <CardContent>
-                    <Typography align={'center'} variant={'h3'}>{props.content.name}</Typography>
-                    <Typography align={'center'} variant={'h4'}>{`${props.content.price}$`}</Typography>
+                    <Typography align={'center'} variant={'h3'}>
+                        {props.content.name}
+                    </Typography>
+                    <Typography
+                        align={'center'}
+                        variant={'h4'}>{`${props.content.price}$`}</Typography>
                 </CardContent>
             </CardActionArea>
         </Card>
-    )
-        ;
+    );
 };

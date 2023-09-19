@@ -64,6 +64,8 @@ const customFetchBase: BaseQueryFn<
         const messages = (result.error.data as { message: String[] }).message
         if (Array.isArray(messages))
             return { ...result, error: { ...result.error, data: messages.join('; ') } };
+        else
+            return { ...result, error: { ...result.error, data: messages } };
     }
     return result;
 };

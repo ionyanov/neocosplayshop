@@ -1,0 +1,1 @@
+export { PADescriptionTable as ProductAdminDescription } from './ui/PADescriptionTable'

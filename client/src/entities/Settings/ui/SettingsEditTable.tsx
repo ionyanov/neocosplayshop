@@ -8,7 +8,7 @@ import {
     TableHead,
     TableRow,
 } from '@mui/material';
-import { Settings } from '@/shared/types/settings';
+import { Settings } from '@/shared/types/enums';
 import {
     useDeleteSettingsMutation,
     useInitSettingsQuery,

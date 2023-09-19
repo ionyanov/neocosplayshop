@@ -51,6 +51,10 @@ export const NCSTheme = createTheme({
         },
         h4: {
             fontSize: '1.2rem',
+            fontWeight: 800,
+        },
+        h5: {
+            fontSize: '1.2rem',
         },
         button: {
             color: COLORS.GREEN_DARK,
@@ -126,9 +130,37 @@ export const NCSTheme = createTheme({
                 },
             },
         },
+        MuiFormControl: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: `transparent`
+                }
+            }
+        },
         MuiAutocomplete: {
             defaultProps: {
                 color: COLORS.GREEN_DARK,
+            }
+        },
+        MuiInputBase: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: `${COLORS.PING_LIGHT}99`
+                }
+            }
+        },
+        MuiTextField: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: `transparent`
+                }
+            }
+        },
+        MuiSelect: {
+            styleOverrides: {
+                select: {
+                    padding: '0.5rem',
+                }
             }
         },
         MuiButton: {

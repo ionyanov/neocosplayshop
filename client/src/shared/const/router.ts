@@ -9,6 +9,7 @@ export enum AppRoutes {
 
     //Administration
     ADMIN_PANEL = 'admin_panel',
+    ADMIN_PRODUCT = 'admin_product',
     ADMIN_USERS = 'admin_users',
     ADMIN_SETTINGS = 'admin_settings',
     ADMIN_CATEGORIES = 'admin_categories',
@@ -27,6 +28,7 @@ export const getRouteProductsCategory: (category: string) => string = (category:
 export const getRouteProductDetail: (id: string) => string = (id: string) => `/products/${id}/info`;
 
 export const getRouteAdmin: () => string = () => '/admin';
+export const getRouteAdminProduct: (id: string | number) => string = (id: string | number) => `/admin/${id}`;;
 export const getRouteAdminSettings: () => string = () => '/admin/settings';
 export const getRouteAdminUsers: () => string = () => '/admin/users';
 export const getRouteAdminCategories: () => string = () => '/admin/categories';

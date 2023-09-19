@@ -1,9 +1,9 @@
 import React, { type FC } from 'react';
 import { Page } from '@/widgets/Page';
 import { Link, useParams } from 'react-router-dom';
-import { getProductDetailQuery } from '@/entities/Product/model/api/productApi';
+import { getProductDetailQuery } from '@/entities/Product/model/product.api';
 import { ReducerData } from '@/shared/types/global';
-import { Product } from '@/entities/Product/model/types/Product';
+import { Product } from '@/entities/Product/model/product.type';
 import { Grid, Typography } from '@mui/material';
 import { BorderColor, BorderedImage } from '@/shared/ui';
 import { getRouteAbout } from '@/shared/const/router';

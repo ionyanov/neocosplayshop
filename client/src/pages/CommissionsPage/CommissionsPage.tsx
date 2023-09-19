@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import { Page } from '@/widgets/Page';
 import { Typography } from '@mui/material';
-import { Settings } from '@/shared/types/settings';
+import { Settings } from '@/shared/types/enums';
 import * as Icons from '@mui/icons-material';
 import { useInitSettingsQuery } from '@/entities/Settings';
 

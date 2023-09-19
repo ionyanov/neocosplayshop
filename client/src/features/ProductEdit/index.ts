@@ -1,0 +1,1 @@
+export { ProductEditCard } from './ui/ProductEditCard'

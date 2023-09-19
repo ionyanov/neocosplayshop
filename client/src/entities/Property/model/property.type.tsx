@@ -2,6 +2,7 @@ export interface IProperty {
     id: number;
     name: string;
     isList: boolean;
+    order: number;
     values?: IPropertyValue[];
 }
 

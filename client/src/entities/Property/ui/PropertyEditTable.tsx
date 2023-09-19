@@ -61,14 +61,13 @@ export const PropertyEditTable: FC = () => {
                 <Table stickyHeader>
                     <TableHead>
                         <TableRow>
-                            <TableCell width={'20%'} align="center">
-                                Name
-                            </TableCell>
-                            <TableCell align="center">Is list</TableCell>
-                            <TableCell width={'60%'} align="center" colSpan={2}>
+                            <TableCell width={'10%'}>Order</TableCell>
+                            <TableCell width={'20%'}>Name</TableCell>
+                            <TableCell>Is list</TableCell>
+                            <TableCell width={'60%'} colSpan={2}>
                                 Values
                             </TableCell>
-                            <TableCell align="center">Save</TableCell>
+                            <TableCell>Save</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -88,6 +87,7 @@ export const PropertyEditTable: FC = () => {
                                 id: 0,
                                 name: '',
                                 isList: false,
+                                order: data?.length ?? 1,
                             }}
                             onSave={onSave}
                             readonly={isLoading}

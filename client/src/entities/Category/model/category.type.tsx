@@ -1,4 +1,6 @@
-export interface CategoryType {
+import { IBaseType } from '@/shared/types/baseType';
+
+export interface CategoryType extends IBaseType {
     id: number;
     name: string;
     link: string;
@@ -8,8 +10,5 @@ export interface CategoryType {
 }
 
 export interface CategoryProperty {
-    property: {
-        id: number;
-        name: string;
-    };
+    property: IBaseType;
 }

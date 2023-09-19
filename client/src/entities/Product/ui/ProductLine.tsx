@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import { ImageList, ImageListItem, Typography } from '@mui/material';
-import { getProductsQuery } from '@/entities/Product/model/api/productApi';
-import { Product } from '@/entities/Product/model/types/Product';
+import { getProductsQuery } from '@/entities/Product/model/product.api';
+import { Product } from '@/entities/Product/model/product.type';
 import { BorderColor } from '@/shared/ui';
 import { ProductMiniCard } from './ProductMiniCard';
 

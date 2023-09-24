@@ -10,14 +10,14 @@ const PAPropertiesApi = rtkAPI.enhanceEndpoints({ addTagTypes: [tag] }).injectEn
                 method: 'GET',
             }),
         }),
-        getProperties: build.query<IProductAdminProperty[], number>({
+        getPAProperties: build.query<IProductAdminProperty[], number>({
             query: (prodId) => ({
                 url: `/product/${prodId}/properties`,
                 method: 'GET',
             }),
             providesTags: [tag]
         }),
-        setProperties: build.mutation<undefined, { prodId: number, data: IProductAdminProperty }>({
+        setPAProperties: build.mutation<undefined, { prodId: number, data: IProductAdminProperty }>({
             query: ({ prodId, data }) => ({
                 url: `/product/${prodId}/properties`,
                 method: 'POST',
@@ -25,7 +25,7 @@ const PAPropertiesApi = rtkAPI.enhanceEndpoints({ addTagTypes: [tag] }).injectEn
             }),
             invalidatesTags: [tag]
         }),
-        delProperties: build.mutation<undefined, { prodId: number, descId: number }>({
+        delPAProperties: build.mutation<undefined, { prodId: number, descId: number }>({
             query: ({ prodId, descId }) => ({
                 url: `/product/${prodId}/properties/${descId}`,
                 method: 'DELETE'
@@ -35,7 +35,7 @@ const PAPropertiesApi = rtkAPI.enhanceEndpoints({ addTagTypes: [tag] }).injectEn
     }),
 });
 
-export const { useGetPropertiesQuery,
-    useSetPropertiesMutation,
-    useDelPropertiesMutation,
+export const { useGetPAPropertiesQuery,
+    useSetPAPropertiesMutation,
+    useDelPAPropertiesMutation,
     useGetCategoryPropertiesQuery } = PAPropertiesApi;

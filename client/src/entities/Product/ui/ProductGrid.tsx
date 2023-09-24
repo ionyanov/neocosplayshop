@@ -3,6 +3,7 @@ import { Grid } from '@mui/material';
 import { BorderColor } from '@/shared/ui';
 import { ProductMiniCard } from './ProductMiniCard';
 import { useGetProductsQuery } from '../model/product.api';
+import { Loader } from '@/shared/ui/Loader';
 
 interface ProductGridProps {
     width?: number;
@@ -15,7 +16,7 @@ export const ProductGrid: FC<ProductGridProps> = (props) => {
     const { data, isLoading } = useGetProductsQuery();
 
     if (isLoading || !data) {
-        return <></>;
+        return <Loader />;
     }
 
     return (

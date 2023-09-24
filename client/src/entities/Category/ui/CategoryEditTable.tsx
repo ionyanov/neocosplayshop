@@ -18,6 +18,7 @@ import {
 import { TablePage } from '@/shared/ui';
 import { errorsToString } from '@/shared/helpers/error.helper';
 import { useGetPropertiesQuery } from '@/entities/Property/model/property.api';
+import { Loader } from '@/shared/ui/Loader';
 
 interface CategoryEditTableProp {
     properties: String[];
@@ -66,7 +67,7 @@ export const CategoryEditTable: FC<CategoryEditTableProp> = (args) => {
         deleteCategory(id);
     }, []);
 
-    if (properties.isLoading) return <></>;
+    if (properties.isLoading) return <Loader />;
     return (
         <TablePage
             error={error}

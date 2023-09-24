@@ -8,12 +8,10 @@ import {
 import { type AxiosInstance } from 'axios';
 import { type rtkAPI } from '@/shared/api/rtkAPI';
 import { type IUserSchema } from '@/entities/User';
-import { type PageSchema } from '@/widgets/Page';
 import { type LoginSchema } from '@/features/Login/model/login.type';
 
 export interface StateSchema {
     user: IUserSchema;
-    page: PageSchema;
     // Async
     loginForm?: LoginSchema;
     [rtkAPI.reducerPath]: ReturnType<typeof rtkAPI.reducer>;

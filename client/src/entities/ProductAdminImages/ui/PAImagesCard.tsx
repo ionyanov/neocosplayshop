@@ -14,6 +14,7 @@ import {
 } from '../model/paimages.api';
 import { Refresh } from '@mui/icons-material';
 import { PAImagesRow } from './PAImagesRow';
+import { Loader } from '@/shared/ui/Loader';
 
 interface PAImagesCardProps {
     prodId: number;
@@ -37,7 +38,7 @@ export const PAImagesCard: FC<PAImagesCardProps> = (args) => {
         [args.mainImage],
     );
 
-    if (dataProp.isLoading) return <></>;
+    if (dataProp.isLoading) return <Loader />;
     return (
         <Stack direction={'column'} rowGap={2}>
             <Grid container justifyContent={'center'}>

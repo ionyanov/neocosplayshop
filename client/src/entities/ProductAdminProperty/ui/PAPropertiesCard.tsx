@@ -10,7 +10,7 @@ import {
     IProductAdminProperty,
     ICategoryPropertyValues,
 } from '../model/paproperty.type';
-import { useSetPropertiesMutation } from '../model/paproperty.api';
+import { useSetPAPropertiesMutation } from '../model/paproperty.api';
 import { errorsToString } from '@/shared/helpers/error.helper';
 import { useDebounce } from '@/shared/hooks/useDebounce';
 import { SingleSelector } from '@/shared/ui';
@@ -24,7 +24,7 @@ interface PAPropertiesCardProps {
 }
 
 export const PAPropertiesCard: FC<PAPropertiesCardProps> = (args) => {
-    const [setProperties, setPropertiesProps] = useSetPropertiesMutation();
+    const [setProperties, setPropertiesProps] = useSetPAPropertiesMutation();
 
     const [error, setError] = useState('');
     const [value, setValue] = useState(args.prop.value);

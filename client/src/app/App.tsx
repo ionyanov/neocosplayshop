@@ -1,6 +1,4 @@
-import CssBaseline from '@mui/material/CssBaseline';
-import { Box, ThemeProvider, Toolbar } from '@mui/material';
-import { NCSTheme } from './providers/Theme/NCSTheme';
+import { Box, Toolbar } from '@mui/material';
 import { Navbar } from '@/widgets/Navbar';
 import { AppRouter } from '@/app/providers/AppRouter';
 import { ContactsLine } from '@/entities/Settings/ui/ContactsLine';
@@ -9,6 +7,7 @@ import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { MainPicture } from '@/shared/ui';
+import { Loader } from '@/shared/ui/Loader';
 
 function App() {
     const dispatch = useAppDispatch();
@@ -18,7 +17,7 @@ function App() {
         dispatch(initAuthData());
     }, [dispatch]);
 
-    let content = <Box>Loading...</Box>;
+    let content = <Loader />;
     if (isInit) {
         content = (
             <Box sx={{ display: 'flex', width: '100%' }}>
@@ -34,12 +33,7 @@ function App() {
         );
     }
 
-    return (
-        <ThemeProvider theme={NCSTheme}>
-            <CssBaseline />
-            {content}
-        </ThemeProvider>
-    );
+    return <>{content}</>;
 }
 
 export default App;

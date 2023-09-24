@@ -3,8 +3,9 @@ import { Stack } from '@mui/material';
 import { PAPropertiesRow } from './PAPropertiesRow';
 import {
     useGetCategoryPropertiesQuery,
-    useGetPropertiesQuery,
+    useGetPAPropertiesQuery,
 } from '../model/paproperty.api';
+import { Loader } from '@/shared/ui/Loader';
 
 interface PAPropertiesTableProps {
     prodId: number;
@@ -14,7 +15,7 @@ export const PAPropertiesTable: FC<PAPropertiesTableProps> = (args) => {
     const { data: catData, ...catDataProps } = useGetCategoryPropertiesQuery(
         args.prodId,
     );
-    const { data, ...dataProps } = useGetPropertiesQuery(args.prodId);
+    const { data, ...dataProps } = useGetPAPropertiesQuery(args.prodId);
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -22,7 +23,7 @@ export const PAPropertiesTable: FC<PAPropertiesTableProps> = (args) => {
         setIsLoading(dataProps.isLoading || catDataProps.isLoading);
     }, [dataProps.isLoading]);
 
-    if (isLoading || !data || !catData) return <div>Loading...</div>;
+    if (isLoading || !data || !catData) return <Loader />;
 
     return (
         <Stack direction={'column'}>

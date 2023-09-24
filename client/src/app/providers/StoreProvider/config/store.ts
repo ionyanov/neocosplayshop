@@ -6,7 +6,6 @@ import {
     type ReducersMapObject,
     type ThunkDispatch,
 } from '@reduxjs/toolkit';
-import { pageReducer } from '@/widgets/Page';
 import { userReducer } from '@/entities/User';
 import { $api } from '@/shared/api/api';
 import { rtkAPI } from '@/shared/api/rtkAPI';
@@ -20,7 +19,6 @@ export function createReduxStore(
     const rootReducer: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         user: userReducer,
-        page: pageReducer,
         [rtkAPI.reducerPath]: rtkAPI.reducer
     };
 

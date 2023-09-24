@@ -1,8 +1,8 @@
 import { type FC, memo } from 'react';
-import { Box, Typography } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
+import { getRouteMain } from '@/shared/const/router';
 
-interface PageErrorProps {
-}
+interface PageErrorProps {}
 
 export const PageError: FC<PageErrorProps> = memo((props: PageErrorProps) => {
     const reloadPage: () => void = () => {
@@ -10,13 +10,22 @@ export const PageError: FC<PageErrorProps> = memo((props: PageErrorProps) => {
     };
 
     return (
-        <Box flexGrow={1} height={'100vh'} alignContent={'center'}>
-            <Typography align={'center'} variant={'h4'}>
-                Sorry, we have a problem.
+        <Stack
+            height={'100vh'}
+            spacing={2}
+            alignContent={'center'}
+            justifyContent={'center'}>
+            <Typography align={'center'} variant={'h1'}>
+                Sorry, we have a problem :(
             </Typography>
-            <button onClick={reloadPage}>{'Reload'}</button>
-        </Box>
+            <Stack direction={'row'} justifyContent={'space-around'}>
+                <Button onClick={reloadPage} variant="contained">
+                    {'Reload'}
+                </Button>
+                <Button href={getRouteMain()} variant="contained">
+                    {'Go to main page'}
+                </Button>
+            </Stack>
+        </Stack>
     );
 });
-
-PageError.displayName = 'PageError';

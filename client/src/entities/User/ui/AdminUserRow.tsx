@@ -63,63 +63,59 @@ export const AdminUserRow: FC<AdminUserRowProps> = (props) => {
     }, []);
 
     return (
-        <>
-            <TableRow>
-                <TableCell>{props.item.id}</TableCell>
-                <TableCell>{formatDate(props.item.created)}</TableCell>
-                <TableCell>
-                    <TextField
-                        fullWidth
-                        variant="outlined"
-                        disabled={props.readonly}
-                        value={editedEmail}
-                        onChange={(e) => setEditedEmail(e.target.value)}
-                    />
-                </TableCell>
-                <TableCell>
-                    <Select
-                        value={editedRole}
-                        variant="outlined"
-                        disabled={props.readonly}
-                        fullWidth
-                        onChange={(e) =>
-                            setEditedRole(e.target.value as UserRole)
-                        }>
-                        {Object.values(UserRole).map((key) => (
-                            <MenuItem value={key} key={key}>
-                                {key}
-                            </MenuItem>
-                        ))}
-                    </Select>
-                </TableCell>
-                <TableCell>
-                    <TextField
-                        variant="outlined"
-                        fullWidth
-                        disabled={props.readonly}
-                        value={editedAvatar}
-                        onChange={(e) => setEditedAvatar(e.target.value)}
-                    />
-                </TableCell>
-                <TableCell>{formatDate(props.item.lastlogin)} </TableCell>
-                <TableCell>{formatDate(props.item.updated)}</TableCell>
-                <TableCell align="center">{props.item.lockcount}</TableCell>
-                <TableCell>
-                    <Checkbox
-                        checked={editedLockFlg}
-                        inputProps={{ 'aria-label': 'controlled' }}
-                        onChange={(e) => setEditedLockFlg(e.target.checked)}
-                        disabled={props.readonly}
-                    />
-                </TableCell>
-                <TableCell align="center">
-                    <Button
-                        onClick={onSaveClick}
-                        disabled={props.readonly || !edited}>
-                        <Save />
-                    </Button>
-                </TableCell>
-            </TableRow>
-        </>
+        <TableRow>
+            <TableCell>{props.item.id}</TableCell>
+            <TableCell>{formatDate(props.item.created)}</TableCell>
+            <TableCell>
+                <TextField
+                    fullWidth
+                    variant="outlined"
+                    disabled={props.readonly}
+                    value={editedEmail}
+                    onChange={(e) => setEditedEmail(e.target.value)}
+                />
+            </TableCell>
+            <TableCell>
+                <Select
+                    value={editedRole}
+                    variant="outlined"
+                    disabled={props.readonly}
+                    fullWidth
+                    onChange={(e) => setEditedRole(e.target.value as UserRole)}>
+                    {Object.values(UserRole).map((key) => (
+                        <MenuItem value={key} key={key}>
+                            {key}
+                        </MenuItem>
+                    ))}
+                </Select>
+            </TableCell>
+            <TableCell>
+                <TextField
+                    variant="outlined"
+                    fullWidth
+                    disabled={props.readonly}
+                    value={editedAvatar}
+                    onChange={(e) => setEditedAvatar(e.target.value)}
+                />
+            </TableCell>
+            <TableCell>{formatDate(props.item.lastlogin)} </TableCell>
+            <TableCell>{formatDate(props.item.updated)}</TableCell>
+            <TableCell align="center">{props.item.lockcount}</TableCell>
+            <TableCell>
+                <Checkbox
+                    checked={editedLockFlg}
+                    inputProps={{ 'aria-label': 'controlled' }}
+                    onChange={(e) => setEditedLockFlg(e.target.checked)}
+                    disabled={props.readonly}
+                />
+            </TableCell>
+            <TableCell align="center">
+                <Button
+                    onClick={onSaveClick}
+                    disabled={props.readonly || !edited}>
+                    <Save />
+                </Button>
+            </TableCell>
+        </TableRow>
     );
 };

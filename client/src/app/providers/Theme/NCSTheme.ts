@@ -176,6 +176,9 @@ export const NCSTheme = createTheme({
                         fontWeight: 'bold',
                     },
                 },
+                contained: {
+                    color: COLORS.GREEN_LIGHT,
+                },
                 containedSecondary: {
                     fontWeight: 'bold',
                 },

@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import { Stack } from '@mui/material';
 import { useGetDescriptionsQuery } from '../model/padescription.api';
 import { PADescriptionRow } from './PADescriptionRow';
+import { Loader } from '@/shared/ui/Loader';
 
 interface PADescriptionTableProps {
     id: number;
@@ -15,7 +16,7 @@ export const PADescriptionTable: FC<PADescriptionTableProps> = (args) => {
         setIsLoading(dataProps.isLoading);
     }, [dataProps]);
 
-    if (dataProps.isLoading ?? !data) return <div>Loading...</div>;
+    if (dataProps.isLoading ?? !data) return <Loader />;
     return (
         <Stack direction={'column'} rowGap={2}>
             {data.map((item) => (

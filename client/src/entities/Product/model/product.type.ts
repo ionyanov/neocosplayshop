@@ -7,7 +7,7 @@ export interface IProduct {
     category: IBaseType,
     isOnsales?: boolean,
     isPopular?: boolean,
-    image?: {
+    mainImage?: {
         id: number,
         link: string,
         description: string

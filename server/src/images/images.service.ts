@@ -94,7 +94,7 @@ export class ImagesService {
 		try {
 			result = await this.prisma.product.updateMany({
 				data: {
-					mainImage: imgId,
+					mainImageId: imgId,
 				},
 				where: {
 					id: prodId

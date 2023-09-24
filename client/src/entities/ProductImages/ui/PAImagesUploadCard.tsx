@@ -22,7 +22,6 @@ export const PAImagesUploadCard: FC<PAImagesUploadCardProps> = (args) => {
                     formData,
                 );
                 if (args.refresh) {
-                    console.log(res);
                     args.refresh();
                 }
             }

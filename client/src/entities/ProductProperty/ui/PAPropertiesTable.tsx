@@ -21,9 +21,9 @@ export const PAPropertiesTable: FC<PAPropertiesTableProps> = (args) => {
 
     useEffect(() => {
         setIsLoading(dataProps.isLoading || catDataProps.isLoading);
-    }, [dataProps.isLoading]);
+    }, [dataProps, catDataProps]);
 
-    if (isLoading || !data || !catData) return <Loader />;
+    if (isLoading || !catData || !data) return <Loader />;
 
     return (
         <Stack direction={'column'}>

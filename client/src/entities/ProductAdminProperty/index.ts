@@ -1,1 +1,0 @@
-export { PAPropertiesTable as ProductAdminProperty } from './ui/PAPropertiesTable';

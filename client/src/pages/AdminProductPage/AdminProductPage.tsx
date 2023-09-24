@@ -3,9 +3,7 @@ import { Page } from '@/widgets/Page';
 import { useParams } from 'react-router-dom';
 import { ProductEditCard } from '@/features/ProductEdit';
 
-interface AdminProductProps {}
-
-const AdminProductPage: FC<AdminProductProps> = (props) => {
+const AdminProductPage: FC = () => {
     const { id } = useParams<{ id: string }>();
 
     if (!id) return <Page>Product not found</Page>;

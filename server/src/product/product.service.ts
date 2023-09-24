@@ -21,7 +21,7 @@ export class ProductService {
 		const result = await this.prisma.product.findFirst({
 			select: {
 				...this.resultProductFields(),
-				mainImage: true
+				mainImageId: true
 			},
 			where: {
 				id: id
@@ -40,7 +40,6 @@ export class ProductService {
 					categoryId: data.category.id,
 					isOnsales: data.isOnsales,
 					isPopular: data.isPopular,
-					mainImage: 0,
 				},
 				update: {
 					price: data.price,
@@ -83,7 +82,7 @@ export class ProductService {
 			category: {
 				select: this.prisma.getBaseField()
 			},
-			image: {
+			mainImage: {
 				select: {
 					id: true,
 					link: true,

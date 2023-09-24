@@ -10,6 +10,9 @@ export interface IProductAdminProperty {
     },
     value?: string,
     valueId?: number
+    propertyValues?: {
+        value: string
+    }
 }
 
 export interface ICategoryProperties extends IBaseType {

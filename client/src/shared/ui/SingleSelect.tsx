@@ -10,19 +10,6 @@ interface MultiSelectorProp<T> {
 }
 
 export function SingleSelector<T>(args: MultiSelectorProp<T>) {
-    /**
-                <Select
-                    value={valueId}
-                    onChange={(e) =>
-                        saveData(value ?? '', e.target.value as number)
-                    }>
-                    {args.values?.map((val) => (
-                        <MenuItem value={val.id} key={val.id}>
-                            {val.value}
-                        </MenuItem>
-                    ))}
-                </Select> */
-
     return (
         <Autocomplete
             options={args.allValues}

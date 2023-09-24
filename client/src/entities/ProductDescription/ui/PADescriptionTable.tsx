@@ -5,11 +5,11 @@ import { PADescriptionRow } from './PADescriptionRow';
 import { Loader } from '@/shared/ui/Loader';
 
 interface PADescriptionTableProps {
-    id: number;
+    prodId: number;
 }
 
-export const PADescriptionTable: FC<PADescriptionTableProps> = (args) => {
-    const { data, ...dataProps } = useGetDescriptionsQuery(args.id);
+export const PADescriptionTable: FC<PADescriptionTableProps> = (prop) => {
+    const { data, ...dataProps } = useGetDescriptionsQuery(prop.prodId);
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
@@ -21,7 +21,7 @@ export const PADescriptionTable: FC<PADescriptionTableProps> = (args) => {
         <Stack direction={'column'} rowGap={2}>
             {data.map((item) => (
                 <PADescriptionRow
-                    prodId={args.id}
+                    prodId={prop.prodId}
                     item={item}
                     readonly={isLoading}
                     key={item.id}
@@ -29,7 +29,7 @@ export const PADescriptionTable: FC<PADescriptionTableProps> = (args) => {
                 />
             ))}
             <PADescriptionRow
-                prodId={args.id}
+                prodId={prop.prodId}
                 item={{
                     id: 0,
                     description: '',

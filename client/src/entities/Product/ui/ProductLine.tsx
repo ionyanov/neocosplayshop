@@ -24,6 +24,7 @@ export const ProductLine: FC<ProductLineProps> = (props) => {
                     gridAutoFlow: 'column',
                     gridTemplateColumns: `repeat(auto-fit, minmax(${width}px,1fr)) !important`,
                     gridAutoColumns: `minmax(${width}px, 1fr)`,
+                    justifyItems: 'center',
                 }}
                 rowHeight={height + 120}
                 gap={gap}>

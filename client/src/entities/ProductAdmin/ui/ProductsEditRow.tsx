@@ -82,7 +82,6 @@ export const ProductsEditRow: FC<ProductsEditRowProps> = (args) => {
     }, [args.item]);
 
     const onCategoryChange = useCallback((val: IBaseType | undefined) => {
-        console.log(val);
         if (val) setCategory(val);
     }, []);
 

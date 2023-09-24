@@ -29,7 +29,7 @@ export const ProductMiniCard: FC<ProductMiniCardProps> = (props) => {
                 to={getRouteProductDetail(props.content.id.toString())}>
                 <BorderedImage
                     border={props.border}
-                    content={`/images/public/${props.content.image.link}`}
+                    content={`/images/public/${props.content.mainImage?.link}`}
                     variant={props.variant}
                     height={height}
                     width={width}

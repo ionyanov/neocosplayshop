@@ -11,13 +11,13 @@ import {
     Delete,
     Save,
 } from '@mui/icons-material';
-import { IProductAdminImages } from '../model/paimages.type';
+import { IProductImages } from '../model/paimages.type';
 import { useDebounce } from '@/shared/hooks/useDebounce';
 import { getImagePath } from '@/shared/const/router';
 
 interface PAImagesRowProps {
     prodId: number;
-    img: IProductAdminImages;
+    img: IProductImages;
 }
 
 export const PAImagesRow: FC<PAImagesRowProps> = (args) => {

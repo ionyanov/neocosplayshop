@@ -23,7 +23,6 @@ const PAPropertiesApi = rtkAPI.enhanceEndpoints({ addTagTypes: [tag] }).injectEn
                 method: 'POST',
                 body: data
             }),
-            invalidatesTags: [tag]
         }),
         delPAProperties: build.mutation<undefined, { prodId: number, descId: number }>({
             query: ({ prodId, descId }) => ({

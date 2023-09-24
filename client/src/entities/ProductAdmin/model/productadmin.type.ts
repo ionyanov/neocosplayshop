@@ -16,8 +16,8 @@ export interface IProductDetail {
     category?: IPACategory,
     isOnsales?: boolean,
     isPopular?: boolean,
-    mainImage?: number,
-    image?: { link: string, name: string }
+    mainImageId?: number,
+    mainImage?: { link: string, name: string }
     properties: IPACatProperties[],
 }
 export interface IPACategory extends IBaseType {

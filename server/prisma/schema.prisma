@@ -75,8 +75,8 @@ model Product {
   price        Int
   isPopular    Boolean              @default(false) @map("is_popular")
   isOnsales    Boolean              @default(false) @map("is_onsales")
-  mainImage    Int?                 @unique @map("main_image")
-  image        ProductImage?        @relation("MainImage", fields: [mainImage], references: [id])
+  mainImageId  Int?                 @unique @map("main_image_id")
+  mainImage    ProductImage?        @relation("MainImage", fields: [mainImageId], references: [id])
   categoryId   Int                  @map("category_id")
   category     Category             @relation(fields: [categoryId], references: [id])
   images       ProductImage[]       @relation("Products")

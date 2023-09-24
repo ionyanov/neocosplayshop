@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { Button, Grid, Stack, Typography } from '@mui/material';
-import { ProductAdminDescription } from '@/entities/ProductAdminDescription';
-import { ProductAdminProperty } from '@/entities/ProductAdminProperty';
-import { ProductAdminImages } from '@/entities/ProductAdminImages';
+import { ProductAdminDescription } from '@/entities/ProductDescription';
+import { ProductAdminProperty } from '@/entities/ProductProperty';
+import { ProductAdminImages } from '@/entities/ProductImages';
 import { useGetProduct } from '@/entities/Product';
 import { getImagePath, getRouteAdmin } from '@/shared/const/router';
 
@@ -21,6 +21,7 @@ export const ProductEditCard: FC<ProductEditCardProps> = (args) => {
             <Grid item xs={4} columnGap={4}>
                 <Button
                     variant="text"
+                    fullWidth
                     component={RouterLink}
                     to={getRouteAdmin()}>
                     {'< Back'}
@@ -28,7 +29,7 @@ export const ProductEditCard: FC<ProductEditCardProps> = (args) => {
                 {data.image?.link && (
                     <img
                         src={getImagePath(data.image.link)}
-                        style={{ maxHeight: '300px', maxWidth: '100%' }}
+                        style={{ maxHeight: '500px', maxWidth: '100%' }}
                     />
                 )}
                 <ProductAdminImages
@@ -40,7 +41,7 @@ export const ProductEditCard: FC<ProductEditCardProps> = (args) => {
                 <Stack direction={'column'} gap={2} margin={'0 20px'}>
                     <Typography variant="h1">{data?.name}</Typography>
                     <ProductAdminProperty prodId={args.id} />
-                    <ProductAdminDescription id={args.id} />
+                    <ProductAdminDescription prodId={args.id} />
                 </Stack>
             </Grid>
         </Grid>

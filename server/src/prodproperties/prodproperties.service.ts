@@ -46,11 +46,11 @@ export class ProdPropertiesService {
 					productId: idProd,
 					propertyId: data.propertyId,
 					value: data.value,
-					valueId: data.valueId
+					valueId: data.valueId == 0 ? undefined : data.valueId
 				},
 				update: {
 					value: data.value,
-					valueId: data.valueId
+					valueId: data.valueId == 0 ? undefined : data.valueId
 				},
 				where: {
 					id: data.id,

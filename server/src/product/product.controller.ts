@@ -25,6 +25,16 @@ export class ProductController {
     return this.productService.getProducts({ isOnsales: true });
   }
 
+  @HttpCode(200)
+  @Get('/search/:category')
+  getByCatefory(@Param('category') category: number) {
+    return this.productService.getProducts({
+      category: {
+        link: category
+      }
+    });
+  }
+
   @Admin()
   @HttpCode(200)
   @Get('/:id')

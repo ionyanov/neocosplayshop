@@ -22,7 +22,7 @@ export const ProductsEditTable: FC = () => {
     useEffect(() => {
         setIsLoading(dataProps.isLoading);
         setError(errorsToString([dataProps.error]));
-    }, []);
+    }, [dataProps.isLoading, dataProps.error]);
 
     return (
         <TablePage

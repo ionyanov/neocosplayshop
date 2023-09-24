@@ -1,10 +1,11 @@
 import { FC } from 'react';
-import { Grid, Typography } from '@mui/material';
+import { Button, Grid, Typography } from '@mui/material';
 import {
     ICategoryProperties,
     IProductAdminProperty,
 } from '../model/paproperty.type';
 import { PAPropertiesCard } from './PAPropertiesCard';
+import { Save } from '@mui/icons-material';
 
 interface PAPropertiesRowProps {
     prodId: number;

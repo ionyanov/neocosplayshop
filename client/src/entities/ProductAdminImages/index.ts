@@ -1,1 +1,0 @@
-export { PAImagesCard as ProductAdminImages } from './ui/PAImagesCard'

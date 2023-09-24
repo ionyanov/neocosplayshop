@@ -17,7 +17,7 @@ export class ProductDto {
 	@IsBoolean()
 	isOnsales: boolean;
 
-	mainImage?: number;
+	mainImageId?: number;
 
 	category: IBaseType;
 }

@@ -5,12 +5,17 @@ import { ProductGrid } from '@/entities/Product';
 import { Typography } from '@mui/material';
 
 const ProductsPage: FC = () => {
-    const { category } = useParams<{ category: string }>();
+    const { category = '' } = useParams<{ category: string }>();
 
     return (
         <Page>
-            <Typography align={'center'} variant={'h2'} textTransform={'capitalize'}>{category}</Typography>
-            <ProductGrid height={200} width={200} gap={3} />
+            <Typography
+                align={'center'}
+                variant={'h2'}
+                textTransform={'capitalize'}>
+                {category}
+            </Typography>
+            <ProductGrid height={200} width={200} gap={3} category={category} />
         </Page>
     );
 };

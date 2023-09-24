@@ -1,10 +1,9 @@
-import { ChangeEvent, FC, useCallback, useEffect, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import {
     TextField,
     Grid,
     MenuItem,
     Select,
-    Icon,
     FormControl,
     FormHelperText,
     Button,
@@ -17,9 +16,7 @@ import {
     useSetDescriptionMutation,
 } from '../model/padescription.api';
 import { DropDownIcon } from '@/shared/types/enums';
-import { useDebounce } from '@/shared/hooks/useDebounce';
 import { Delete, Save } from '@mui/icons-material';
-import { SingleSelector } from '@/shared/ui';
 
 interface PADescriptionRowProps {
     prodId: number;

@@ -10,7 +10,7 @@ export const AppLogo: FC<AppLogoProps> = (props) => {
     return (
         <Link to={getRouteMain()}>
             <img
-                src={'/image/applogo.png'}
+                src={'/images/applogo.png'}
                 style={{ maxWidth: '200px', display: 'block' }}
             />
         </Link>

@@ -21,7 +21,6 @@ interface PropertyEditRowProps {
 }
 
 export const PropertyEditRow: FC<PropertyEditRowProps> = (props) => {
-    const [open, setOpen] = useState(false);
     const [canSave, setCanSave] = useState(false);
     const [name, setName] = useState(props.property.name);
     const [isList, setIsList] = useState(props.property.isList);
@@ -106,40 +105,28 @@ export const PropertyEditRow: FC<PropertyEditRowProps> = (props) => {
                 />
             </TableCell>
             <TableCell>
-                {isList && (
-                    <Button
-                        onClick={() => {
-                            setOpen(!open);
-                        }}>
-                        {open ? <ExpandLess /> : <ExpandMore />}
-                    </Button>
-                )}
-            </TableCell>
-            <TableCell>
-                <Collapse in={open} timeout="auto" unmountOnExit>
-                    <Grid container gap={'5px'}>
-                        {props.property.values?.map((val) => (
-                            <PropertyValueCard
-                                key={val.id}
-                                item={val}
-                                readonly={props.readonly}
-                                onSave={onSaveValue}
-                                onDelete={onDeleteValue}
-                            />
-                        ))}
-                        {isList && props.onSaveValue && (
-                            <PropertyValueCard
-                                item={{
-                                    id: 0,
-                                    value: '',
-                                    isActive: true,
-                                }}
-                                onSave={onSaveValue}
-                                readonly={props.readonly}
-                            />
-                        )}
-                    </Grid>
-                </Collapse>
+                <Grid container gap={'5px'}>
+                    {props.property.values?.map((val) => (
+                        <PropertyValueCard
+                            key={val.id}
+                            item={val}
+                            readonly={props.readonly}
+                            onSave={onSaveValue}
+                            onDelete={onDeleteValue}
+                        />
+                    ))}
+                    {isList && props.onSaveValue && (
+                        <PropertyValueCard
+                            item={{
+                                id: 0,
+                                value: '',
+                                isActive: true,
+                            }}
+                            onSave={onSaveValue}
+                            readonly={props.readonly}
+                        />
+                    )}
+                </Grid>
             </TableCell>
             <TableCell align="center">
                 <Button

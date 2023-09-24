@@ -41,8 +41,8 @@ export const SettingsEditRow: FC<SettingsEditRowProps> = (props) => {
 
     return (
         <TableRow>
-            <TableCell component="th" scope="row">
-                <Typography variant="button">{props.name}</Typography>
+            <TableCell>
+                <Typography variant="h3">{props.name}</Typography>
             </TableCell>
             <TableCell>
                 <TextField
@@ -56,12 +56,16 @@ export const SettingsEditRow: FC<SettingsEditRowProps> = (props) => {
                 />
             </TableCell>
             <TableCell align="center">
-                <Button onClick={onSaveClick} disabled={props.readonly}>
+                <Button
+                    onClick={onSaveClick}
+                    disabled={props.readonly || editedValue == props.value}>
                     <Save />
                 </Button>
             </TableCell>
             <TableCell align="center">
-                <Button onClick={onDeleteClick} disabled={props.readonly}>
+                <Button
+                    onClick={onDeleteClick}
+                    disabled={props.readonly || editedValue == props.value}>
                     <Delete />
                 </Button>
             </TableCell>

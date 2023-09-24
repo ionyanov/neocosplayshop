@@ -1,10 +1,8 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Grid } from '@mui/material';
-import { getProductsQuery } from '@/entities/Product/model/product.api';
-import { Product } from '@/entities/Product/model/product.type';
 import { BorderColor } from '@/shared/ui';
 import { ProductMiniCard } from './ProductMiniCard';
-import { ReducerData } from '@/shared/types/global';
+import { useGetProductsQuery } from '../model/product.api';
 
 interface ProductGridProps {
     width?: number;
@@ -14,11 +12,9 @@ interface ProductGridProps {
 
 export const ProductGrid: FC<ProductGridProps> = (props) => {
     const { width = 300, height = 300, gap = 20 } = props;
-    const { data, isLoading } = getProductsQuery(null) as ReducerData<
-        Product[]
-    >;
+    const { data, isLoading } = useGetProductsQuery();
 
-    if (isLoading) {
+    if (isLoading || !data) {
         return <></>;
     }
 

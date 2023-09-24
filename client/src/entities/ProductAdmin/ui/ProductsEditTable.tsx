@@ -22,7 +22,7 @@ export const ProductsEditTable: FC = () => {
     useEffect(() => {
         setIsLoading(dataProps.isLoading);
         setError(errorsToString([dataProps.error]));
-    }, [dataProps]);
+    }, []);
 
     return (
         <TablePage
@@ -63,10 +63,6 @@ export const ProductsEditTable: FC = () => {
                                 id: 0,
                                 name: '',
                                 price: 0,
-                                category: {
-                                    id: 0,
-                                    name: 'NONSET',
-                                },
                             }}
                             readonly={isLoading}
                             onError={setError}

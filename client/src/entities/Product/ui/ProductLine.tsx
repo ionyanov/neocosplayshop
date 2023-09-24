@@ -1,31 +1,19 @@
-import React, { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import { ImageList, ImageListItem, Typography } from '@mui/material';
-import { getProductsQuery } from '@/entities/Product/model/product.api';
-import { Product } from '@/entities/Product/model/product.type';
+import { IProduct } from '@/entities/Product/model/product.type';
 import { BorderColor } from '@/shared/ui';
 import { ProductMiniCard } from './ProductMiniCard';
 
 interface ProductLineProps {
     title?: string;
-    items: ReactNode[];
+    items: IProduct[];
     width?: number;
     height?: number;
     gap?: number;
 }
 
-interface ReducerData {
-    data: Product[];
-    isLoading: boolean;
-}
-
 export const ProductLine: FC<ProductLineProps> = (props) => {
     const { title, items, width = 300, height = 300, gap = 20 } = props;
-    const { data, isLoading } = getProductsQuery(null) as ReducerData;
-
-    if (isLoading) {
-        return <></>;
-    }
-
     return (
         <>
             <Typography align={'center'} variant={'h2'}>
@@ -40,7 +28,7 @@ export const ProductLine: FC<ProductLineProps> = (props) => {
                 rowHeight={height + 120}
                 gap={gap}>
                 <></>
-                {data?.map((item) => (
+                {props.items.map((item) => (
                     <ImageListItem key={item.id}>
                         <ProductMiniCard
                             content={item}

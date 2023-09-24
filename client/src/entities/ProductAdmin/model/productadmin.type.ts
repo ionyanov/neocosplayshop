@@ -4,18 +4,20 @@ export interface IProductAdmin {
     id: number,
     name: string,
     price: number,
-    category: IBaseType,
+    category?: IBaseType,
     isOnsales?: boolean,
     isPopular?: boolean,
 }
 
-export interface IProductAdminDetail {
+export interface IProductDetail {
     id: number,
     name: string,
     price: number,
-    category: IPACategory,
+    category?: IPACategory,
     isOnsales?: boolean,
     isPopular?: boolean,
+    mainImage?: number,
+    image?: { link: string, name: string }
     properties: IPACatProperties[],
 }
 export interface IPACategory extends IBaseType {

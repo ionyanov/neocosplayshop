@@ -3,6 +3,7 @@ import {
     Box,
     Button,
     Container,
+    Grid,
     Paper,
     Stack,
     Typography,
@@ -18,15 +19,10 @@ class TablePageProps {
 export const TablePage: FC<TablePageProps> = (props) => {
     return (
         <Stack direction={'column'} gap={'10px'} component={Paper}>
-            {props.title && (
-                <Typography width={'100%'} variant="h2" align="center">
-                    {props.title}
-                </Typography>
-            )}
             <Stack
                 direction={'row'}
                 alignItems={'stretch'}
-                justifyContent={'space-evenly'}>
+                justifyContent={'flex-start'}>
                 {props.refresh && (
                     <Button
                         size="small"
@@ -35,13 +31,20 @@ export const TablePage: FC<TablePageProps> = (props) => {
                         Refresh
                     </Button>
                 )}
-                <Typography
-                    width={'100%'}
-                    sx={{ color: 'red' }}
-                    variant="h4"
-                    align="center">
-                    {props.error}
-                </Typography>
+                <Grid container direction={'column'}>
+                    {props.title && (
+                        <Typography width={'100%'} variant="h2" align="center">
+                            {props.title}
+                        </Typography>
+                    )}
+                    <Typography
+                        width={'100%'}
+                        sx={{ color: 'red' }}
+                        variant="h4"
+                        align="center">
+                        {props.error}
+                    </Typography>
+                </Grid>
             </Stack>
             {props.children}
         </Stack>

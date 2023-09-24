@@ -5,15 +5,13 @@ import {
     TableCell,
     TableRow,
     Checkbox,
-    Grid,
-    Collapse,
 } from '@mui/material';
 import { Delete, Edit, Save } from '@mui/icons-material';
-import { IProduct } from '../model/productadmin.type';
+import { IProductAdmin } from '../model/productadmin.type';
 import { errorsToString } from '@/shared/helpers/error.helper';
 import {
     useSetAdminProductMutation,
-    useDeleteAdminProductMutation,
+    useDelAdminProductMutation,
 } from '../model/productadmin.api';
 import { getRouteAdminProduct } from '@/shared/const/router';
 import { SingleSelector } from '@/shared/ui';
@@ -21,7 +19,7 @@ import { useGetCategoriesQuery } from '@/entities/Category/model/category.api';
 import { IBaseType } from '@/shared/types/baseType';
 
 interface ProductsEditRowProps {
-    item: IProduct;
+    item: IProductAdmin;
     readonly: boolean;
     onLoading?: (isLoading: boolean) => void;
     onError?: (error: string) => void;
@@ -30,7 +28,7 @@ interface ProductsEditRowProps {
 export const ProductsEditRow: FC<ProductsEditRowProps> = (args) => {
     const { data = [] } = useGetCategoriesQuery();
     const [setProduct, setProductProps] = useSetAdminProductMutation();
-    const [delProduct, delProductProps] = useDeleteAdminProductMutation();
+    const [delProduct, delProductProps] = useDelAdminProductMutation();
 
     const [canSave, setCanSave] = useState(false);
     const [name, setName] = useState(args.item.name);
@@ -84,6 +82,7 @@ export const ProductsEditRow: FC<ProductsEditRowProps> = (args) => {
     }, [args.item]);
 
     const onCategoryChange = useCallback((val: IBaseType | undefined) => {
+        console.log(val);
         if (val) setCategory(val);
     }, []);
 
@@ -115,7 +114,7 @@ export const ProductsEditRow: FC<ProductsEditRowProps> = (args) => {
             <TableCell align="center">
                 <SingleSelector<IBaseType>
                     allValues={data}
-                    selectedValues={args.item.category}
+                    selectedValue={category}
                     getLabel={(cat) => cat.name}
                     comparer={(opt, val) => opt.id == val.id}
                     onSelectValue={onCategoryChange}

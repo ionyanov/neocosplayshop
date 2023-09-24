@@ -3,16 +3,13 @@ import { IBaseType } from "@/shared/types/baseType"
 export interface IProductAdminProperty {
     id: number,
     propertyId: number,
-    property?: {
+    property: {
         id: number,
         name: string,
         isList: boolean
     },
     value?: string,
-    valueId?: number,
-    propertyValues?: {
-        value: string
-    }
+    valueId?: number
 }
 
 export interface ICategoryProperties extends IBaseType {

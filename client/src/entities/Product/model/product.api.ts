@@ -21,8 +21,8 @@ const productsApi = rtkAPI.injectEndpoints({
                 method: 'GET',
             }),
         }),
-        getProductDetail: build.query<IProduct, string>({
-            query: (id: string) => ({
+        getProductDetail: build.query<IProduct, number>({
+            query: (id: number) => ({
                 url: `/product/${id}`,
                 method: 'GET',
             }),
@@ -30,5 +30,7 @@ const productsApi = rtkAPI.injectEndpoints({
     }),
 });
 
-export const getProductsQuery = productsApi.useGetProductsQuery;
-export const getProductDetailQuery = productsApi.useGetProductDetailQuery;
+export const { useGetProductsQuery,
+    useGetPopularProductsQuery,
+    useGetSalesProductsQuery,
+    useGetProductDetailQuery } = productsApi

@@ -9,20 +9,20 @@ import {
     TableRow,
 } from '@mui/material';
 import {
-    useDeleteValueMutation,
+    useDelPropertyValueMutation,
     useGetPropertiesQuery,
     useSetPropertyValueMutation,
-    useUpsertPropertyMutation,
+    useSetPropertyMutation,
 } from '../model/property.api';
-import { PropertyEditRow } from './PropertyEditRow';
-import { IProperty } from '../model/property.type';
 import { TablePage } from '@/shared/ui';
 import { errorsToString } from '@/shared/helpers/error.helper';
+import { PropertyEditRow } from './PropertyEditRow';
+import { IProperty } from '../model/property.type';
 
 export const PropertyEditTable: FC = () => {
-    const { data, ...props } = useGetPropertiesQuery();
-    const [upsertProperty, upsertPropertyProps] = useUpsertPropertyMutation();
-    const [deleteValue, deleteValueProps] = useDeleteValueMutation();
+    const { data, ...dataProps } = useGetPropertiesQuery();
+    const [setProperty, setPropertyProps] = useSetPropertyMutation();
+    const [delValue, delValueProps] = useDelPropertyValueMutation();
     const [saveValue, saveValueProps] = useSetPropertyValueMutation();
 
     const [isLoading, setIsLoading] = useState(false);
@@ -30,29 +30,29 @@ export const PropertyEditTable: FC = () => {
 
     useEffect(() => {
         setIsLoading(
-            props.isLoading ||
-                upsertPropertyProps.isLoading ||
-                deleteValueProps.isLoading ||
+            dataProps.isLoading ||
+                setPropertyProps.isLoading ||
+                delValueProps.isLoading ||
                 saveValueProps.isLoading,
         );
         setError(
             errorsToString([
-                props.error,
-                upsertPropertyProps.error,
-                deleteValueProps.error,
+                dataProps.error,
+                setPropertyProps.error,
+                delValueProps.error,
                 saveValueProps.error,
             ]),
         );
-    }, [props, upsertPropertyProps, deleteValueProps, saveValueProps]);
+    }, [dataProps, setPropertyProps, delValueProps, saveValueProps]);
 
     const onSave = useCallback((item: IProperty) => {
-        upsertProperty(item);
+        setProperty(item);
     }, []);
 
     return (
         <TablePage
             error={error}
-            refresh={props.refetch}
+            refresh={dataProps.refetch}
             title="Properties administration">
             <TableContainer
                 component={Paper}
@@ -61,12 +61,10 @@ export const PropertyEditTable: FC = () => {
                 <Table stickyHeader>
                     <TableHead>
                         <TableRow>
-                            <TableCell width={'10%'}>Order</TableCell>
+                            <TableCell width={'5%'}>Order</TableCell>
                             <TableCell width={'20%'}>Name</TableCell>
                             <TableCell>Is list</TableCell>
-                            <TableCell width={'60%'} colSpan={2}>
-                                Values
-                            </TableCell>
+                            <TableCell width={'75%'}>Values</TableCell>
                             <TableCell>Save</TableCell>
                         </TableRow>
                     </TableHead>
@@ -78,7 +76,7 @@ export const PropertyEditTable: FC = () => {
                                     key={item.id}
                                     onSave={onSave}
                                     onSaveValue={saveValue}
-                                    onDeleteValue={deleteValue}
+                                    onDeleteValue={delValue}
                                     readonly={isLoading}
                                 />
                             ))}

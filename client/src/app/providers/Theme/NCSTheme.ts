@@ -78,7 +78,7 @@ export const NCSTheme = createTheme({
                     justifyContent: 'center',
                     width: '100%',
                     minHeight: '100%',
-                    backgroundImage: 'url("/image/fon.png")',
+                    backgroundImage: 'url("/images/fon.png")',
                     '&::-webkit-scrollbar, & *::-webkit-scrollbar': {
                         width: '10px',
                         height: '10px',

@@ -50,7 +50,7 @@ const LoginForm: FC<LoginFormProps> = memo((props: LoginFormProps) => {
     const error = useSelector(getError);
     const isLoading = useSelector(getIsLoading);
 
-    const handleClickShowPassword = () => setShowPassword((show) => !show);
+    const handleClickShowPassword = () => setShowPassword((prev) => !prev);
 
     const handleMouseDownPassword = (
         event: React.MouseEvent<HTMLButtonElement>,

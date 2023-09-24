@@ -6,14 +6,12 @@ import { AvatarButton } from '@/features/AvatarButton';
 import { getUserAuthData } from '@/entities/User';
 import { useSelector } from 'react-redux';
 import { LoginDialog } from '@/features/Login/ui/loginDialog';
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 import { Login } from '@mui/icons-material';
 import { Button, Container } from '@mui/material';
 
 export const Navbar: FC = () => {
     const [openDialog, setOpenDialog] = useState(false);
     const user = useSelector(getUserAuthData);
-    const dispatch = useAppDispatch();
 
     const onShowLoginDialog = useCallback(() => {
         setOpenDialog(true);

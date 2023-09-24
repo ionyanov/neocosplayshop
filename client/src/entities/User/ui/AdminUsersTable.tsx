@@ -7,7 +7,6 @@ import {
     TableRow,
     TableCell,
     TableBody,
-    Button,
 } from '@mui/material';
 import {
     useGetAllUsersDataQuery,
@@ -43,19 +42,16 @@ export const AdminUsersTable: FC = () => {
                 <Table stickyHeader>
                     <TableHead>
                         <TableRow>
-                            <TableCell width={'5%'}></TableCell>
-                            <TableCell width={'3%'}>Id</TableCell>
-                            <TableCell width={'17%'}>Created</TableCell>
-                            <TableCell width={'30%'}>Email</TableCell>
+                            <TableCell>Id</TableCell>
+                            <TableCell>Created</TableCell>
+                            <TableCell width={'20%'}>Email</TableCell>
                             <TableCell width={'15%'}>Role</TableCell>
-                            <TableCell width={'15%'}>Last Login</TableCell>
+                            <TableCell width={'20%'}>Avatar</TableCell>
+                            <TableCell>Last Login</TableCell>
+                            <TableCell>Last updated</TableCell>
                             <TableCell width={'5%'}>Lock Count</TableCell>
-                            <TableCell width={'5%'} align="center">
-                                Lock
-                            </TableCell>
-                            <TableCell width={'5%'} align="center">
-                                Save
-                            </TableCell>
+                            <TableCell>Lock</TableCell>
+                            <TableCell>Save</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

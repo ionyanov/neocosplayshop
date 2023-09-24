@@ -15,11 +15,13 @@ export const MenuList: FC<MenuListProps> = (props) => {
         id: 0,
         name: 'Commissions',
         link: '/commissions',
+        isSystem: true,
     };
     const aboutItem: MenuType = {
         id: 100,
         name: 'About',
         link: '/about',
+        isSystem: true,
     };
     let newData: MenuType[] = [];
     if (!isLoading) newData = [commItem, ...data, aboutItem];

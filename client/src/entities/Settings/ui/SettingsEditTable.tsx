@@ -55,10 +55,10 @@ export const SettingEditTable: FC = () => {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell width={'20%'}>Name</TableCell>
+                            <TableCell>Name</TableCell>
                             <TableCell width={'80%'}>Value</TableCell>
-                            <TableCell align="center">Save</TableCell>
-                            <TableCell align="center">Delete</TableCell>
+                            <TableCell>Save</TableCell>
+                            <TableCell>Delete</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

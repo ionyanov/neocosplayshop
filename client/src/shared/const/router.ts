@@ -36,3 +36,5 @@ export const getRouteAdminProperties: () => string = () => '/admin/properties';
 
 export const getRouteForbidden: () => string = () => '/restrictaccess';
 export const getRouteNotfound: () => string = () => '*';
+
+export const getImagePath: (name: string | undefined) => string = (name: string | undefined) => `/images/public/${name}`;

@@ -22,19 +22,11 @@ interface AdminUserRowProps {
 }
 
 export const AdminUserRow: FC<AdminUserRowProps> = (props) => {
-    const [open, setOpen] = useState(false);
     const [edited, setEdited] = useState(false);
     const [editedAvatar, setEditedAvatar] = useState(props.item.avatar ?? '');
     const [editedEmail, setEditedEmail] = useState(props.item.email);
     const [editedRole, setEditedRole] = useState(props.item.role);
     const [editedLockFlg, setEditedLockFlg] = useState(props.item.lockflg);
-
-    useEffect(() => {
-        setEditedAvatar(props.item.avatar ?? '');
-        setEditedEmail(props.item.email);
-        setEditedRole(props.item.role);
-        setEditedLockFlg(props.item.lockflg);
-    }, [props.item]);
 
     useEffect(() => {
         setEditedAvatar(props.item.avatar ?? '');
@@ -73,19 +65,10 @@ export const AdminUserRow: FC<AdminUserRowProps> = (props) => {
     return (
         <>
             <TableRow>
-                <TableCell rowSpan={2}>
-                    <IconButton
-                        aria-label="expand row"
-                        size="small"
-                        onClick={() => setOpen(!open)}>
-                        {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
-                    </IconButton>
-                </TableCell>
                 <TableCell>{props.item.id}</TableCell>
-                <TableCell> {formatDate(props.item.created)} </TableCell>
+                <TableCell>{formatDate(props.item.created)}</TableCell>
                 <TableCell>
                     <TextField
-                        label="Email"
                         fullWidth
                         variant="outlined"
                         disabled={props.readonly}
@@ -102,14 +85,24 @@ export const AdminUserRow: FC<AdminUserRowProps> = (props) => {
                         onChange={(e) =>
                             setEditedRole(e.target.value as UserRole)
                         }>
-                        {Object.values(UserRole).map((key, item) => (
+                        {Object.values(UserRole).map((key) => (
                             <MenuItem value={key} key={key}>
                                 {key}
                             </MenuItem>
                         ))}
                     </Select>
                 </TableCell>
+                <TableCell>
+                    <TextField
+                        variant="outlined"
+                        fullWidth
+                        disabled={props.readonly}
+                        value={editedAvatar}
+                        onChange={(e) => setEditedAvatar(e.target.value)}
+                    />
+                </TableCell>
                 <TableCell>{formatDate(props.item.lastlogin)} </TableCell>
+                <TableCell>{formatDate(props.item.updated)}</TableCell>
                 <TableCell align="center">{props.item.lockcount}</TableCell>
                 <TableCell>
                     <Checkbox
@@ -125,30 +118,6 @@ export const AdminUserRow: FC<AdminUserRowProps> = (props) => {
                         disabled={props.readonly || !edited}>
                         <Save />
                     </Button>
-                </TableCell>
-            </TableRow>
-            <TableRow>
-                <TableCell
-                    colSpan={2}
-                    style={{ paddingBottom: 0, paddingTop: 0 }}>
-                    <Collapse in={open} timeout="auto" unmountOnExit>
-                        Last updated: <br />
-                        {formatDate(props.item.updated)}
-                    </Collapse>
-                </TableCell>
-                <TableCell
-                    colSpan={6}
-                    style={{ paddingBottom: 0, paddingTop: 0 }}>
-                    <Collapse in={open} timeout="auto" unmountOnExit>
-                        <TextField
-                            label="Avatar"
-                            variant="outlined"
-                            fullWidth
-                            disabled={props.readonly}
-                            value={editedAvatar}
-                            onChange={(e) => setEditedAvatar(e.target.value)}
-                        />
-                    </Collapse>
                 </TableCell>
             </TableRow>
         </>

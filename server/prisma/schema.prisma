@@ -75,10 +75,11 @@ model Product {
   price        Int
   isPopular    Boolean              @default(false) @map("is_popular")
   isOnsales    Boolean              @default(false) @map("is_onsales")
-  mainImage    Int                  @map("main_image")
+  mainImage    Int?                 @unique @map("main_image")
+  image        ProductImage?        @relation("MainImage", fields: [mainImage], references: [id])
   categoryId   Int                  @map("category_id")
   category     Category             @relation(fields: [categoryId], references: [id])
-  images       ProductImage[]
+  images       ProductImage[]       @relation("Products")
   tags         ProductTags[]
   descriptions ProductDescription[]
   properties   ProductProperties[]
@@ -102,11 +103,12 @@ model ProductTags {
 }
 
 model ProductImage {
-  id          Int     @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   link        String
   description String
-  productId   Int     @map("product_id")
-  product     Product @relation(fields: [productId], references: [id])
+  productId   Int      @map("product_id")
+  products    Product  @relation("Products", fields: [productId], references: [id])
+  product     Product? @relation("MainImage")
 }
 
 model ProductDescription {

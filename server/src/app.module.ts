@@ -10,9 +10,13 @@ import { CategoryModule } from './category/category.module';
 import { UserModule } from './user/user.module';
 import { PropertiesModule } from './properties/properties.module';
 import { ProductModule } from './product/product.module';
+import { ImagesModule } from './images/images.module';
+import { DescriptionModule } from './description/description.module';
+import { ProdPropertiesModule } from './prodproperties/prodproperties.module';
 
 @Module({
-    imports: [ConfigModule.forRoot(), AuthModule, SettingsModule, CategoryModule, UserModule, PropertiesModule, ProductModule],
+    imports: [ConfigModule.forRoot(), AuthModule, SettingsModule, CategoryModule, UserModule,
+        PropertiesModule, ProductModule, ImagesModule, DescriptionModule, ProdPropertiesModule],
     controllers: [AppController],
     providers: [AppService, PrismaService, LogService],
 })

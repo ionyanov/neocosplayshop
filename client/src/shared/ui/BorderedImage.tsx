@@ -2,9 +2,9 @@ import React, { FC } from 'react';
 import { Box, CardMedia, styled } from '@mui/material';
 
 export enum BorderColor {
-    PINK = '/image/border_pink.png',
-    GREEN = '/image/border_green.png',
-    WHITE = '/image/border_white.png',
+    PINK = '/images/border_pink.png',
+    GREEN = '/images/border_green.png',
+    WHITE = '/images/border_white.png',
 }
 
 interface BorderedImageProps {

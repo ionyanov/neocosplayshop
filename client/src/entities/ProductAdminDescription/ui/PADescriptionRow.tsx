@@ -7,6 +7,8 @@ import {
     Icon,
     FormControl,
     FormHelperText,
+    Button,
+    Stack,
 } from '@mui/material';
 import { errorsToString } from '@/shared/helpers/error.helper';
 import { IProductAdminDescription } from '../model/padescription.type';
@@ -16,6 +18,8 @@ import {
 } from '../model/padescription.api';
 import { DropDownIcon } from '@/shared/types/enums';
 import { useDebounce } from '@/shared/hooks/useDebounce';
+import { Delete, Save } from '@mui/icons-material';
+import { SingleSelector } from '@/shared/ui';
 
 interface PADescriptionRowProps {
     prodId: number;
@@ -50,69 +54,78 @@ export const PADescriptionRow: FC<PADescriptionRowProps> = (args) => {
         setType(args.item.type);
     }, [args.item]);
 
-    const saveData = useCallback(
-        (descr: string, type: DropDownIcon) => {
-            if (descr != '')
-                setDescription({
-                    prodId: args.prodId,
-                    data: {
-                        id: args.item.id,
-                        type: type,
-                        description: descr,
-                    },
-                });
-            else delDescription({ prodId: args.prodId, descId: args.item.id });
-        },
-        [args.item, descr, type],
-    );
+    const onSave = useCallback(() => {
+        if (descr != '')
+            setDescription({
+                prodId: args.prodId,
+                data: {
+                    id: args.item.id,
+                    type: type,
+                    description: descr,
+                },
+            });
+        else delDescription({ prodId: args.prodId, descId: args.item.id });
+    }, [args.item, descr, type]);
 
-    const saveDataDebounce = useDebounce(saveData, 1000);
-
-    const changeDescr = useCallback(
-        (event: ChangeEvent<HTMLInputElement>) => {
-            setDescr(event.target.value);
-            saveDataDebounce(event.target.value, type);
-        },
-        [saveData],
-    );
+    const onDelete = useCallback(() => {
+        if (confirm('You want delete description?'))
+            delDescription({ prodId: args.prodId, descId: args.item.id });
+    }, [args.item, descr, type]);
 
     return (
-        <Grid container width={'100%'} gap={1}>
+        <Grid
+            container
+            width={'100%'}
+            spacing={1}
+            alignItems={'center'}
+            justifyContent={'end'}>
             <Grid
                 item
                 xs={2}
                 alignItems={'center'}
                 display={'flex'}
                 justifyContent={'end'}>
-                <FormControl>
-                    <Select
-                        value={type}
-                        onChange={(event) => setType(event.target.value)}>
-                        {Object.keys(DropDownIcon).map((key, index) => (
-                            <MenuItem value={key} key={index}>
-                                <img
-                                    src={`/image/${
-                                        Object.values(DropDownIcon)[index]
-                                    }`}
-                                    style={{
-                                        maxWidth: '45px',
-                                        display: 'block',
-                                    }}
-                                />
-                            </MenuItem>
-                        ))}
-                    </Select>
-                    <FormHelperText>{error}</FormHelperText>
-                </FormControl>
+                <Stack direction={'column'} width={'100%'}>
+                    <FormControl>
+                        <Select
+                            fullWidth
+                            value={type}
+                            onChange={(event) => setType(event.target.value)}>
+                            {Object.keys(DropDownIcon).map((key, index) => (
+                                <MenuItem value={key} key={index}>
+                                    <img
+                                        src={`/images/${
+                                            Object.values(DropDownIcon)[index]
+                                        }`}
+                                        style={{
+                                            maxWidth: '45px',
+                                            display: 'block',
+                                        }}
+                                    />
+                                </MenuItem>
+                            ))}
+                        </Select>
+                        <FormHelperText>{error}</FormHelperText>
+                    </FormControl>
+                    <Stack direction={'row'}>
+                        <Button onClick={onSave}>
+                            <Save />
+                        </Button>
+                        {args.item.id != 0 && (
+                            <Button onClick={onDelete}>
+                                <Delete />
+                            </Button>
+                        )}
+                    </Stack>
+                </Stack>
             </Grid>
-            <Grid item xs={9}>
+            <Grid item xs={10}>
                 <TextField
                     error={descr != args.item.description}
                     value={descr}
-                    sx={{ backgroundColor: 'white' }}
                     multiline
-                    minRows={2}
-                    onChange={changeDescr}
+                    minRows={3}
+                    onChange={(event) => setDescr(event.target.value)}
                     variant={'outlined'}
                     fullWidth
                     disabled={args.readonly}

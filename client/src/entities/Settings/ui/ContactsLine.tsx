@@ -20,18 +20,18 @@ export const ContactsLine: FC = () => {
             <Toolbar>
                 <StyledFab variant="circular" href={data?.[Settings.INSTA]}>
                     <img
-                        src={'/image/itstagramm.png'}
+                        src={'/images/itstagramm.png'}
                         style={{ width: '100%' }}
                     />
                 </StyledFab>
                 <StyledFab variant="circular" href={data?.[Settings.BOOSTY]}>
-                    <img src={'/image/boosty.png'} style={{ width: '100%' }} />
+                    <img src={'/images/boosty.png'} style={{ width: '100%' }} />
                 </StyledFab>
                 <StyledFab
                     variant="circular"
                     href={`mailto:${data?.[Settings.EMAIL]}`}
                     size={'large'}>
-                    <img src={'/image/email.png'} style={{ width: '100%' }} />
+                    <img src={'/images/email.png'} style={{ width: '100%' }} />
                 </StyledFab>
             </Toolbar>
         </AppBar>

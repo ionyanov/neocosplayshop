@@ -19,35 +19,31 @@ interface PropertyValueCardProps {
 }
 
 export const PropertyValueCard: FC<PropertyValueCardProps> = (props) => {
-    const [value, setValue] = useState(props.item.value);
-    const [valIsActive, setIsActive] = useState(props.item.isActive);
+    const [value, setValue] = useState(props.item.value ?? '');
+    const [isActive, setIsActive] = useState(props.item.isActive);
 
-    const SaveData = useCallback((val: string, isAct: boolean) => {
-        if (props.onSave)
+    const SaveData = () => {
+        if (props.onSave) {
             props.onSave({
                 id: props.item.id,
-                value: val,
-                isActive: isAct,
+                value: value,
+                isActive: isActive,
             });
-    }, []);
+            setValue('');
+        }
+    };
 
-    const onSaveDebounce = useDebounce(SaveData, 1000);
+    //const onSaveDebounce = useDebounce(SaveData, 1000);
 
-    const changeFlag = useCallback(
-        (event: ChangeEvent<HTMLInputElement>) => {
-            setIsActive(event.target.checked);
-            SaveData(value, event.target.checked);
-        },
-        [SaveData],
-    );
+    const changeFlag = (event: ChangeEvent<HTMLInputElement>) => {
+        setIsActive(event.target.checked);
+        //SaveData();
+    };
 
-    const changeValue = useCallback(
-        (event: ChangeEvent<HTMLInputElement>) => {
-            setValue(event.target.value);
-            onSaveDebounce(event.target.value, valIsActive);
-        },
-        [SaveData],
-    );
+    const changeValue = (event: ChangeEvent<HTMLInputElement>) => {
+        setValue(event.target.value);
+        //onSaveDebounce();
+    };
 
     useEffect(() => {
         setValue(props.item.value);
@@ -56,46 +52,54 @@ export const PropertyValueCard: FC<PropertyValueCardProps> = (props) => {
 
     const onDeleteClick = useCallback(() => {
         if (props.onDelete)
-            if (confirm(`You want delete ${props.item.value}?`))
+            if (confirm(`You want delete ${value}?`))
                 props.onDelete(props.item);
-    }, [props.item, value, valIsActive]);
+    }, [props.item, value, isActive]);
 
     return (
-        <FormControl>
-            <OutlinedInput
-                startAdornment={
-                    <InputAdornment position="start">
-                        {props.item.id && (
-                            <Checkbox
-                                id={props.item.id.toString()}
-                                checked={valIsActive}
-                                onChange={changeFlag}
-                                inputProps={{ 'aria-label': 'controlled' }}
-                                disabled={props.readonly}
-                                size="small"
-                                sx={{ minWidth: 'unset' }}
-                            />
-                        )}
-                    </InputAdornment>
-                }
-                endAdornment={
-                    <InputAdornment position="end">
-                        {props.onDelete && (
-                            <Button
-                                onClick={onDeleteClick}
-                                disabled={props.readonly}
-                                size="small"
-                                sx={{ minWidth: 'unset' }}>
-                                <Delete />
-                            </Button>
-                        )}
-                    </InputAdornment>
-                }
-                value={value}
-                onChange={changeValue}
-                size="small"
-                disabled={props.readonly}
-            />
-        </FormControl>
+        <OutlinedInput
+            startAdornment={
+                <InputAdornment position="start">
+                    {props.item.id ? (
+                        <Checkbox
+                            id={props.item.id.toString()}
+                            checked={isActive}
+                            onChange={changeFlag}
+                            inputProps={{ 'aria-label': 'controlled' }}
+                            disabled={props.readonly}
+                            size="small"
+                            sx={{ minWidth: 'unset' }}
+                        />
+                    ) : (
+                        <></>
+                    )}
+                </InputAdornment>
+            }
+            endAdornment={
+                <InputAdornment position="end">
+                    <Button
+                        onClick={SaveData}
+                        disabled={props.readonly || value == props.item.value}
+                        size="small"
+                        sx={{ minWidth: 'unset' }}>
+                        <Save />
+                    </Button>
+                    {props.onDelete && (
+                        <Button
+                            onClick={onDeleteClick}
+                            disabled={props.readonly}
+                            size="small"
+                            sx={{ minWidth: 'unset' }}>
+                            <Delete />
+                        </Button>
+                    )}
+                </InputAdornment>
+            }
+            value={value}
+            onChange={changeValue}
+            size="small"
+            disabled={props.readonly}
+            sx={{ padding: '0' }}
+        />
     );
 };

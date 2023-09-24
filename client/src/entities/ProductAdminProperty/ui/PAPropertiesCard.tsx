@@ -10,12 +10,10 @@ import {
     IProductAdminProperty,
     ICategoryPropertyValues,
 } from '../model/paproperty.type';
-import {
-    useSetPropertiesMutation,
-    useDelPropertiesMutation,
-} from '../model/paproperty.api';
+import { useSetPropertiesMutation } from '../model/paproperty.api';
 import { errorsToString } from '@/shared/helpers/error.helper';
 import { useDebounce } from '@/shared/hooks/useDebounce';
+import { SingleSelector } from '@/shared/ui';
 
 interface PAPropertiesCardProps {
     prodId: number;
@@ -27,24 +25,15 @@ interface PAPropertiesCardProps {
 
 export const PAPropertiesCard: FC<PAPropertiesCardProps> = (args) => {
     const [setProperties, setPropertiesProps] = useSetPropertiesMutation();
-    const [delProperties, delPropertiesProps] = useDelPropertiesMutation();
 
     const [error, setError] = useState('');
     const [value, setValue] = useState(args.prop.value);
     const [valueId, setValueId] = useState(args.prop.valueId);
 
     useEffect(() => {
-        if (args.onLoading)
-            args.onLoading(
-                setPropertiesProps.isLoading || delPropertiesProps.isLoading,
-            );
-        setError(
-            errorsToString([
-                setPropertiesProps.error,
-                delPropertiesProps.error,
-            ]),
-        );
-    }, [setPropertiesProps, delPropertiesProps]);
+        if (args.onLoading) args.onLoading(setPropertiesProps.isLoading);
+        setError(errorsToString([setPropertiesProps.error]));
+    }, [setPropertiesProps]);
 
     useEffect(() => {
         setValue(args.prop.value);
@@ -67,7 +56,6 @@ export const PAPropertiesCard: FC<PAPropertiesCardProps> = (args) => {
                     propertyId: args.prop.propertyId,
                 },
             });
-            //else delProperties({ prodId: args.prodId, descId: args.item.id });
         },
         [args.prop],
     );
@@ -85,17 +73,11 @@ export const PAPropertiesCard: FC<PAPropertiesCardProps> = (args) => {
     return (
         <FormControl fullWidth>
             {args.prop.property?.isList ? (
-                <Select
-                    value={valueId}
-                    onChange={(e) =>
-                        saveData(value ?? '', e.target.value as number)
-                    }>
-                    {args.values?.map((val) => (
-                        <MenuItem value={val.id} key={val.id}>
-                            {val.value}
-                        </MenuItem>
-                    ))}
-                </Select>
+                <SingleSelector
+                    allValues={args.values ?? []}
+                    getLabel={(item) => item.value}
+                    selectedValue={valueId}
+                />
             ) : (
                 <TextField
                     value={value}

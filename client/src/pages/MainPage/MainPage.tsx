@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import { Page } from '@/widgets/Page';
-import { ProductLine } from '@/entities/Product/';
 import { Typography } from '@mui/material';
+import { ProductLinePopular, ProductLineSales } from '@/entities/Product';
 
 const MainPage: FC = () => {
     return (
@@ -9,13 +9,8 @@ const MainPage: FC = () => {
             <Typography align={'center'} variant={'h1'}>
                 WORLDWIDE SHIPPING
             </Typography>
-            <ProductLine
-                items={[]}
-                width={200}
-                height={300}
-                title={'Popular'}
-            />
-            <ProductLine items={[]} gap={50} width={350} title={'On sale'} />
+            <ProductLinePopular />
+            <ProductLineSales />
             <Typography align={'center'} variant={'h2'}>
                 Follow us on Instagram
             </Typography>

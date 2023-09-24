@@ -1,22 +1,19 @@
 import * as React from 'react';
 import { FC } from 'react';
 import Box from '@mui/material/Box';
-import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useSelector } from 'react-redux';
-import { getUserAuthData, getUserIsInit, userActions } from '@/entities/User';
+import { getUserAuthData, userActions } from '@/entities/User';
 import { AvatarAdminMenu } from './AvatarMenu';
 import { UserRole } from '@/shared/types/router';
 import { Button, Divider } from '@mui/material';
-import { Login, Logout } from '@mui/icons-material';
+import { Logout } from '@mui/icons-material';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch';
 
-interface AvatarButtonProps {}
-
-export const AvatarButton: FC<AvatarButtonProps> = (props) => {
+export const AvatarButton: FC = () => {
     const dispatch = useAppDispatch();
     const user = useSelector(getUserAuthData);
 
@@ -40,11 +37,9 @@ export const AvatarButton: FC<AvatarButtonProps> = (props) => {
 
     return (
         <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt={user?.email ?? 'ANONIM'} src={user?.avatar} />
-                </IconButton>
-            </Tooltip>
+            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt={user?.email ?? 'ANONIM'} src={user?.avatar} />
+            </IconButton>
             <Menu
                 sx={{ mt: '45px' }}
                 id="menu-appbar"

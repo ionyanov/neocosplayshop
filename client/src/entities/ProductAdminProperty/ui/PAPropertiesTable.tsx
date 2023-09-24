@@ -7,29 +7,28 @@ import {
 } from '../model/paproperty.api';
 
 interface PAPropertiesTableProps {
-    id: number;
+    prodId: number;
 }
 
 export const PAPropertiesTable: FC<PAPropertiesTableProps> = (args) => {
     const { data: catData, ...catDataProps } = useGetCategoryPropertiesQuery(
-        args.id,
+        args.prodId,
     );
-    const { data, ...dataProps } = useGetPropertiesQuery(args.id);
+    const { data, ...dataProps } = useGetPropertiesQuery(args.prodId);
 
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        setIsLoading(dataProps.isLoading);
-    }, [dataProps]);
+        setIsLoading(dataProps.isLoading || catDataProps.isLoading);
+    }, [dataProps.isLoading]);
 
-    if (dataProps.isLoading || catDataProps.isLoading || !data || !catData)
-        return <div>Loading...</div>;
+    if (isLoading || !data || !catData) return <div>Loading...</div>;
 
     return (
-        <Stack direction={'column'} rowGap={0}>
+        <Stack direction={'column'}>
             {catData.map((catProp) => (
                 <PAPropertiesRow
-                    prodId={args.id}
+                    prodId={args.prodId}
                     items={data.filter(
                         (element) => element.propertyId == catProp.id,
                     )}

@@ -14,7 +14,7 @@ export const MainPicture: FC<MainPictureProps> = (props) => {
                 display: 'flex',
                 alignContent: 'center',
                 justifyContent: 'center',
-                backgroundImage: "url('/image/fone_logo.png')",
+                backgroundImage: "url('/images/fone_logo.png')",
                 backgroundPosition: 'top',
                 backgroundRepeat: 'repeat-x',
                 backgroundOrigin: 'content-box',
@@ -22,7 +22,7 @@ export const MainPicture: FC<MainPictureProps> = (props) => {
             }}
             zIndex={-10}>
             <img
-                src={'/image/maintitle.png'}
+                src={'/images/maintitle.png'}
                 style={{ width: '50%', minHeight: '50px', minWidth: '200px' }}
             />
         </Box>

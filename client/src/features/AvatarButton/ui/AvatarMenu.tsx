@@ -12,11 +12,11 @@ export const AvatarAdminMenu = (props: { onClick?: () => void }) => {
     const location = useLocation();
 
     const adminMenu: Record<string, string> = {
-        'Admin panel': getRouteAdmin(),
-        'Admin users': getRouteAdminUsers(),
-        'Admin settings': getRouteAdminSettings(),
+        'Admin products': getRouteAdmin(),
         'Admin categories': getRouteAdminCategories(),
         'Admin properties': getRouteAdminProperties(),
+        'Admin settings': getRouteAdminSettings(),
+        'Admin users': getRouteAdminUsers(),
     };
 
     return (
@@ -25,9 +25,10 @@ export const AvatarAdminMenu = (props: { onClick?: () => void }) => {
                 <MenuItem onClick={props.onClick} key={key}>
                     <Button
                         variant="text"
-                        size="large"
+                        size="small"
                         sx={{
-                            fontWeight: location.pathname == key ? 'bold' : '',
+                            fontWeight:
+                                location.pathname == value ? 'bold' : '',
                         }}
                         component={RouterLink}
                         to={value}>

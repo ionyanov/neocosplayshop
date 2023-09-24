@@ -1,9 +1,7 @@
 import { FC, useEffect, useState } from 'react';
-import { Container, Grid, Stack } from '@mui/material';
+import { Stack } from '@mui/material';
 import { useGetDescriptionsQuery } from '../model/padescription.api';
-import { errorsToString } from '@/shared/helpers/error.helper';
 import { PADescriptionRow } from './PADescriptionRow';
-import { DropDownIcon } from '@/shared/types/enums';
 
 interface PADescriptionTableProps {
     id: number;
@@ -11,16 +9,13 @@ interface PADescriptionTableProps {
 
 export const PADescriptionTable: FC<PADescriptionTableProps> = (args) => {
     const { data, ...dataProps } = useGetDescriptionsQuery(args.id);
-
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         setIsLoading(dataProps.isLoading);
     }, [dataProps]);
 
-    if (dataProps.isLoading) return <div>Loading...</div>;
-    if (!data) return <div>Loading...</div>;
-
+    if (dataProps.isLoading ?? !data) return <div>Loading...</div>;
     return (
         <Stack direction={'column'} rowGap={2}>
             {data.map((item) => (

@@ -1,13 +1,13 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Card, CardActionArea, Typography } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import { BorderColor, BorderedImage } from '@/shared/ui';
 import { Link } from 'react-router-dom';
 import { getRouteProductDetail } from '@/shared/const/router';
-import { Product } from '../model/product.type';
+import { IProduct } from '../model/product.type';
 
 interface ProductMiniCardProps {
-    content: Product;
+    content: IProduct;
     variant?: BorderColor;
     width?: number;
     height?: number;
@@ -29,7 +29,7 @@ export const ProductMiniCard: FC<ProductMiniCardProps> = (props) => {
                 to={getRouteProductDetail(props.content.id.toString())}>
                 <BorderedImage
                     border={props.border}
-                    content={props.content.mainimage}
+                    content={`/images/public/${props.content.image.link}`}
                     variant={props.variant}
                     height={height}
                     width={width}

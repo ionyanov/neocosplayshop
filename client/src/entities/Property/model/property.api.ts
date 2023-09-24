@@ -2,7 +2,6 @@ import { rtkAPI } from '@/shared/api/rtkAPI';
 import type { IProperty, IPropertyValue } from './property.type';
 
 const tag = 'Properties';
-
 const propertyApi = rtkAPI.enhanceEndpoints({ addTagTypes: [tag] }).injectEndpoints({
 	endpoints: (build) => ({
 		getProperties: build.query<IProperty[], void>({
@@ -12,8 +11,7 @@ const propertyApi = rtkAPI.enhanceEndpoints({ addTagTypes: [tag] }).injectEndpoi
 			}),
 			providesTags: [tag]
 		}),
-
-		upsertProperty: build.mutation<IProperty, IProperty>({
+		setProperty: build.mutation<IProperty, IProperty>({
 			query: (prop) => ({
 				url: '/properties',
 				method: 'POST',
@@ -21,6 +19,7 @@ const propertyApi = rtkAPI.enhanceEndpoints({ addTagTypes: [tag] }).injectEndpoi
 			}),
 			invalidatesTags: [tag]
 		}),
+
 		setPropertyValue: build.mutation<undefined, { propId: number, value: IPropertyValue }>({
 			query: ({ propId, value }) => ({
 				url: `/properties/${propId}`,
@@ -29,7 +28,7 @@ const propertyApi = rtkAPI.enhanceEndpoints({ addTagTypes: [tag] }).injectEndpoi
 			}),
 			invalidatesTags: [tag]
 		}),
-		deleteValue: build.mutation<undefined, { propId: number, valId: number }>({
+		delPropertyValue: build.mutation<undefined, { propId: number, valId: number }>({
 			query: ({ propId, valId }) => ({
 				url: `/properties/${propId}/${valId}`,
 				method: 'DELETE'
@@ -42,6 +41,6 @@ const propertyApi = rtkAPI.enhanceEndpoints({ addTagTypes: [tag] }).injectEndpoi
 
 export const {
 	useGetPropertiesQuery,
-	useUpsertPropertyMutation,
+	useSetPropertyMutation,
 	useSetPropertyValueMutation,
-	useDeleteValueMutation } = propertyApi;
+	useDelPropertyValueMutation } = propertyApi;

@@ -2,7 +2,7 @@ import { Autocomplete, TextField } from '@mui/material';
 
 interface MultiSelectorProp<T> {
     allValues: T[];
-    selectedValues: T;
+    selectedValue?: T | number | string;
     getLabel: (option: T) => string;
     comparer?: (option: string | T, value: string | T) => boolean;
     onSelectValue?: (option: T | undefined) => void;
@@ -10,11 +10,24 @@ interface MultiSelectorProp<T> {
 }
 
 export function SingleSelector<T>(args: MultiSelectorProp<T>) {
+    /**
+                <Select
+                    value={valueId}
+                    onChange={(e) =>
+                        saveData(value ?? '', e.target.value as number)
+                    }>
+                    {args.values?.map((val) => (
+                        <MenuItem value={val.id} key={val.id}>
+                            {val.value}
+                        </MenuItem>
+                    ))}
+                </Select> */
+
     return (
         <Autocomplete
             options={args.allValues}
             getOptionLabel={args.getLabel}
-            value={args.selectedValues}
+            value={args.selectedValue}
             renderInput={(params) => <TextField {...params} />}
             onChange={(event, newValue, reason, details) => {
                 if (args.onSelectValue) args.onSelectValue(details?.option);

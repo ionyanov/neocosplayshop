@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Grid, Stack } from '@mui/material';
+import { Grid, Stack, Typography } from '@mui/material';
 import { useGetDescriptionsQuery } from '../model/padescription.api';
 import { Loader } from '@/shared/ui/Loader';
 import { DropDownIcon } from '@/shared/types/enums';
@@ -37,7 +37,7 @@ export const DescriptionTable: FC<DescriptionTableProps> = (args) => {
                         />
                     </Grid>
                     <Grid item xs={10}>
-                        {item.description}
+                        <Typography variant="h5">{item.description}</Typography>
                     </Grid>
                 </Grid>
             ))}

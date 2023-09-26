@@ -16,7 +16,7 @@ interface ProductGridProps {
 }
 
 export const ProductGrid: FC<ProductGridProps> = (props) => {
-    const { width = 300, height = 300, gap = 20 } = props;
+    const { width = 300, height = 360, gap = 20 } = props;
     const { data, isLoading } = useGetProductsByCategoryQuery(props.category);
 
     if (isLoading || !data) {
@@ -29,7 +29,7 @@ export const ProductGrid: FC<ProductGridProps> = (props) => {
                 <Grid item key={item.id}>
                     <ProductMiniCard
                         content={item}
-                        border={30}
+                        border={10}
                         width={width}
                         height={height - 60}
                         variant={BorderColor.PINK}

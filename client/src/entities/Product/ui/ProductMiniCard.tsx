@@ -36,7 +36,7 @@ export const ProductMiniCard: FC<ProductMiniCardProps> = (props) => {
                     title={props.content.name}
                 />
                 <CardContent>
-                    <Typography align={'center'} variant={'h3'}>
+                    <Typography align={'center'} variant={'h5'}>
                         {props.content.name}
                     </Typography>
                     <Typography

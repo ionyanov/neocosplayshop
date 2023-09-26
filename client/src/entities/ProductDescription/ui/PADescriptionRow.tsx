@@ -105,11 +105,13 @@ export const PADescriptionRow: FC<PADescriptionRowProps> = (args) => {
                         <FormHelperText>{error}</FormHelperText>
                     </FormControl>
                     <Stack direction={'row'}>
-                        <Button onClick={onSave}>
+                        <Button onClick={onSave} disabled={args.item.id < 0}>
                             <Save />
                         </Button>
                         {args.item.id != 0 && (
-                            <Button onClick={onDelete}>
+                            <Button
+                                onClick={onDelete}
+                                disabled={args.item.id < 0}>
                                 <Delete />
                             </Button>
                         )}

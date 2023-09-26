@@ -7,7 +7,6 @@ import { IProdPropertiesDto } from './prodproperties.dto';
 export class ProdPropertiesController {
   constructor(private readonly prodPropertiesService: ProdPropertiesService) { }
 
-  @Admin()
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
   @Get('catproperties')
@@ -15,7 +14,6 @@ export class ProdPropertiesController {
     return this.prodPropertiesService.getCategoryProperties(+idProd);
   }
 
-  @Admin()
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
   @Get('/properties')

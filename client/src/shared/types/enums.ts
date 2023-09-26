@@ -1,5 +1,6 @@
 export enum Settings {
     INSTA = 'Instagramm',
+    INSTA_SHORT = 'InstaNick',
     BOOSTY = 'Boosty',
     EMAIL = 'Email',
 }

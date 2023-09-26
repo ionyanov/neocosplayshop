@@ -1,3 +1,4 @@
+import { Container } from '@mui/material';
 import { FC, ReactNode } from 'react';
 
 interface PageProps {
@@ -5,5 +6,9 @@ interface PageProps {
 }
 
 export const Page: FC<PageProps> = (props) => {
-    return <main>{props.children}</main>;
+    return (
+        <main>
+            <Container maxWidth="lg">{props.children}</Container>
+        </main>
+    );
 };

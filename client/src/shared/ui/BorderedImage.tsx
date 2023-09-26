@@ -28,6 +28,7 @@ const BorderedBox = styled(
     border: `${border}px solid`,
     borderImageSlice: 100,
     borderImageSource: `url(${defaultValue})`,
+    borderImageWidth: 'auto',
 }));
 
 export const BorderedImage: FC<BorderedImageProps> = (props) => {
@@ -37,7 +38,7 @@ export const BorderedImage: FC<BorderedImageProps> = (props) => {
         title,
         width,
         height,
-        border = 20,
+        border = 10,
     } = props;
 
     return (

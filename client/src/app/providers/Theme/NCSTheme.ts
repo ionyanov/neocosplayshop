@@ -6,6 +6,7 @@ enum COLORS {
     PING_DARK = '#f99695',
     GREEN_LIGHT = '#c0eac2',
     GREEN_DARK = '#314f33',
+    WHITE = '#f9f9f9',
 }
 
 export const NCSTheme = createTheme({
@@ -45,9 +46,11 @@ export const NCSTheme = createTheme({
         },
         h2: {
             fontSize: '2rem',
+            fontWeight: 900,
         },
         h3: {
             fontSize: '1.5rem',
+            fontWeight: 800,
         },
         h4: {
             fontSize: '1.2rem',
@@ -125,7 +128,7 @@ export const NCSTheme = createTheme({
                     boxShadow: 'none',
                     background: 'transparent',
                     '&:hover': {
-                        color: COLORS.GREEN_DARK,
+                        color: COLORS.PING_DARK,
                     },
                 },
             },
@@ -169,6 +172,7 @@ export const NCSTheme = createTheme({
                     color: COLORS.GREEN_DARK,
                     textTransform: 'unset',
                     fontSize: '1.2rem',
+                    minWidth: 'unset',
                     '&:hover': {
                         fontWeight: 'bold',
                     },
@@ -184,5 +188,14 @@ export const NCSTheme = createTheme({
                 },
             },
         },
+        MuiSvgIcon: {
+            styleOverrides: {
+                colorSecondary: {
+                    color: COLORS.WHITE,
+                    backgroundColor: COLORS.PING_DARK,
+                    borderRadius: '30%'
+                }
+            }
+        }
     },
 });

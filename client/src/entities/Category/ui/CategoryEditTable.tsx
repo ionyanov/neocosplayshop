@@ -20,11 +20,7 @@ import { errorsToString } from '@/shared/helpers/error.helper';
 import { useGetPropertiesQuery } from '@/entities/Property/model/property.api';
 import { Loader } from '@/shared/ui/Loader';
 
-interface CategoryEditTableProp {
-    properties: String[];
-}
-
-export const CategoryEditTable: FC<CategoryEditTableProp> = (args) => {
+export const CategoryEditTable: FC = () => {
     const { data, ...props } = useGetCategoriesQuery();
     const [upsertCategory, upsertCategoryProps] = useUpsertCategoryMutation();
     const [deleteCategory, deleteCategoryProps] = useDeleteCategoryMutation();

@@ -7,7 +7,6 @@ import { IDescriptionDto } from './description.dto';
 export class DescriptionController {
   constructor(private readonly descriptionService: DescriptionService) { }
 
-  @UsePipes(new ValidationPipe())
   @HttpCode(200)
   @Get()
   getDescription(@Param('idProd') idProd: number) {
@@ -23,7 +22,6 @@ export class DescriptionController {
   }
 
   @Admin()
-  @UsePipes(new ValidationPipe())
   @HttpCode(200)
   @Delete(':idDescr')
   delDescription(@Param('idProd') idProd: number, @Param('idDescr') idDescr: number) {

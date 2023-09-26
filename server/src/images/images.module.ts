@@ -6,7 +6,6 @@ import { diskStorage } from 'multer';
 import { extname } from 'path';
 import { LogService } from 'src/log.service';
 import { PrismaService } from 'src/prisma.service';
-import { ProductService } from 'src/product/product.service';
 var path = require('path');
 
 @Module({

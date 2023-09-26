@@ -15,7 +15,7 @@ const ProductsPage: FC = () => {
                 textTransform={'capitalize'}>
                 {category}
             </Typography>
-            <ProductGrid height={200} width={200} gap={3} category={category} />
+            <ProductGrid width={200} height={300} category={category} />
         </Page>
     );
 };

@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useCallback, useEffect, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import {
     Button,
     FormControl,
@@ -12,11 +12,12 @@ import {
     IProductAdminProperty,
     ICategoryPropertyValues,
 } from '../model/paproperty.type';
-import { useSetPAPropertiesMutation } from '../model/paproperty.api';
+import {
+    useSetPAPropertiesMutation,
+    useDelPAPropertiesMutation,
+} from '../model/paproperty.api';
 import { errorsToString } from '@/shared/helpers/error.helper';
-import { useDebounce } from '@/shared/hooks/useDebounce';
-import { SingleSelector } from '@/shared/ui';
-import { Save } from '@mui/icons-material';
+import { Delete, Add, Save } from '@mui/icons-material';
 
 interface PAPropertiesCardProps {
     prodId: number;
@@ -28,6 +29,7 @@ interface PAPropertiesCardProps {
 
 export const PAPropertiesCard: FC<PAPropertiesCardProps> = (args) => {
     const [setProperties, setPropertiesProps] = useSetPAPropertiesMutation();
+    const [delProperties, delPropertiesProps] = useDelPAPropertiesMutation();
 
     const [error, setError] = useState('');
     const [value, setValue] = useState(args.prop.value ?? '');
@@ -60,9 +62,13 @@ export const PAPropertiesCard: FC<PAPropertiesCardProps> = (args) => {
         });
     }, [args.prop, value, valueId]);
 
+    const onDelete = useCallback(() => {
+        delProperties({ prodId: args.prodId, propId: args.prop.id });
+    }, [args.prop]);
+
     return (
         <Grid container>
-            <Grid item xs={11}>
+            <Grid item xs={9}>
                 <FormControl fullWidth>
                     {args.prop.property?.isList ? (
                         <Select
@@ -89,9 +95,12 @@ export const PAPropertiesCard: FC<PAPropertiesCardProps> = (args) => {
                     <FormHelperText>{error}</FormHelperText>
                 </FormControl>
             </Grid>
-            <Grid item xs={1}>
+            <Grid item xs={3}>
                 <Button onClick={onSaveData}>
                     <Save />
+                </Button>
+                <Button onClick={onDelete} disabled={args.prop.id == 0}>
+                    <Delete />
                 </Button>
             </Grid>
         </Grid>

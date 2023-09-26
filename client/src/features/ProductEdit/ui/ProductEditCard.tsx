@@ -5,7 +5,7 @@ import { ProductAdminDescription } from '@/entities/ProductDescription';
 import { ProductAdminProperty } from '@/entities/ProductProperty';
 import { ProductAdminImages } from '@/entities/ProductImages';
 import { useGetProduct } from '@/entities/Product';
-import { getImagePath, getRouteAdmin } from '@/shared/const/router';
+import { getRouteAdmin, getRouteProductDetail } from '@/shared/const/router';
 
 interface ProductEditCardProps {
     id: number;
@@ -21,21 +21,19 @@ export const ProductEditCard: FC<ProductEditCardProps> = (args) => {
             <Grid item xs={4} columnGap={4}>
                 <Button
                     variant="text"
-                    fullWidth
+                    sx={{ width: '50%' }}
                     component={RouterLink}
                     to={getRouteAdmin()}>
                     {'< Back'}
                 </Button>
-                {data.image?.link && (
-                    <img
-                        src={getImagePath(data.image.link)}
-                        style={{ maxHeight: '500px', maxWidth: '100%' }}
-                    />
-                )}
-                <ProductAdminImages
-                    prodId={args.id}
-                    mainImage={data.image?.id ?? 0}
-                />
+                <Button
+                    variant="text"
+                    component={RouterLink}
+                    sx={{ width: '50%' }}
+                    to={getRouteProductDetail(args.id.toString())}>
+                    {'View'}
+                </Button>
+                <ProductAdminImages prodId={args.id} />
             </Grid>
             <Grid item xs={8}>
                 <Stack direction={'column'} gap={2} margin={'0 20px'}>

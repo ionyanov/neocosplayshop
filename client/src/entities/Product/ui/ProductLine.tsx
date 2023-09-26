@@ -33,7 +33,7 @@ export const ProductLine: FC<ProductLineProps> = (props) => {
                     <ImageListItem key={item.id}>
                         <ProductMiniCard
                             content={item}
-                            border={30}
+                            border={10}
                             width={width}
                             height={height - 60}
                             variant={BorderColor.PINK}

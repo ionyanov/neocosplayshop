@@ -2,10 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { ProductDto } from './product.dto';
 import { LogService } from 'src/log.service';
 import { PrismaService } from 'src/prisma.service';
+import { ImagesService } from 'src/images/images.service';
 
 @Injectable()
 export class ProductService {
-	constructor(private readonly prisma: PrismaService, private readonly logger: LogService) {
+	constructor(private readonly prisma: PrismaService, private readonly logger: LogService, private readonly imgservice: ImagesService) {
 	}
 
 	async getProducts(condition) {
@@ -60,8 +61,17 @@ export class ProductService {
 	}
 
 	async delProduct(id: number) {
-		let result = {}
+		let result
 		try {
+			const resultImg = await this.prisma.productImage.findMany({
+				select: {
+					id: true
+				},
+				where: {
+					productId: id
+				}
+			});
+			resultImg.map(img => this.imgservice.delImages(id, img.id));
 			result = await this.prisma.product.deleteMany({
 				where: {
 					id: id

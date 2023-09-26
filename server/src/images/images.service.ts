@@ -10,7 +10,17 @@ export class ImagesService {
 
 	async addImages(prodId: number, files: Array<Express.Multer.File>) {
 		let result;
+		let mainImageId;
 		try {
+			result = await this.prisma.product.findFirst({
+				select: {
+					mainImageId: true
+				},
+				where: {
+					id: prodId
+				}
+			});
+			mainImageId = result.mainImageId;
 			files.map(async file => {
 				result = await this.prisma.productImage.create({
 					data: {
@@ -19,6 +29,10 @@ export class ImagesService {
 						description: '',
 					}
 				});
+				if (!mainImageId) {
+					mainImageId = result.id;
+					this.setMain(prodId, mainImageId);
+				}
 			})
 		}
 		catch (e) {
@@ -79,6 +93,15 @@ export class ImagesService {
 					where: {
 						id: imgId,
 						productId: prodId
+					}
+				});
+				result = await this.prisma.product.updateMany({
+					data: {
+						mainImageId: null,
+					},
+					where: {
+						id: prodId,
+						mainImageId: imgId,
 					}
 				});
 			}

@@ -15,32 +15,47 @@ import {
 import { Refresh } from '@mui/icons-material';
 import { PAImagesRow } from './PAImagesRow';
 import { Loader } from '@/shared/ui/Loader';
+import { useGetProduct } from '@/entities/Product';
+import { getImagePath } from '@/shared/const/router';
 
 interface PAImagesCardProps {
     prodId: number;
-    mainImage: number;
 }
 
 export const PAImagesCard: FC<PAImagesCardProps> = (args) => {
     const { data, ...dataProp } = useGetImagesQuery(args.prodId);
-    const [mainImage, setMainImage] = useState(args.mainImage);
+    const { data: prodData, ...prodDataProps } = useGetProduct(args.prodId);
+    const [mainImage, setMainImage] = useState(prodData?.mainImage?.id);
     const [setMain] = useSetMainImageMutation();
 
     const onRefresh = useCallback(() => {
+        prodDataProps.refetch();
         dataProp.refetch();
     }, []);
+
+    useEffect(() => {
+        setMainImage(prodData?.mainImage?.id);
+    }, [prodData]);
 
     const onSetMain = useCallback(
         (event: ChangeEvent<HTMLInputElement>) => {
             setMainImage(+event.target.value);
-            setMain({ prodId: args.prodId, imgId: +event.target.value });
+            setMain({ prodId: args.prodId, imgId: +event.target.value }).then(
+                prodDataProps.refetch,
+            );
         },
-        [args.mainImage],
+        [prodData],
     );
 
     if (dataProp.isLoading) return <Loader />;
     return (
         <Stack direction={'column'} rowGap={2}>
+            {prodData?.mainImage?.link && (
+                <img
+                    src={getImagePath(prodData?.mainImage.link)}
+                    style={{ maxHeight: '500px', maxWidth: '100%' }}
+                />
+            )}
             <Grid container justifyContent={'center'}>
                 <PAImagesUploadCard id={args.prodId} refresh={onRefresh} />
                 <Button variant="text" onClick={onRefresh}>

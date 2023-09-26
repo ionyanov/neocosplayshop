@@ -107,7 +107,7 @@ model ProductImage {
   link        String
   description String
   productId   Int      @map("product_id")
-  products    Product  @relation("Products", fields: [productId], references: [id])
+  products    Product  @relation("Products", fields: [productId], references: [id], onDelete: Cascade)
   product     Product? @relation("MainImage")
 }
 
@@ -116,7 +116,7 @@ model ProductDescription {
   description String
   type        String
   productId   Int?     @map("product_id")
-  product     Product? @relation(fields: [productId], references: [id])
+  product     Product? @relation(fields: [productId], references: [id], onDelete: Cascade)
 }
 
 model ProductProperties {

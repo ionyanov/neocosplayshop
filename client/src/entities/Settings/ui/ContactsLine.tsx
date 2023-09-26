@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { AppBar, Fab, styled, Toolbar } from '@mui/material';
 import { Settings } from '@/shared/types/enums';
 import { useInitSettingsQuery } from '../model/settings.api';
+import { FireExtinguisherTwoTone } from '@mui/icons-material';
 
 const StyledFab = styled(Fab)({
     left: 30,
@@ -16,24 +17,19 @@ export const ContactsLine: FC = () => {
     if (isLoading) return <></>;
 
     return (
-        <AppBar position="fixed" sx={{ top: 'auto', bottom: 0 }}>
-            <Toolbar>
-                <StyledFab variant="circular" href={data?.[Settings.INSTA]}>
-                    <img
-                        src={'/images/itstagramm.png'}
-                        style={{ width: '100%' }}
-                    />
-                </StyledFab>
-                <StyledFab variant="circular" href={data?.[Settings.BOOSTY]}>
-                    <img src={'/images/boosty.png'} style={{ width: '100%' }} />
-                </StyledFab>
-                <StyledFab
-                    variant="circular"
-                    href={`mailto:${data?.[Settings.EMAIL]}`}
-                    size={'large'}>
-                    <img src={'/images/email.png'} style={{ width: '100%' }} />
-                </StyledFab>
-            </Toolbar>
-        </AppBar>
+        <Toolbar sx={{ position: 'fixed', top: 'auto', bottom: 0 }}>
+            <StyledFab variant="circular" href={data?.[Settings.INSTA]}>
+                <img src={'/images/itstagramm.png'} style={{ width: '100%' }} />
+            </StyledFab>
+            <StyledFab variant="circular" href={data?.[Settings.BOOSTY]}>
+                <img src={'/images/boosty.png'} style={{ width: '100%' }} />
+            </StyledFab>
+            <StyledFab
+                variant="circular"
+                href={`mailto:${data?.[Settings.EMAIL]}`}
+                size={'large'}>
+                <img src={'/images/email.png'} style={{ width: '100%' }} />
+            </StyledFab>
+        </Toolbar>
     );
 };

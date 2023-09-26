@@ -35,7 +35,6 @@ export class ProductController {
     });
   }
 
-  @Admin()
   @HttpCode(200)
   @Get('/:id')
   getProduct(@Param('id') id: number) {

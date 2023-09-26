@@ -16,7 +16,6 @@ export class ImagesController {
     this.imagesService.addImages(+propId, files);
   }
 
-  @Admin()
   @HttpCode(200)
   @Get()
   public async getImages(@Param('propId') propId: string) {

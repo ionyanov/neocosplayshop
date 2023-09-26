@@ -1,4 +1,4 @@
-import { FC, useState, useCallback } from 'react';
+import { FC, useState, useCallback, memo } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import { MenuList } from '@/entities/Menu/ui/MenuList';
@@ -9,7 +9,7 @@ import { LoginDialog } from '@/features/Login/ui/loginDialog';
 import { Login } from '@mui/icons-material';
 import { Button, Container } from '@mui/material';
 
-export const Navbar: FC = () => {
+export const Navbar: FC = memo(() => {
     const [openDialog, setOpenDialog] = useState(false);
     const user = useSelector(getUserAuthData);
 
@@ -42,4 +42,4 @@ export const Navbar: FC = () => {
             </Container>
         </AppBar>
     );
-};
+});

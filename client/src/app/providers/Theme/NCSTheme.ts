@@ -14,11 +14,11 @@ export const NCSTheme = createTheme({
         primary: {
             main: COLORS.GREEN_DARK,
             contrastText: COLORS.PING_DARK,
-            light: COLORS.GREEN_LIGHT,
+            light: COLORS.PING_MIDDLE,
             dark: COLORS.GREEN_DARK,
         },
         secondary: {
-            main: COLORS.PING_DARK,
+            main: COLORS.PING_LIGHT,
             contrastText: COLORS.PING_DARK,
             light: COLORS.PING_LIGHT,
             dark: COLORS.PING_DARK,
@@ -30,7 +30,7 @@ export const NCSTheme = createTheme({
             selected: `${COLORS.GREEN_DARK}20`,
         },
         background: {
-            default: COLORS.PING_LIGHT,
+            default: `${COLORS.PING_LIGHT}40`,
         },
         text: {
             primary: COLORS.GREEN_DARK,
@@ -148,7 +148,11 @@ export const NCSTheme = createTheme({
         MuiInputBase: {
             styleOverrides: {
                 root: {
-                    backgroundColor: `${COLORS.PING_LIGHT}99`
+                    backgroundColor: `${COLORS.PING_LIGHT}66`,
+
+                    "&.Mui-disabled": {
+                        color: `${COLORS.PING_DARK}`
+                    }
                 }
             }
         },
@@ -181,7 +185,7 @@ export const NCSTheme = createTheme({
                     },
                 },
                 contained: {
-                    color: COLORS.GREEN_LIGHT,
+                    color: COLORS.GREEN_DARK,
                 },
                 containedSecondary: {
                     fontWeight: 'bold',
@@ -194,6 +198,13 @@ export const NCSTheme = createTheme({
                     color: COLORS.WHITE,
                     backgroundColor: COLORS.PING_DARK,
                     borderRadius: '30%'
+                }
+            }
+        },
+        MuiChip: {
+            styleOverrides: {
+                root: {
+                    fontSize: '1rem'
                 }
             }
         }

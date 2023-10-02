@@ -6,6 +6,7 @@ import { ImagesCard } from '@/entities/ProductImages';
 import { useGetProduct } from '@/entities/Product';
 import { Loader } from '@/shared/ui/Loader';
 import { getRouteAbout } from '@/shared/const/router';
+import { OrderButton } from '@/features/OrderButton';
 
 interface ProductCardProps {
     id: number;
@@ -23,11 +24,14 @@ export const ProductCard: FC<ProductCardProps> = (args) => {
                     {data.name}
                 </Typography>
             </Grid>
-            <Grid item xs={12} md={6} rowGap={2} justifyContent={'center'}>
-                <ImagesCard prodId={args.id} main={data.mainImage} />
+            <Grid item xs={12} md={6} justifyContent={'center'}>
+                <Grid container rowGap={1} justifyContent={'center'}>
+                    <OrderButton />
+                    <ImagesCard prodId={args.id} main={data.mainImage} />
+                </Grid>
             </Grid>
             <Grid item xs={12} md={6}>
-                <Stack direction={'column'} gap={2} margin={'0 20px'}>
+                <Grid container rowGap={2} justifyContent={'center'}>
                     <PropertiesTable prodId={args.id} />
                     <DescriptionTable id={args.id} />
                     <Typography variant="h4" textAlign={'center'}>
@@ -36,7 +40,7 @@ export const ProductCard: FC<ProductCardProps> = (args) => {
                             the rules of our store!
                         </Link>
                     </Typography>
-                </Stack>
+                </Grid>
             </Grid>
         </Grid>
     );

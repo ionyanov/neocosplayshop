@@ -24,8 +24,8 @@ export const getRouteMain: () => string = () => '/';
 export const getRouteAbout: () => string = () => '/about';
 export const getRouteCommissions: () => string = () => '/commissions';
 export const getRouteProducts: () => string = () => '/products';
-export const getRouteProductsCategory: (category: string) => string = (category: string) => `/products/${category}`;
-export const getRouteProductDetail: (id: string) => string = (id: string) => `/products/${id}/info`;
+export const getRouteProductsCategory: (category: string) => string = (category: string) => `/products/category/${category}`;
+export const getRouteProductDetail: (id: string) => string = (id: string) => `/products/${id}`;
 
 export const getRouteAdmin: () => string = () => '/admin';
 export const getRouteAdminProduct: (id: string | number) => string = (id: string | number) => `/admin/${id}`;;

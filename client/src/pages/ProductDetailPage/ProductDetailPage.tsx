@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import { Page } from '@/widgets/Page';
 import { useParams } from 'react-router-dom';
-import { ProductCard } from '@/features/ProductCard';
+import { ProductCard } from '@/widgets/ProductCard';
 
 const ProductDetailPage: FC = () => {
     const { id } = useParams<{ id: string }>();

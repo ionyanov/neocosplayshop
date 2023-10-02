@@ -13,6 +13,8 @@ dist-ssr
 *.local
 public/images/public
 
+analyse.html
+.env*
 
 # Editor directories and files
 .vscode/*

@@ -3,7 +3,7 @@ import { AuthService } from './auth.service';
 import { AuthDto, PasswordDto, RefreshTokenDto } from './auth.dto';
 import { Auth, CurrentUser } from '../_security';
 
-@Controller('')
+@Controller()
 export class AuthController {
     constructor(private readonly authService: AuthService) {
     }

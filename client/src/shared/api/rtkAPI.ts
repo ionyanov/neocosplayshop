@@ -11,7 +11,7 @@ import { Mutex } from 'async-mutex';
 const mutex = new Mutex();
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: _API_URL_,
+    baseUrl: import.meta.env?._API_URL_,
     prepareHeaders: (headers) => {
         const token = StorageServices.getAccessTokensFromStorage();
         if (token) {

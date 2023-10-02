@@ -3,6 +3,12 @@ export enum Settings {
     INSTA_SHORT = 'InstaNick',
     BOOSTY = 'Boosty',
     EMAIL = 'Email',
+    BORDER = 'Border',
+    BORDER_SMALL = 'Border small',
+    BORDER_POPULAR = 'Border popular',
+    BORDER_SALES = 'Border sales',
+    ORDER_SUBJECT = 'Order subject',
+    ORDER_TEXT = 'Order text',
 }
 
 export enum DropDownIcon {

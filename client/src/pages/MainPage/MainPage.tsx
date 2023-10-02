@@ -5,7 +5,7 @@ import { ProductLinePopular, ProductLineSales } from '@/entities/Product';
 
 const MainPage: FC = () => {
     return (
-        <Page>
+        <Page showImg>
             <Typography align={'center'} variant={'h1'}>
                 WORLDWIDE SHIPPING
             </Typography>

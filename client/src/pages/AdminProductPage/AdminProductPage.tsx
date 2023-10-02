@@ -1,7 +1,7 @@
 import { type FC, memo } from 'react';
 import { Page } from '@/widgets/Page';
 import { useParams } from 'react-router-dom';
-import { ProductEditCard } from '@/features/ProductEdit';
+import { ProductEditCard } from '@/widgets/ProductEdit';
 
 const AdminProductPage: FC = () => {
     const { id } = useParams<{ id: string }>();

@@ -14,6 +14,8 @@ interface BorderedImageProps {
     width?: number | undefined;
     height?: number | undefined;
     border?: number | undefined;
+    style?: React.CSSProperties;
+    onClick?: () => void;
 }
 
 const options = {
@@ -28,7 +30,8 @@ const BorderedBox = styled(
     border: `${border}px solid`,
     borderImageSlice: 100,
     borderImageSource: `url(${defaultValue})`,
-    borderImageWidth: 'auto',
+    borderImageWidth: `${border * 3}px`,
+    borderRadius: '1vw',
 }));
 
 export const BorderedImage: FC<BorderedImageProps> = (props) => {
@@ -39,6 +42,7 @@ export const BorderedImage: FC<BorderedImageProps> = (props) => {
         width,
         height,
         border = 10,
+        onClick,
     } = props;
 
     return (
@@ -49,6 +53,9 @@ export const BorderedImage: FC<BorderedImageProps> = (props) => {
                 width={width}
                 height={height}
                 alt={title}
+                style={props.style}
+                onClick={props.onClick}
+                loading="lazy"
             />
         </BorderedBox>
     );

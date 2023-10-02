@@ -57,7 +57,7 @@ export const PropertyEditTable: FC = () => {
             <TableContainer
                 component={Paper}
                 aria-readonly={isLoading}
-                sx={{ maxHeight: 600 }}>
+                sx={{ maxHeight: '80vh' }}>
                 <Table stickyHeader>
                     <TableHead>
                         <TableRow>

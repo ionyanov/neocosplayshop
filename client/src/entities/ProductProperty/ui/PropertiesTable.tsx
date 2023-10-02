@@ -24,48 +24,48 @@ export const PropertiesTable: FC<PropertiesTableProps> = (prop) => {
 
     if (isLoading || !catData || !data) return <Loader />;
     return (
-        <Stack direction={'column'}>
-            {catData?.map((catProp) => (
-                <>
-                    {data.filter((element) => element.propertyId == catProp.id)
-                        .length > 0 && (
-                        <Grid
-                            key={catProp.id}
-                            container
-                            width={'100%'}
-                            gap={1}
-                            alignItems={'center'}
-                            justifyContent={'center'}>
-                            <Grid item xs={3} md={2}>
-                                <Typography variant={'h4'}>
-                                    {catProp.name}
-                                </Typography>
-                            </Grid>
-                            <Grid item xs={8} md={9}>
-                                <Typography variant={'h5'}>
-                                    {data
-                                        .filter(
-                                            (element) =>
-                                                element.propertyId ==
-                                                catProp.id,
-                                        )
-                                        .map((item) => (
-                                            <Chip
-                                                label={
-                                                    item.property?.isList
-                                                        ? item.propertyValues
-                                                              ?.value
-                                                        : item.value
-                                                }
-                                                variant="outlined"
-                                            />
-                                        ))}
-                                </Typography>
-                            </Grid>
+        <Stack direction={'column'} width={'100%'}>
+            {catData?.map((catProp) => {
+                return data.filter(
+                    (element) => element.propertyId == catProp.id,
+                ).length > 0 ? (
+                    <Grid
+                        key={catProp.id}
+                        container
+                        width={'100%'}
+                        gap={1}
+                        alignItems={'center'}
+                        justifyContent={'center'}>
+                        <Grid item xs={3} md={2}>
+                            <Typography variant={'h4'}>
+                                {catProp.name}
+                            </Typography>
                         </Grid>
-                    )}
-                </>
-            ))}
+                        <Grid item xs={8} md={9}>
+                            <Typography variant={'h5'}>
+                                {data
+                                    .filter(
+                                        (element) =>
+                                            element.propertyId == catProp.id,
+                                    )
+                                    .map((item) => (
+                                        <Chip
+                                            label={
+                                                item.property?.isList
+                                                    ? item.propertyValues?.value
+                                                    : item.value
+                                            }
+                                            key={item.id}
+                                            variant="outlined"
+                                        />
+                                    ))}
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                ) : (
+                    <div key={catProp.id}></div>
+                );
+            })}
         </Stack>
     );
 };

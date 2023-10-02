@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import { Page } from '@/widgets/Page';
-import { Container, Grid, Stack, Typography, styled } from '@mui/material';
-import { useInitSettingsQuery } from '@/entities/Settings';
+import { Grid, Typography, styled } from '@mui/material';
+import { getSettings } from '@/entities/Settings';
 import { Settings } from '@/shared/types/enums';
 
 const AboutTypography = styled(Typography)({
@@ -10,8 +10,6 @@ const AboutTypography = styled(Typography)({
 }) as typeof Typography;
 
 const AboutPage: FC = () => {
-    const { data } = useInitSettingsQuery();
-
     return (
         <Page>
             <Grid
@@ -19,7 +17,7 @@ const AboutPage: FC = () => {
                 spacing={1}
                 justifyContent={'center'}
                 alignItems={'center'}
-                marginTop={'5vw'}>
+                marginTop={'1vw'}>
                 <Typography
                     variant="h1"
                     textAlign={'center'}
@@ -42,10 +40,10 @@ const AboutPage: FC = () => {
                         are open to COSPLAY COMMISSIONS all over the world! All
                         of our cosplays are custom made to your measurements and
                         take time to create. For all questions, write to us on
-                        social networks and e-mail {data?.[Settings.EMAIL]}
+                        social networks and e-mail {getSettings(Settings.EMAIL)}
                     </AboutTypography>
                     <AboutTypography variant="h4">
-                        Instagram {data?.[Settings.INSTA_SHORT]}
+                        Instagram {getSettings(Settings.INSTA_SHORT)}
                     </AboutTypography>
                 </Grid>
                 <Grid item xs={12}>

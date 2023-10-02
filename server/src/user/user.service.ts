@@ -62,7 +62,7 @@ export class UserService {
 				data: {
 					email: email,
 					password: await hash(password),
-					avatar: process.env.AVATAR_DAFAULT,
+					avatar: process.env.AVATAR_DEFAULT,
 				},
 			});
 		}

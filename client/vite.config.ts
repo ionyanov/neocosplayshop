@@ -4,6 +4,7 @@ import { visualizer } from 'rollup-plugin-visualizer';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    envPrefix: '_',
     plugins: [react(),
     visualizer({
         template: 'treemap', // or sunburst
@@ -14,11 +15,5 @@ export default defineConfig({
     }) as PluginOption],
     resolve: {
         alias: [{ find: '@', replacement: '/src' }],
-    },
-    define: {
-        /*_IS_DEV_: JSON.stringify(true),
-        _API_URL_: JSON.stringify('http://localhost:5000/api'),*/
-        _IS_DEV_: JSON.stringify(false),
-        _API_URL_: JSON.stringify('/api'),
     },
 });

@@ -25,6 +25,26 @@ export class SettingsService {
     return result;
   }
 
+  async get(name: string) {
+    let result = ''
+    try {
+      const settings = await this.prisma.setting.findFirst({
+        where: {
+          name: name
+        },
+        orderBy: {
+          name: 'asc'
+        }
+      });
+      result = settings.value;
+    }
+    catch (e) {
+      await this.logger.LogMessage(e, 'Error getting settings');
+    }
+    return result;
+  }
+
+
   async upsert(settingDto: SettingsDto) {
     let settings = {}
     try {

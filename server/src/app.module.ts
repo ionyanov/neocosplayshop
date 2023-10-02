@@ -13,10 +13,11 @@ import { ProductModule } from './product/product.module';
 import { ImagesModule } from './images/images.module';
 import { DescriptionModule } from './description/description.module';
 import { ProdPropertiesModule } from './prodproperties/prodproperties.module';
+import { OrderModule } from './order/order.module';
 
 @Module({
     imports: [ConfigModule.forRoot(), AuthModule, SettingsModule, CategoryModule, UserModule,
-        PropertiesModule, ProductModule, ImagesModule, DescriptionModule, ProdPropertiesModule],
+        PropertiesModule, ProductModule, ImagesModule, DescriptionModule, ProdPropertiesModule, OrderModule],
     controllers: [AppController],
     providers: [AppService, PrismaService, LogService],
 })

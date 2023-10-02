@@ -4,6 +4,9 @@ import { useGetImagesQuery } from '../model/paimages.api';
 import { Loader } from '@/shared/ui/Loader';
 import { getImagePath } from '@/shared/const/router';
 import { IProductImages } from '../model/paimages.type';
+import { BorderColor, BorderedImage } from '@/shared/ui';
+import { getSettings } from '@/entities/Settings';
+import { Settings } from '@/shared/types/enums';
 
 interface ImagesCardProps {
     prodId: number;
@@ -11,6 +14,8 @@ interface ImagesCardProps {
 }
 
 export const ImagesCard: FC<ImagesCardProps> = (args) => {
+    const border = getSettings(Settings.BORDER, 'WHITE');
+    const border_small = getSettings(Settings.BORDER_SMALL, 'WHITE');
     const { data, ...dataProp } = useGetImagesQuery(args.prodId);
     const [id, setId] = useState(args.main?.id);
     const [description, setDescription] = useState(args.main?.description);
@@ -35,10 +40,11 @@ export const ImagesCard: FC<ImagesCardProps> = (args) => {
     if (dataProp.isLoading || !data) return <Loader />;
     return (
         <Stack direction={'column'} spacing={2} alignItems={'center'}>
-            <img
-                src={getImagePath(imageLink)}
+            <BorderedImage
+                content={getImagePath(imageLink)}
+                variant={BorderColor[border!]}
+                border={30}
                 style={{
-                    borderRadius: '1vw',
                     height: 'fit-content',
                     width: 'fit-content',
                     maxWidth: '100%',
@@ -50,16 +56,12 @@ export const ImagesCard: FC<ImagesCardProps> = (args) => {
             <ImageList variant="masonry" cols={3} gap={8}>
                 {data.map((item, index) => (
                     <ImageListItem key={item.id} onClick={() => onSelect(item)}>
-                        <img
-                            srcSet={`${getImagePath(
-                                item.link,
-                            )}??h=248&fit=crop&auto=format&dpr=2 2x`}
-                            src={`${getImagePath(
-                                item.link,
-                            )}?h=248&fit=crop&auto=format`}
-                            alt={item.description}
-                            loading="lazy"
-                            style={{ borderRadius: '1vw' }}
+                        <BorderedImage
+                            content={getImagePath(item.link)}
+                            variant={BorderColor[border_small!]}
+                            border={5}
+                            onClick={onGetNext}
+                            style={{ height: '15vh' }}
                         />
                     </ImageListItem>
                 ))}

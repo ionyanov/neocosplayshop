@@ -1,13 +1,5 @@
-import { Children, FC, ReactNode } from 'react';
-import {
-    Box,
-    Button,
-    Container,
-    Grid,
-    Paper,
-    Stack,
-    Typography,
-} from '@mui/material';
+import { FC, ReactNode } from 'react';
+import { Button, Grid, Paper, Stack, Typography } from '@mui/material';
 
 class TablePageProps {
     error?: string;

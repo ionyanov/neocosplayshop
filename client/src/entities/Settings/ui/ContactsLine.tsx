@@ -1,8 +1,7 @@
 import { FC } from 'react';
-import { AppBar, Fab, styled, Toolbar } from '@mui/material';
+import { Fab, styled, Toolbar } from '@mui/material';
 import { Settings } from '@/shared/types/enums';
 import { useInitSettingsQuery } from '../model/settings.api';
-import { FireExtinguisherTwoTone } from '@mui/icons-material';
 
 const StyledFab = styled(Fab)({
     left: 30,
@@ -12,9 +11,9 @@ const StyledFab = styled(Fab)({
 });
 
 export const ContactsLine: FC = () => {
-    const { data, isLoading } = useInitSettingsQuery();
+    const { data } = useInitSettingsQuery();
 
-    if (isLoading) return <></>;
+    if (!data) return <></>;
 
     return (
         <Toolbar sx={{ position: 'fixed', top: 'auto', bottom: 0 }}>

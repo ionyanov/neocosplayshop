@@ -24,7 +24,6 @@ function App() {
                 <Navbar />
                 <Box component="main" sx={{ width: '100%' }}>
                     <Toolbar />
-                    <MainPicture />
                     <AppRouter />
                     <Toolbar />
                 </Box>

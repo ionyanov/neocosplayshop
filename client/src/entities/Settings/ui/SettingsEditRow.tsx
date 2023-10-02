@@ -5,8 +5,12 @@ import {
     TableCell,
     TableRow,
     Typography,
+    Select,
+    MenuItem,
 } from '@mui/material';
 import { Save, Delete } from '@mui/icons-material';
+import { Settings } from '@/shared/types/enums';
+import { BorderColor } from '@/shared/ui';
 
 interface SettingsEditRowProps {
     name: string;
@@ -18,12 +22,6 @@ interface SettingsEditRowProps {
 
 export const SettingsEditRow: FC<SettingsEditRowProps> = (props) => {
     const [editedValue, setEditedValue] = useState(props.value);
-
-    const valueChange = (
-        event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    ) => {
-        setEditedValue(event.target.value);
-    };
 
     useEffect(() => {
         setEditedValue(props.value);
@@ -45,15 +43,44 @@ export const SettingsEditRow: FC<SettingsEditRowProps> = (props) => {
                 <Typography variant="h3">{props.name}</Typography>
             </TableCell>
             <TableCell>
-                <TextField
-                    error={editedValue != props.value}
-                    label={editedValue == props.value ? '' : 'Edited'}
-                    value={editedValue}
-                    onChange={valueChange}
-                    variant={'outlined'}
-                    fullWidth
-                    disabled={props.readonly}
-                />
+                {props.name == Settings.BORDER ||
+                props.name == Settings.BORDER_SMALL ||
+                props.name == Settings.BORDER_POPULAR ||
+                props.name == Settings.BORDER_SALES ? (
+                    <Select
+                        error={editedValue != props.value}
+                        value={editedValue}
+                        onChange={(e) => setEditedValue(e.target.value)}
+                        variant={'outlined'}
+                        fullWidth
+                        disabled={props.readonly}>
+                        {Object.keys(BorderColor).map((key, index) => (
+                            <MenuItem value={key} key={index}>
+                                {key}
+                            </MenuItem>
+                        ))}
+                    </Select>
+                ) : props.name == Settings.ORDER_TEXT ? (
+                    <TextField
+                        error={editedValue != props.value}
+                        value={editedValue}
+                        multiline
+                        minRows={3}
+                        onChange={(e) => setEditedValue(e.target.value)}
+                        variant={'outlined'}
+                        fullWidth
+                        disabled={props.readonly}
+                    />
+                ) : (
+                    <TextField
+                        error={editedValue != props.value}
+                        value={editedValue}
+                        onChange={(e) => setEditedValue(e.target.value)}
+                        variant={'outlined'}
+                        fullWidth
+                        disabled={props.readonly}
+                    />
+                )}
             </TableCell>
             <TableCell align="center">
                 <Button

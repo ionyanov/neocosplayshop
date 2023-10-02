@@ -10,10 +10,18 @@ interface ProductLineProps {
     width?: number;
     height?: number;
     gap?: number;
+    variant?: BorderColor;
 }
 
 export const ProductLine: FC<ProductLineProps> = (props) => {
-    const { title, items, width = 300, height = 300, gap = 20 } = props;
+    const {
+        title,
+        items,
+        width = 300,
+        height = 300,
+        gap = 20,
+        variant = BorderColor.PINK,
+    } = props;
     return (
         <>
             <Typography align={'center'} variant={'h2'}>
@@ -26,9 +34,8 @@ export const ProductLine: FC<ProductLineProps> = (props) => {
                     gridAutoColumns: `minmax(${width}px, 1fr)`,
                     justifyItems: 'center',
                 }}
-                rowHeight={height + 120}
+                rowHeight={height + 30}
                 gap={gap}>
-                <></>
                 {props.items.map((item) => (
                     <ImageListItem key={item.id}>
                         <ProductMiniCard
@@ -36,7 +43,7 @@ export const ProductLine: FC<ProductLineProps> = (props) => {
                             border={10}
                             width={width}
                             height={height - 60}
-                            variant={BorderColor.PINK}
+                            variant={variant}
                         />
                     </ImageListItem>
                 ))}

@@ -15,9 +15,15 @@ import { DescriptionModule } from './description/description.module';
 import { ProdPropertiesModule } from './prodproperties/prodproperties.module';
 import { OrderModule } from './order/order.module';
 
+const ENV = process.env.NODE_ENV;
+
 @Module({
-    imports: [ConfigModule.forRoot(), AuthModule, SettingsModule, CategoryModule, UserModule,
-        PropertiesModule, ProductModule, ImagesModule, DescriptionModule, ProdPropertiesModule, OrderModule],
+    imports: [ConfigModule.forRoot({
+        envFilePath: !ENV ? '.env' : `.env.${ENV}`,
+    }),
+        AuthModule, SettingsModule, CategoryModule, UserModule,
+        PropertiesModule, ProductModule, ImagesModule, DescriptionModule,
+        ProdPropertiesModule, OrderModule],
     controllers: [AppController],
     providers: [AppService, PrismaService, LogService],
 })

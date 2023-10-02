@@ -2,6 +2,7 @@
 
 Internet shop for handmade cosplay staff. Design by customer.
 Admin panel contains pages:
+
 1. Category administration (It's allow build dynamic menu)
 2. Products properties administration
 3. Products administration
@@ -59,7 +60,7 @@ UPLOAD_DIR=../../../client/public/images/public
 
 ### Frontend
 
-1. Create file /server/.env
+1. Create file /client/.env
 
 ```
 _API_URL_=http://localhost:5000/api
@@ -73,6 +74,6 @@ _API_URL_=http://localhost:5000/api
   npm run dev	- run client
 ```
 
-#### Архитектура проекта
+#### Architecture
 
 Feature sliced design - [feature sliced design](https://feature-sliced.design/docs/get-started/tutorial)

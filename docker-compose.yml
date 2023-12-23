@@ -1,0 +1,74 @@
+version: '3.8'
+
+networks:
+  default:
+
+services:
+
+  db:
+    container_name:  ncs-db
+    image: mysql:8.2.0
+    # NOTE: use of "mysql_native_password" is not recommended: https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password
+    # (this is just an example, not intended to be a production configuration)
+    command: --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ncs
+      MYSQL_ROOT_PASSWORD: ncs
+      MYSQL_USER: ncs
+      MYSQL_PASSWORD: ncs
+    ports:
+      - 3306:3306
+    networks:
+      - default
+    volumes:
+      - ./dockerdb:/var/lib/mysql
+      - ./dockerdbinit:/docker-entrypoint-initdb.d/
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: ncs-phpmyadmin
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8081:80
+
+  server:
+    container_name: ncs-server
+    depends_on:
+      - db
+    restart: unless-stopped
+    build: ./server
+    volumes:
+      - ./dockerfiles:/app/images
+      - ./server/src:/app/src
+      - ./server/docker.env:/app/.env
+    command: npm run start:dev
+    ports:
+      - 5000:5000
+    links:
+      - db
+    stdin_open: true
+    networks:
+      - default
+
+  client:
+    container_name: ncs-client
+    restart: unless-stopped
+    image: node:18
+    working_dir: /app
+    volumes:
+      - ./client/:/app
+    command: npx vite --host 0.0.0.0
+    ports:
+      - 5173:5173
+    networks:
+      - default
+
+volumes:
+  dockerdb:

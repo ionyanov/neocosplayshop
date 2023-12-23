@@ -1,3 +1,5 @@
+<!-- @format -->
+
 # NeoCosplayShop
 
 Internet shop for handmade cosplay staff. Design by customer.
@@ -27,6 +29,18 @@ Frontend
 
 ## Quickstart
 
+### Doker
+
+```bash
+docker-compose up
+```
+
+Will created DB with sample data.
+
+-   http://localhost:5173/
+-   Login: test@test.com
+-   Password: test123
+
 ### Backend
 
 1. Create file /server/.env
@@ -51,9 +65,9 @@ UPLOAD_DIR=../../../client/public/images/public
 2. Run server
 
 ```bash
-  cd server 			- change directory
+  cd server 			  - change directory
   npm install   		- Install dependencies
-  npm run start:debug	- Start the server
+  npm run start:dev	- Start the server
 ```
 
 ---
